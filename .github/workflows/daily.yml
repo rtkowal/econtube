@@ -1,0 +1,31 @@
+name: daily-refresh
+# Rebuilds data/videos.json from feeds + curator posts and commits it; Vercel redeploys on push.
+on:
+  schedule: [{cron: "17 5 * * *"}]   # 05:17 UTC daily
+  workflow_dispatch:
+permissions: {contents: write}
+concurrency: {group: daily, cancel-in-progress: false}
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12", cache: pip}
+      - run: pip install -r requirements.txt
+      - uses: actions/cache@v4
+        with: {path: .cache, key: econtube-cache-${{ github.run_id }}, restore-keys: econtube-cache-}
+      - name: ingest newest curator posts (feeds only, polite)
+        run: python pipeline/ingest.py marginal-revolution --paged-feed --pages 3 || true
+      - run: python pipeline/build_data.py
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: commit data
+        run: |
+          git config user.name "econtube-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/videos.json
+          git diff --cached --quiet || git commit -m "data: daily refresh"
+          git push
