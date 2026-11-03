@@ -1,5 +1,5 @@
 # Site settings (edit freely).
-repo: ""                  # e.g. yourname/econtube  (footer "Code & data" link)
+repo: "rtkowal/econtube"                  # e.g. yourname/econtube  (footer "Code & data" link)
 contact_email: ""
 support_url: ""           # Buy Me a Coffee / GitHub Sponsors
 sponsor: ""               # one text line; empty = hidden
