@@ -36,9 +36,45 @@ def load_taxonomy(path: Path = ROOT / "taxonomy.yaml") -> dict[str, set[str]]:
             "level": {x["slug"] for x in t["levels"]}}
 
 
+import threading
+
+_LOCK = threading.Lock()
+_MEM: dict[str, tuple[Path, dict]] = {}
+MAX_LLM = int(os.environ.get("MAX_LLM_CALLS", "4000"))   # per-run cap; the backfill spreads over several runs
+_calls = 0
+
+
+class Budget(Exception):
+    pass
+
+
 def _cache(name: str) -> tuple[Path, dict]:
-    p = CACHE / f"{name}.json"
-    return p, (json.loads(p.read_text()) if p.exists() else {})
+    with _LOCK:
+        if name not in _MEM:
+            p = CACHE / f"{name}.json"
+            _MEM[name] = (p, json.loads(p.read_text()) if p.exists() else {})
+        return _MEM[name]
+
+
+def flush() -> None:
+    with _LOCK:
+        for p, c in _MEM.values():
+            p.parent.mkdir(parents=True, exist_ok=True)
+            tmp = p.with_suffix(".tmp")
+            tmp.write_text(json.dumps(c, ensure_ascii=False))
+            tmp.replace(p)
+
+
+def _spend() -> None:
+    global _calls
+    with _LOCK:
+        if _calls >= MAX_LLM:
+            raise Budget(f"MAX_LLM_CALLS={MAX_LLM} reached; remaining items wait for the next run")
+        _calls += 1
+
+
+def cached(name: str, item_id: str) -> bool:
+    return item_id in _cache(name)[1]
 
 
 def _text(item: dict, n: int = 1500) -> str:
@@ -61,9 +97,10 @@ GATE_SYS = ("You decide whether a video or podcast episode belongs on EconTube, 
 def gate(item: dict) -> bool:
     p, c = _cache("gate")
     if item["id"] not in c:
-        c[item["id"]] = llm.chat_json(GATE_SYS, _text(item, 600), max_tokens=200, tag="gate")
-        p.parent.mkdir(parents=True, exist_ok=True)
-        p.write_text(json.dumps(c))
+        _spend()
+        d = llm.chat_json(GATE_SYS, _text(item, 600), max_tokens=200, tag="gate")
+        with _LOCK:
+            c[item["id"]] = d
     d = c[item["id"]]
     return bool(d.get("relevant")) and float(d.get("confidence", 0)) >= GATE_MIN
 
@@ -163,6 +200,7 @@ def classify(item: dict, tax: dict[str, set[str]] | None = None, *, strong: bool
     tax = tax or load_taxonomy()
     p, c = _cache(CLASSIFY_CACHE)
     if item["id"] not in c:
+        _spend()
         sys_p, user = _sys(tax), _text(item)
         out = llm.chat_json(sys_p, user, strong=strong, tag="classify")
         errs = _validate(out, tax)
@@ -170,9 +208,9 @@ def classify(item: dict, tax: dict[str, set[str]] | None = None, *, strong: bool
             out = llm.chat_json(sys_p, user + "\n\nYour previous answer had invalid values:\n- " + "\n- ".join(errs)
                                 + "\nAnswer again using only allowed slugs.", strong=strong, tag="classify-retry")
         drop = {item.get("channel", "")} | {s.get("name", "") for s in item.get("posts", [])}
-        c[item["id"]] = _clean(out, tax, item["id"], drop)
-        p.parent.mkdir(parents=True, exist_ok=True)
-        p.write_text(json.dumps(c, ensure_ascii=False))
+        res = _clean(out, tax, item["id"], drop)
+        with _LOCK:
+            c[item["id"]] = res
     return apply_overrides(item["id"], c[item["id"]])
 
 

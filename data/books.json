@@ -1,0 +1,62 @@
+{
+ "people": {
+  "Milton Friedman": {
+   "title": "Free to Choose",
+   "author": "Milton & Rose Friedman"
+  },
+  "Thomas Sowell": {
+   "title": "Basic Economics",
+   "author": "Thomas Sowell"
+  },
+  "Friedrich Hayek": {
+   "title": "The Road to Serfdom",
+   "author": "F. A. Hayek"
+  },
+  "Howard Marks": {
+   "title": "The Most Important Thing",
+   "author": "Howard Marks"
+  },
+  "Tyler Cowen": {
+   "title": "Stubborn Attachments",
+   "author": "Tyler Cowen"
+  },
+  "Adam Tooze": {
+   "title": "Crashed",
+   "author": "Adam Tooze"
+  },
+  "Leszek Balcerowicz": {
+   "title": "Socialism, Capitalism, Transformation",
+   "author": "Leszek Balcerowicz"
+  },
+  "Ludwig von Mises": {
+   "title": "Human Action",
+   "author": "Ludwig von Mises"
+  },
+  "Lyn Alden": {
+   "title": "Broken Money",
+   "author": "Lyn Alden"
+  },
+  "Russ Roberts": {
+   "title": "The Invisible Heart",
+   "author": "Russ Roberts"
+  }
+ },
+ "topics": {
+  "great-depression": {
+   "title": "Lords of Finance",
+   "author": "Liaquat Ahamed"
+  },
+  "2008-crisis": {
+   "title": "Crashed",
+   "author": "Adam Tooze"
+  },
+  "gold-standard": {
+   "title": "Golden Fetters",
+   "author": "Barry Eichengreen"
+  },
+  "inflation": {
+   "title": "Money Mischief",
+   "author": "Milton Friedman"
+  }
+ }
+}

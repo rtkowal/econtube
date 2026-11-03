@@ -8,6 +8,10 @@ from datetime import date
 from pathlib import Path
 
 
+import sys
+sys.path.insert(0, str(Path(__file__).parent))
+import facets  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 SITE, DIST = ROOT / "site", ROOT / "dist"
 BASE = "https://econtube.org"
@@ -29,7 +33,7 @@ def page(title: str, body: str, *, desc: str = "", path: str = "/", extra_head: 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='4' y='26' font-size='26' font-family='Georgia' fill='%23d98c6f'%3Ee%3C/text%3E%3C/svg%3E">
 {extra_head}</head><body{attrs}><div class="wrap">
 <header class="top"><a class="logo" href="/">Econ<i>Tube</i></a>
-<nav class="tabs"><a href="/#foryou">For You</a><a href="/#top">Top</a><a href="/#new">New</a><a href="/sources/">Sources</a><a href="/about/">About</a></nav>
+<nav class="tabs"><a href="/#foryou">For You</a><a href="/#top">Top</a><a href="/#new">New</a><a href="/topics/">Topics</a><a href="/browse/">Browse</a><a href="/sources/">Sources</a><a href="/about/">About</a></nav>
 {'<label class="search"><input id="q" type="search" placeholder="Search  /" aria-label="Search"></label>' if path == "/" else ""}
 </header>
 {body}
@@ -41,10 +45,27 @@ def page(title: str, body: str, *, desc: str = "", path: str = "/", extra_head: 
 <script src="/app.js" defer></script></body></html>"""
 
 
+IX = None   # facets.Index, set in main()
+_bp = ROOT / "data/books.json"
+BOOKS = json.loads(_bp.read_text()) if _bp.exists() else {}
+
+
+def book_link(it: dict) -> str:
+    tag = CFG.get("amazon_tag")
+    if not tag:
+        return ""
+    from urllib.parse import quote_plus
+    ppl = it.get("people") or {}
+    b = next((BOOKS.get("people", {})[n] for n in [*(ppl.get("speakers") or []), *(ppl.get("discussed") or [])] if n in BOOKS.get("people", {})), None)
+    b = b or next((BOOKS.get("topics", {})[t] for t in (it.get("facets") or {}).get("topics") or [] if t in BOOKS.get("topics", {})), None)
+    if not b:
+        return ""
+    url = f"https://www.amazon.com/s?k={quote_plus(b['title'] + ' ' + b['author'])}&tag={quote_plus(tag)}"
+    return f'<p class="meta">Read: <a href="{e(url)}" rel="sponsored noopener">{e(b["title"])}</a> — {e(b["author"])}</p>'
+
+
 def chips(it: dict) -> str:
-    f = it.get("facets") or {}
-    vals = [*(f.get("topics") or []), *(f.get("schools") or []), *([f["format"]] if f.get("format") else []), *(it.get("tags") or [])[:6]]
-    return ('<p class="chips">' + "".join(f'<span>{e(v.replace("-", " "))}</span>' for v in vals) + "</p>") if vals else ""
+    return facets.chips(IX, it) if IX else ""
 
 
 def item_page(it: dict, related: list[dict]) -> str:
@@ -72,6 +93,7 @@ def item_page(it: dict, related: list[dict]) -> str:
 <h1>{e(it["title"])}</h1><div class="meta">{e(it["channel"])}{" · " + e(it["published"]) if it.get("published") else ""}</div>
 {f'<p class="why">{e(why)}</p>' if why else ''}
 {chips(it)}
+{book_link(it)}
 <div class="thumbs"><button data-v="1">👍 More like this</button><button data-v="-1">👎 Less</button></div>
 <h2>Recommended by</h2><ul class="src">{srcs}</ul>
 {f'<h2>Related</h2><ul class="src">{rel}</ul>' if rel else ''}
@@ -89,13 +111,16 @@ def main() -> None:
     if DIST.exists():
         shutil.rmtree(DIST)
     (DIST / "data").mkdir(parents=True)
-    for f in ("style.css", "app.js"):
+    for f in ("style.css", "app.js", "browse.js"):
         shutil.copy(SITE / f, DIST / f)
     # slim client JSON (no descriptions)
-    slim = [{k: it.get(k) for k in ("id", "kind", "title", "channel", "published", "score", "duration", "art")} |
-            {"sources": [{"name": s["name"]} for s in it["sources"]]} for it in items]
+    slim = [facets.slim(it) for it in items]
     (DIST / "data/videos.json").write_text(json.dumps({"items": slim}, ensure_ascii=False, separators=(",", ":")))
     shutil.copy(ROOT / "data/videos.json", DIST / "data/econtube-export.json")
+
+    global IX
+    tax = json.loads((ROOT / "data/taxonomy.json").read_text())
+    facet_urls, IX = facets.write_all(DIST, items, tax, page, BASE)
 
     preview = ('<p class="note">Preview. Items are ranked by curator endorsements; topic tags, summaries and the full '
                'archive arrive once classification runs.</p>') if data.get("preview") else ""
@@ -146,7 +171,7 @@ the reset link clears it.</p>
 <p class="note">Costs vs. revenue: {e(CFG.get("costs_line", "updated monthly by hand."))}</p></div>""", path="/about/",
         desc="How EconTube picks and ranks economics videos."))
 
-    urls = ["/", "/about/", "/sources/"] + [f"/v/{it['id']}/" for it in items]
+    urls = ["/", "/about/", "/sources/"] + facet_urls + [f"/v/{it['id']}/" for it in items]
     (DIST / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
                                       + "".join(f"<url><loc>{BASE}{u}</loc></url>" for u in urls) + "</urlset>")
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")

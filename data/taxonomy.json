@@ -1,0 +1,950 @@
+{
+ "fields": [
+  {
+   "slug": "general",
+   "label": "Economics in general & methodology",
+   "jel": "A"
+  },
+  {
+   "slug": "history-of-thought",
+   "label": "History of economic thought",
+   "jel": "B",
+   "aliases": [
+    "methodology",
+    "heterodox"
+   ]
+  },
+  {
+   "slug": "quantitative",
+   "label": "Quantitative methods & data",
+   "jel": "C"
+  },
+  {
+   "slug": "micro",
+   "label": "Microeconomics",
+   "jel": "D"
+  },
+  {
+   "slug": "behavioral",
+   "label": "Behavioral economics",
+   "jel": "D9",
+   "parent": "micro"
+  },
+  {
+   "slug": "macro",
+   "label": "Macroeconomics & monetary",
+   "jel": "E"
+  },
+  {
+   "slug": "monetary-policy",
+   "label": "Monetary policy & central banking",
+   "jel": "E5",
+   "parent": "macro"
+  },
+  {
+   "slug": "business-cycles",
+   "label": "Business cycles, inflation & growth",
+   "jel": "E3",
+   "parent": "macro"
+  },
+  {
+   "slug": "fiscal-macro",
+   "label": "Fiscal policy & public debt",
+   "jel": "E6",
+   "parent": "macro"
+  },
+  {
+   "slug": "international",
+   "label": "International economics",
+   "jel": "F"
+  },
+  {
+   "slug": "trade",
+   "label": "Trade & tariffs",
+   "jel": "F1",
+   "parent": "international"
+  },
+  {
+   "slug": "intl-finance",
+   "label": "Exchange rates & international finance",
+   "jel": "F3",
+   "parent": "international"
+  },
+  {
+   "slug": "finance",
+   "label": "Financial economics",
+   "jel": "G"
+  },
+  {
+   "slug": "banking",
+   "label": "Banking & financial crises",
+   "jel": "G2",
+   "parent": "finance"
+  },
+  {
+   "slug": "corporate-finance",
+   "label": "Corporate finance & governance",
+   "jel": "G3",
+   "parent": "finance"
+  },
+  {
+   "slug": "public",
+   "label": "Public economics & taxation",
+   "jel": "H"
+  },
+  {
+   "slug": "health-education-welfare",
+   "label": "Health, education & welfare",
+   "jel": "I"
+  },
+  {
+   "slug": "labor",
+   "label": "Labor & demographics",
+   "jel": "J"
+  },
+  {
+   "slug": "law-econ",
+   "label": "Law & economics",
+   "jel": "K"
+  },
+  {
+   "slug": "industrial-org",
+   "label": "Industries, competition & regulation",
+   "jel": "L"
+  },
+  {
+   "slug": "business",
+   "label": "Business, management & entrepreneurship",
+   "jel": "M"
+  },
+  {
+   "slug": "economic-history",
+   "label": "Economic history",
+   "jel": "N"
+  },
+  {
+   "slug": "development",
+   "label": "Development, innovation & growth",
+   "jel": "O"
+  },
+  {
+   "slug": "innovation",
+   "label": "Technology & innovation",
+   "jel": "O3",
+   "parent": "development"
+  },
+  {
+   "slug": "systems",
+   "label": "Economic systems: capitalism, socialism, transition",
+   "jel": "P"
+  },
+  {
+   "slug": "transition",
+   "label": "Post-communist transition",
+   "jel": "P2",
+   "parent": "systems"
+  },
+  {
+   "slug": "environment-energy",
+   "label": "Agriculture, energy & environment",
+   "jel": "Q"
+  },
+  {
+   "slug": "urban-housing",
+   "label": "Urban, housing & regional",
+   "jel": "R"
+  },
+  {
+   "slug": "markets-investing",
+   "label": "Markets & investing"
+  },
+  {
+   "slug": "credit",
+   "label": "Credit",
+   "parent": "markets-investing"
+  },
+  {
+   "slug": "rates",
+   "label": "Rates & bonds",
+   "parent": "markets-investing"
+  },
+  {
+   "slug": "equities",
+   "label": "Equities",
+   "parent": "markets-investing"
+  },
+  {
+   "slug": "private-markets",
+   "label": "Private markets",
+   "parent": "markets-investing"
+  },
+  {
+   "slug": "alternatives",
+   "label": "Alternatives",
+   "parent": "markets-investing"
+  },
+  {
+   "slug": "macro-investing",
+   "label": "Macro investing",
+   "parent": "markets-investing"
+  },
+  {
+   "slug": "money-bitcoin",
+   "label": "Money & Bitcoin"
+  },
+  {
+   "slug": "sound-money",
+   "label": "Gold & sound money",
+   "parent": "money-bitcoin"
+  },
+  {
+   "slug": "bitcoin",
+   "label": "Bitcoin & crypto",
+   "parent": "money-bitcoin"
+  }
+ ],
+ "schools": [
+  {
+   "slug": "chicago-monetarist",
+   "label": "Chicago / monetarist"
+  },
+  {
+   "slug": "austrian",
+   "label": "Austrian"
+  },
+  {
+   "slug": "public-choice",
+   "label": "Public choice"
+  },
+  {
+   "slug": "classical-liberal",
+   "label": "Classical liberal"
+  },
+  {
+   "slug": "new-institutional",
+   "label": "New institutional"
+  },
+  {
+   "slug": "supply-side",
+   "label": "Supply-side"
+  },
+  {
+   "slug": "keynesian",
+   "label": "Keynesian / New Keynesian"
+  },
+  {
+   "slug": "mmt",
+   "label": "MMT"
+  },
+  {
+   "slug": "marxist",
+   "label": "Marxist"
+  },
+  {
+   "slug": "behavioral",
+   "label": "Behavioral"
+  },
+  {
+   "slug": "empirical",
+   "label": "None / empirical"
+  }
+ ],
+ "formats": [
+  {
+   "slug": "lecture",
+   "label": "Lecture"
+  },
+  {
+   "slug": "interview",
+   "label": "Interview"
+  },
+  {
+   "slug": "debate",
+   "label": "Debate"
+  },
+  {
+   "slug": "documentary",
+   "label": "Documentary"
+  },
+  {
+   "slug": "panel",
+   "label": "Panel"
+  },
+  {
+   "slug": "explainer",
+   "label": "Explainer"
+  },
+  {
+   "slug": "speech",
+   "label": "Speech"
+  },
+  {
+   "slug": "podcast-episode",
+   "label": "Podcast episode"
+  },
+  {
+   "slug": "market-commentary",
+   "label": "Market commentary"
+  },
+  {
+   "slug": "nobel-lecture",
+   "label": "Nobel lecture"
+  }
+ ],
+ "levels": [
+  {
+   "slug": "introductory",
+   "label": "Introductory"
+  },
+  {
+   "slug": "intermediate",
+   "label": "Intermediate"
+  },
+  {
+   "slug": "expert",
+   "label": "Expert"
+  }
+ ],
+ "eras": [
+  {
+   "slug": "pre-1900",
+   "label": "Before 1900"
+  },
+  {
+   "slug": "1900s-1920s",
+   "label": "1900s–1920s"
+  },
+  {
+   "slug": "1930s",
+   "label": "1930s & the Depression"
+  },
+  {
+   "slug": "1940s-1950s",
+   "label": "1940s–1950s"
+  },
+  {
+   "slug": "1960s",
+   "label": "1960s"
+  },
+  {
+   "slug": "1970s",
+   "label": "1970s stagflation"
+  },
+  {
+   "slug": "1980s",
+   "label": "1980s"
+  },
+  {
+   "slug": "1990s",
+   "label": "1990s / post-1989"
+  },
+  {
+   "slug": "2000s",
+   "label": "2000s"
+  },
+  {
+   "slug": "2008-crisis",
+   "label": "2008 crisis & aftermath"
+  },
+  {
+   "slug": "2010s",
+   "label": "2010s"
+  },
+  {
+   "slug": "2020s",
+   "label": "2020s"
+  },
+  {
+   "slug": "timeless",
+   "label": "Timeless / theory"
+  }
+ ],
+ "regions": [
+  {
+   "slug": "us",
+   "label": "United States"
+  },
+  {
+   "slug": "uk",
+   "label": "United Kingdom"
+  },
+  {
+   "slug": "poland",
+   "label": "Poland"
+  },
+  {
+   "slug": "cee",
+   "label": "Central & Eastern Europe"
+  },
+  {
+   "slug": "eurozone",
+   "label": "Eurozone"
+  },
+  {
+   "slug": "germany",
+   "label": "Germany"
+  },
+  {
+   "slug": "france",
+   "label": "France"
+  },
+  {
+   "slug": "spain",
+   "label": "Spain"
+  },
+  {
+   "slug": "china",
+   "label": "China"
+  },
+  {
+   "slug": "asia",
+   "label": "Asia (other)"
+  },
+  {
+   "slug": "japan",
+   "label": "Japan"
+  },
+  {
+   "slug": "india",
+   "label": "India"
+  },
+  {
+   "slug": "latin-america",
+   "label": "Latin America"
+  },
+  {
+   "slug": "africa",
+   "label": "Africa"
+  },
+  {
+   "slug": "middle-east",
+   "label": "Middle East"
+  },
+  {
+   "slug": "russia",
+   "label": "Russia"
+  },
+  {
+   "slug": "global",
+   "label": "Global"
+  }
+ ],
+ "topics": [
+  {
+   "slug": "inflation",
+   "label": "Inflation",
+   "parent": "business-cycles"
+  },
+  {
+   "slug": "deflation",
+   "label": "Deflation",
+   "parent": "business-cycles"
+  },
+  {
+   "slug": "stagflation",
+   "label": "Stagflation",
+   "parent": "business-cycles"
+  },
+  {
+   "slug": "recessions",
+   "label": "Recessions",
+   "parent": "business-cycles"
+  },
+  {
+   "slug": "business-cycle",
+   "label": "Business cycle",
+   "parent": "business-cycles"
+  },
+  {
+   "slug": "unemployment",
+   "label": "Unemployment",
+   "parent": "business-cycles"
+  },
+  {
+   "slug": "the-fed",
+   "label": "The Federal Reserve",
+   "parent": "monetary-policy",
+   "aliases": [
+    "fed",
+    "fomc",
+    "federal reserve"
+   ]
+  },
+  {
+   "slug": "ecb",
+   "label": "The ECB",
+   "parent": "monetary-policy"
+  },
+  {
+   "slug": "bank-of-england",
+   "label": "Bank of england",
+   "parent": "monetary-policy"
+  },
+  {
+   "slug": "central-bank-independence",
+   "label": "Central bank independence",
+   "parent": "monetary-policy"
+  },
+  {
+   "slug": "interest-rates",
+   "label": "Interest rates",
+   "parent": "monetary-policy"
+  },
+  {
+   "slug": "quantitative-easing",
+   "label": "Quantitative easing",
+   "parent": "monetary-policy",
+   "aliases": [
+    "qe"
+   ]
+  },
+  {
+   "slug": "money-supply",
+   "label": "Money supply",
+   "parent": "monetary-policy"
+  },
+  {
+   "slug": "gold-standard",
+   "label": "Gold standard",
+   "parent": "sound-money"
+  },
+  {
+   "slug": "bretton-woods",
+   "label": "Bretton woods",
+   "parent": "sound-money"
+  },
+  {
+   "slug": "sound-money",
+   "label": "Sound money",
+   "parent": "sound-money"
+  },
+  {
+   "slug": "hyperinflation",
+   "label": "Hyperinflation",
+   "parent": "sound-money"
+  },
+  {
+   "slug": "great-depression",
+   "label": "The Great Depression",
+   "parent": "economic-history"
+  },
+  {
+   "slug": "industrial-revolution",
+   "label": "Industrial revolution",
+   "parent": "economic-history"
+  },
+  {
+   "slug": "economic-history-of-europe",
+   "label": "Economic history of Europe",
+   "parent": "economic-history"
+  },
+  {
+   "slug": "soviet-economy",
+   "label": "Soviet economy",
+   "parent": "economic-history"
+  },
+  {
+   "slug": "polish-economy",
+   "label": "Polish economy",
+   "parent": "economic-history",
+   "aliases": [
+    "poland economy",
+    "gospodarka polska"
+   ]
+  },
+  {
+   "slug": "2008-crisis",
+   "label": "The 2008 financial crisis",
+   "parent": "banking"
+  },
+  {
+   "slug": "banking-crises",
+   "label": "Banking crises",
+   "parent": "banking"
+  },
+  {
+   "slug": "bank-runs",
+   "label": "Bank runs",
+   "parent": "banking"
+  },
+  {
+   "slug": "national-debt",
+   "label": "The national debt",
+   "parent": "fiscal-macro"
+  },
+  {
+   "slug": "government-spending",
+   "label": "Government spending",
+   "parent": "fiscal-macro"
+  },
+  {
+   "slug": "fiscal-stimulus",
+   "label": "Fiscal stimulus",
+   "parent": "fiscal-macro"
+  },
+  {
+   "slug": "austerity",
+   "label": "Austerity",
+   "parent": "fiscal-macro"
+  },
+  {
+   "slug": "sovereign-debt-crises",
+   "label": "Sovereign debt crises",
+   "parent": "intl-finance"
+  },
+  {
+   "slug": "euro-crisis",
+   "label": "Euro crisis",
+   "parent": "intl-finance"
+  },
+  {
+   "slug": "exchange-rates",
+   "label": "Exchange rates",
+   "parent": "intl-finance"
+  },
+  {
+   "slug": "dollar-dominance",
+   "label": "Dollar dominance",
+   "parent": "intl-finance"
+  },
+  {
+   "slug": "emerging-markets",
+   "label": "Emerging markets",
+   "parent": "intl-finance"
+  },
+  {
+   "slug": "stock-market",
+   "label": "Stock market",
+   "parent": "equities"
+  },
+  {
+   "slug": "ipos-and-capital-markets",
+   "label": "IPOs & capital markets",
+   "parent": "equities"
+  },
+  {
+   "slug": "bonds-and-yields",
+   "label": "Bonds & yields",
+   "parent": "rates"
+  },
+  {
+   "slug": "credit-markets",
+   "label": "Credit markets",
+   "parent": "credit"
+  },
+  {
+   "slug": "private-equity",
+   "label": "Private equity",
+   "parent": "private-markets"
+  },
+  {
+   "slug": "venture-capital",
+   "label": "Venture capital",
+   "parent": "private-markets"
+  },
+  {
+   "slug": "hedge-funds",
+   "label": "Hedge funds",
+   "parent": "alternatives"
+  },
+  {
+   "slug": "commodities",
+   "label": "Commodities",
+   "parent": "alternatives"
+  },
+  {
+   "slug": "real-estate-investing",
+   "label": "Real estate investing",
+   "parent": "alternatives"
+  },
+  {
+   "slug": "asset-bubbles",
+   "label": "Asset bubbles",
+   "parent": "macro-investing"
+  },
+  {
+   "slug": "market-cycles",
+   "label": "Market cycles",
+   "parent": "macro-investing"
+  },
+  {
+   "slug": "risk-management",
+   "label": "Risk management",
+   "parent": "macro-investing"
+  },
+  {
+   "slug": "value-investing",
+   "label": "Value investing",
+   "parent": "macro-investing"
+  },
+  {
+   "slug": "bitcoin",
+   "label": "Bitcoin",
+   "parent": "bitcoin"
+  },
+  {
+   "slug": "stablecoins",
+   "label": "Stablecoins",
+   "parent": "bitcoin"
+  },
+  {
+   "slug": "cbdc",
+   "label": "Central bank digital currencies",
+   "parent": "bitcoin",
+   "aliases": [
+    "digital euro",
+    "digital dollar"
+   ]
+  },
+  {
+   "slug": "tariffs",
+   "label": "Tariffs & trade wars",
+   "parent": "trade",
+   "aliases": [
+    "protectionism",
+    "trade war"
+   ]
+  },
+  {
+   "slug": "free-trade",
+   "label": "Free trade",
+   "parent": "trade"
+  },
+  {
+   "slug": "china-shock",
+   "label": "China shock",
+   "parent": "trade"
+  },
+  {
+   "slug": "globalization",
+   "label": "Globalization",
+   "parent": "trade"
+  },
+  {
+   "slug": "sanctions-and-economic-statecraft",
+   "label": "Sanctions & economic statecraft",
+   "parent": "trade"
+  },
+  {
+   "slug": "minimum-wage",
+   "label": "Minimum wage",
+   "parent": "labor"
+  },
+  {
+   "slug": "labor-markets",
+   "label": "Labor markets",
+   "parent": "labor"
+  },
+  {
+   "slug": "immigration",
+   "label": "Immigration",
+   "parent": "labor"
+  },
+  {
+   "slug": "inequality",
+   "label": "Inequality",
+   "parent": "labor"
+  },
+  {
+   "slug": "poverty",
+   "label": "Poverty",
+   "parent": "health-education-welfare"
+  },
+  {
+   "slug": "welfare-state",
+   "label": "Welfare state",
+   "parent": "health-education-welfare"
+  },
+  {
+   "slug": "pensions-and-social-security",
+   "label": "Pensions & social security",
+   "parent": "health-education-welfare"
+  },
+  {
+   "slug": "education",
+   "label": "Education",
+   "parent": "health-education-welfare"
+  },
+  {
+   "slug": "school-choice",
+   "label": "School choice",
+   "parent": "health-education-welfare"
+  },
+  {
+   "slug": "universal-basic-income",
+   "label": "Universal basic income",
+   "parent": "health-education-welfare"
+  },
+  {
+   "slug": "healthcare",
+   "label": "Healthcare economics",
+   "parent": "health-education-welfare"
+  },
+  {
+   "slug": "taxation",
+   "label": "Taxation",
+   "parent": "public"
+  },
+  {
+   "slug": "wealth-tax",
+   "label": "Wealth tax",
+   "parent": "public"
+  },
+  {
+   "slug": "regulation",
+   "label": "Regulation",
+   "parent": "industrial-org"
+  },
+  {
+   "slug": "antitrust",
+   "label": "Antitrust",
+   "parent": "industrial-org"
+  },
+  {
+   "slug": "industrial-policy",
+   "label": "Industrial policy",
+   "parent": "industrial-org"
+  },
+  {
+   "slug": "price-controls",
+   "label": "Price controls",
+   "parent": "industrial-org"
+  },
+  {
+   "slug": "housing",
+   "label": "Housing",
+   "parent": "urban-housing"
+  },
+  {
+   "slug": "zoning-and-land-use",
+   "label": "Zoning & land use",
+   "parent": "urban-housing"
+  },
+  {
+   "slug": "rent-control",
+   "label": "Rent control",
+   "parent": "urban-housing"
+  },
+  {
+   "slug": "energy-and-climate",
+   "label": "Energy & climate",
+   "parent": "environment-energy"
+  },
+  {
+   "slug": "price-system",
+   "label": "Price system",
+   "parent": "micro"
+  },
+  {
+   "slug": "socialism-vs-capitalism",
+   "label": "Socialism vs capitalism",
+   "parent": "systems"
+  },
+  {
+   "slug": "central-planning",
+   "label": "Central planning",
+   "parent": "systems"
+  },
+  {
+   "slug": "privatization",
+   "label": "Privatization",
+   "parent": "transition",
+   "aliases": [
+    "prywatyzacja"
+   ]
+  },
+  {
+   "slug": "shock-therapy",
+   "label": "Shock therapy & post-communist transition",
+   "parent": "transition"
+  },
+  {
+   "slug": "property-rights",
+   "label": "Property rights",
+   "parent": "law-econ"
+  },
+  {
+   "slug": "rule-of-law",
+   "label": "Rule of law",
+   "parent": "law-econ"
+  },
+  {
+   "slug": "public-choice-government-failure",
+   "label": "Public choice & government failure",
+   "parent": "law-econ"
+  },
+  {
+   "slug": "economic-growth",
+   "label": "Economic growth",
+   "parent": "development"
+  },
+  {
+   "slug": "productivity",
+   "label": "Productivity",
+   "parent": "development"
+  },
+  {
+   "slug": "china-economy",
+   "label": "China's economy",
+   "parent": "development"
+  },
+  {
+   "slug": "development-and-poverty-traps",
+   "label": "Development & poverty traps",
+   "parent": "development"
+  },
+  {
+   "slug": "state-capacity",
+   "label": "State capacity",
+   "parent": "development"
+  },
+  {
+   "slug": "ai-economy",
+   "label": "AI & the economy",
+   "parent": "innovation",
+   "aliases": [
+    "artificial intelligence"
+   ]
+  },
+  {
+   "slug": "innovation",
+   "label": "Innovation",
+   "parent": "innovation"
+  },
+  {
+   "slug": "economics-of-science",
+   "label": "Economics of science",
+   "parent": "innovation"
+  },
+  {
+   "slug": "entrepreneurship",
+   "label": "Entrepreneurship",
+   "parent": "business"
+  },
+  {
+   "slug": "history-of-economic-thought",
+   "label": "History of economic thought",
+   "parent": "history-of-thought"
+  },
+  {
+   "slug": "keynes-vs-hayek",
+   "label": "Keynes vs Hayek",
+   "parent": "history-of-thought"
+  },
+  {
+   "slug": "rational-expectations",
+   "label": "Rational expectations",
+   "parent": "history-of-thought"
+  },
+  {
+   "slug": "behavioral-economics",
+   "label": "Behavioral economics",
+   "parent": "behavioral"
+  },
+  {
+   "slug": "econometrics-and-causal-inference",
+   "label": "Econometrics & causal inference",
+   "parent": "quantitative"
+  }
+ ]
+}

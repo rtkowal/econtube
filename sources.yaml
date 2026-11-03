@@ -13,14 +13,15 @@ sources:
   # ---------------- Blogs & commentary ----------------
   - id: marginal-revolution
     name: Marginal Revolution
+    backfill: paged_feed   # WordPress <feed>?paged=N, verified 2026-11-03
     url: https://marginalrevolution.com/
     type: rss
     weight: 3.0
-    backfill: full
     feeds: [https://marginalrevolution.com/feed, https://marginalrevolution.com/sitemap.xml]
     notes: Highest weight. Cowen & Tabarrok link videos constantly. Full archive backfill via sitemap.
   - id: cafe-hayek
     name: Cafe Hayek
+    backfill: paged_feed   # WordPress <feed>?paged=N, verified 2026-11-03
     url: https://cafehayek.com/
     type: rss
     weight: 1.5
@@ -41,11 +42,13 @@ sources:
     notes: Blogger feed supports start-index paging for full backfill.
   - id: conversable-economist
     name: Conversable Economist
+    backfill: paged_feed   # WordPress <feed>?paged=N, verified 2026-11-03
     url: https://conversableeconomist.com/
     type: rss
     feeds: [https://conversableeconomist.com/feed/, https://conversableeconomist.com/sitemap.xml]
   - id: econlog
     name: EconLog
+    backfill: paged_feed   # WordPress <feed>?paged=N, verified 2026-11-03
     youtube_channels: [{handle: "@econtalkwithruss", verified: false}]
     youtube_playlists: [PL0QqDLM7MfusWuhJ0JqOQcrDiZS_4XRGC]
     url: https://www.econlib.org/econlog/
@@ -80,6 +83,7 @@ sources:
     notes: Few videos expected; do not over-invest.
   - id: ritholtz
     name: The Big Picture (Ritholtz)
+    backfill: paged_feed   # WordPress <feed>?paged=N, verified 2026-11-03
     podcast_feeds:
       - {name: Masters in Business, apple_id: 730188152, verified: false}
     url: https://ritholtz.com/
@@ -88,6 +92,7 @@ sources:
     notes: Daily link roundups dense with videos.
   - id: undercover-economist
     name: Tim Harford - Undercover Economist
+    backfill: paged_feed   # WordPress <feed>?paged=N, verified 2026-11-03
     youtube_channels: [{handle: "@RandomEconomist", verified: false}]
     podcast_feeds:
       - {name: Cautionary Tales, verified: false}
@@ -96,6 +101,7 @@ sources:
     feeds: [https://timharford.com/feed/]
   - id: freakonomics
     name: Freakonomics
+    backfill: paged_feed   # WordPress <feed>?paged=N, verified 2026-11-03
     youtube_channels: [{handle: "@freakonomics", verified: false}]
     youtube_playlists: [PLZz6EbWQ52mvZb-PdXLjN9g767pyR_Qpf, PLZz6EbWQ52mtsRrbecgXPTlFn1DpcEowT, PLZz6EbWQ52msowlH5kGJCD0n925x-oujF]
     podcast_feeds:
@@ -112,6 +118,7 @@ sources:
     feeds: [https://altgoesmainstream.substack.com/feed]
   - id: lyn-alden
     name: Lyn Alden
+    backfill: paged_feed   # WordPress <feed>?paged=N, verified 2026-11-03
     youtube_channels: [{handle: "@LynAldenMedia", verified: false}]
     url: https://www.lynalden.com/
     type: rss
@@ -204,6 +211,7 @@ sources:
     weight: 1.5
   - id: iea
     name: Institute of Economic Affairs
+    backfill: paged_feed   # WordPress <feed>?paged=N, verified 2026-11-03
     youtube_channels: [{user: iealondon, verified: false}]
     url: https://iea.org.uk/
     type: rss
@@ -224,12 +232,14 @@ sources:
     notes: VoxTalks podcast, CEPR webinars.
   - id: lse-economic-history
     name: LSE Economic History Blog
+    backfill: paged_feed   # WordPress <feed>?paged=N, verified 2026-11-03
     youtube_channels: [{id: UCK08_B5SZwoEUk2hDPMOijQ, verified: false, filter: economics_only}]
     url: https://blogs.lse.ac.uk/economichistory/
     type: rss
     feeds: [https://blogs.lse.ac.uk/economichistory/feed/]
   - id: lse-business-review
     name: LSE Business Review
+    backfill: paged_feed   # WordPress <feed>?paged=N, verified 2026-11-03
     url: https://blogs.lse.ac.uk/businessreview/
     type: rss
     feeds: [https://blogs.lse.ac.uk/businessreview/home/feed/]
@@ -259,6 +269,7 @@ sources:
     podcast_pages: [https://siepr.stanford.edu/news/podcast-econ-to-go]
   - id: eh-net
     name: Economic History Association (EH.net)
+    backfill: paged_feed   # WordPress <feed>?paged=N, verified 2026-11-03
     url: https://eh.net/eh-net/
     type: rss
     feeds: [https://eh.net/feed/]
@@ -350,12 +361,14 @@ sources:
     weight: 0.5
   - id: bond-vigilantes
     name: Bond Vigilantes (M&G)
+    backfill: paged_feed   # WordPress <feed>?paged=N, verified 2026-11-03
     youtube_channels: [{custom: bondvigilantes, verified: false}]
     url: https://bondvigilantes.com/
     type: rss
     feeds: [https://bondvigilantes.com/feed/]
   - id: doubleline
     name: DoubleLine - Market Insights
+    backfill: paged_feed   # WordPress <feed>?paged=N, verified 2026-11-03
     feeds: [https://doubleline.com/markets-insights/feed/]
     youtube_channels: [{custom: doublelinecapital, verified: false}]
     url: https://doubleline.com/markets-insights/
@@ -372,6 +385,7 @@ sources:
   # ---------------- Bitcoin ----------------
   - id: weusecoins
     name: WeUseCoins
+    backfill: paged_feed   # WordPress <feed>?paged=N, verified 2026-11-03
     feeds: [https://www.weusecoins.com/feed.xml]
     youtube_channels: [{user: weusecoins, verified: false}]
     url: https://www.weusecoins.com/

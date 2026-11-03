@@ -1,35 +1,60 @@
-name: daily-refresh
-# Rebuilds data/videos.json from feeds + curator posts and commits it; Vercel redeploys on push.
+name: refresh
+# Every 6 h: ingest curator posts (head pages + archive backfill), collect channels/podcasts, gate,
+# enrich, classify (when vars.CLASSIFY == 'on'), score, commit data/*.json -> Vercel redeploys.
+# Caps per run keep YouTube quota and OpenAI spend bounded; the archive backfill finishes over several runs.
 on:
-  schedule: [{cron: "17 5 * * *"}]   # 05:17 UTC daily
+  schedule: [{cron: "17 */6 * * *"}]
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [".github/workflows/daily.yml"]
 permissions: {contents: write}
-concurrency: {group: daily, cancel-in-progress: false}
+concurrency: {group: refresh, cancel-in-progress: false}
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 300
+    env:
+      ECONTUBE_CACHE: .cache
+      QUOTA_BUDGET: "3000"        # YouTube units per run (4 runs/day < 10,000 default quota)
+      MAX_LLM_CALLS: "6000"       # OpenAI calls per run (gate + classify)
+      LLM_WORKERS: "8"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with: {python-version: "3.12", cache: pip}
+        with:
+          python-version: "3.12"
+          cache: pip
       - run: pip install -r requirements.txt
       - uses: actions/cache@v4
         with:
           path: .cache
           key: econtube-cache-${{ github.run_id }}
           restore-keys: econtube-cache-
-      - name: ingest newest curator posts (feeds only, polite)
-        run: python pipeline/ingest.py marginal-revolution --paged-feed --pages 3 || true
-      - run: python pipeline/export_config.py && python pipeline/build_data.py
+      - name: ingest curator posts (polite; 40 archive pages per blog per run)
+        run: python pipeline/ingest.py --all-paged --paged-feed --pages 40 --delay 3 || true
+      - name: build data
+        run: python pipeline/export_config.py && python pipeline/build_data.py
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-          OPENAI_API_KEY: ${{ vars.CLASSIFY == 'on' && secrets.OPENAI_API_KEY || '' }}  # off until taxonomy approved
+          OPENAI_API_KEY: ${{ vars.CLASSIFY == 'on' && secrets.OPENAI_API_KEY || '' }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+      - name: usage summary
+        run: |
+          python - <<'PY'
+          import json, collections, pathlib
+          p = pathlib.Path(".cache/llm_cost.jsonl")
+          if p.exists():
+              rows = [json.loads(x) for x in p.read_text().splitlines()[-20000:] if x.strip()]
+              c = collections.Counter(); t = collections.Counter()
+              for r in rows: c[(r["model"], r["tag"])] += 1; t[(r["model"], "in")] += r.get("in") or 0; t[(r["model"], "out")] += r.get("out") or 0
+              print("LLM calls (recent):", dict(c)); print("tokens:", dict(t))
+          PY
       - name: commit data
         run: |
           git config user.name "econtube-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/videos.json data/sources.json data/site.json
-          git diff --cached --quiet || git commit -m "data: daily refresh"
+          git add data/videos.json data/sources.json data/site.json data/taxonomy.json
+          git diff --cached --quiet && exit 0
+          git commit -m "data: refresh $(date -u +%F' '%H:%M)"
           git pull --rebase --autostash -q && git push

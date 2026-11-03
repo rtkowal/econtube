@@ -22,7 +22,10 @@ editorial curation, not comments.
 | `pipeline/build_data.py` | feeds + posts + podcasts → gate → classify → score → `data/videos.json` |
 | `pipeline/econtube/llm.py`, `classify.py` | OpenAI relevance gate + facet classifier (validated against `taxonomy.yaml`) |
 | `taxonomy.yaml`, `overrides.yaml` | controlled vocabularies; hand overrides that always win |
-| `site/build_site.py` | static site generator (stdlib only) → `dist/`, deployed by Vercel |
+| `site/build_site.py`, `site/facets.py` | static site (stdlib only): home, item pages, topic/field/school/person/tag pages, /browse/, RSS |
+| `pipeline/econtube/youtube.py` | YouTube Data API: full channel archives, video metadata, quota budget |
+| `books.yaml`, `site.yaml` | book links (Amazon tag), sponsor line, support URL, contact |
+| `OPERATIONS.md` | adding sources, retuning, keys, costs |
 | `.github/workflows/` | tests on push; `probe-sources` (manual) |
 
 ## Run locally

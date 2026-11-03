@@ -1,6 +1,7 @@
-# Site settings (edit freely).
-repo: "rtkowal/econtube"                  # e.g. yourname/econtube  (footer "Code & data" link)
-contact_email: ""
-support_url: ""           # Buy Me a Coffee / GitHub Sponsors
-sponsor: ""               # one text line; empty = hidden
+# Site settings (edit freely; exported to data/site.json by pipeline/export_config.py).
+repo: "rtkowal/econtube"   # footer "Code & data" link
+contact_email: ""          # shown on /about/
+support_url: ""            # Buy Me a Coffee / GitHub Sponsors URL; empty = hidden
+sponsor: ""                # one text line, e.g. "Acme Capital"; empty = hidden
+amazon_tag: ""             # Amazon Associates tag, e.g. econtube-20; empty = no book links
 costs_line: "Vercel ~$20/mo, OpenAI API ~$3/mo; revenue $0 so far."

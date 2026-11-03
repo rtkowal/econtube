@@ -22,7 +22,7 @@
 
   // ---- home grid ----
   const grid = $("#grid"); if (!grid) return;
-  let DATA = [], tab = location.hash.slice(1) || "top", kind = store.get("kind", "all"), q = "", sel = -1;
+  let DATA = [], FX = null, tab = location.hash.slice(1) || "top", kind = store.get("kind", "all"), q = "", sel = -1;
   const fmtDur = s => { if (!s) return ""; if (/:/.test(s)) return s.replace(/^0(?=\d:)/, ""); s = +s; if (!s) return "";
     const h = s / 3600 | 0, m = (s % 3600) / 60 | 0; return h ? `${h}:${String(m).padStart(2, "0")}:00` : `${m} min` };
   const via = it => { const n = [...new Set(it.sources.map(s => s.name))]; return "via " + n.slice(0, 2).join(", ") + (n.length > 2 ? ` +${n.length - 2}` : "") };
@@ -31,7 +31,9 @@
   function rank() {
     let L = DATA.filter(it => kind === "all" || it.kind === kind);
     if (q) { const t = q.toLowerCase().split(/\s+/).filter(Boolean);
-      L = L.filter(it => { const h = (it.title + " " + it.channel + " " + it.sources.map(s => s.name).join(" ")).toLowerCase(); return t.every(w => h.includes(w)) }) }
+      L = L.filter(it => { if (!it._h) { const lb = FX ? (it.t || []).map(x => FX.labels.topics[x] + " " + (FX.aliases[x] || []).join(" ")).join(" ") : "";
+        it._h = [it.title, it.channel, ...it.sources.map(s => s.name), ...(it.p || []), ...(it.g || []), lb, (it.s || []).join(" ")].join(" ").toLowerCase() }
+        return t.every(w => it._h.includes(w)) }) }
     if (tab === "new") L = [...L].sort((a, b) => (b.published || "").localeCompare(a.published || ""));
     if (tab === "foryou") {
       const aff = store.get("aff", {}), seen = new Set(store.get("seen", [])), votes = store.get("votes", {});
@@ -51,9 +53,19 @@
     sel = -1;
   }
   fetch("/data/videos.json").then(r => r.json()).then(d => { DATA = d.items; render() });
+  fetch("/data/facets.json").then(r => r.json()).then(f => { FX = f }).catch(() => {});
+  const sug = document.createElement("div"); sug.id = "sug"; $(".search")?.appendChild(sug);
+  function suggest() {
+    if (!FX || q.length < 2) { sug.innerHTML = ""; return }
+    const w = q.toLowerCase(), pick = (obj, base, n = 5) => Object.entries(obj).filter(([k, v]) => String(v).toLowerCase().includes(w)).slice(0, n)
+      .map(([k, v]) => `<a href="/${base}/${k}/">${esc(v)}</a>`).join("");
+    const topics = Object.fromEntries(Object.entries(FX.labels.topics).filter(([k, v]) => (v + " " + (FX.aliases[k] || []).join(" ")).toLowerCase().includes(w)));
+    const g = [["People", pick(FX.people, "person")], ["Topics", pick(topics, "topic")], ["Tags", pick(FX.tags, "tag")]].filter(x => x[1]);
+    sug.innerHTML = g.map(([h, l]) => `<div><b>${h}</b>${l}</div>`).join("");
+  }
   addEventListener("hashchange", () => { tab = location.hash.slice(1) || "top"; render() });
   $$(".bar button").forEach(b => b.onclick = () => { kind = b.dataset.k; store.set("kind", kind); render() });
-  $("#q").addEventListener("input", e => { q = e.target.value.trim(); render() });
+  $("#q").addEventListener("input", e => { q = e.target.value.trim(); render(); suggest() });
   $("#reset")?.addEventListener("click", e => { e.preventDefault(); ["seen", "aff", "votes"].forEach(k => store.set(k, k === "seen" ? [] : {})); render() });
 
   addEventListener("keydown", e => {

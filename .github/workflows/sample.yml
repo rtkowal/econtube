@@ -3,9 +3,6 @@ name: classify-sample
 # Does NOT commit data/videos.json (taxonomy not yet approved). Runs on push of this file or manually.
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths: [".github/workflows/sample.yml", "reports/.sample-trigger"]
 permissions: {contents: write}
 jobs:
   sample:

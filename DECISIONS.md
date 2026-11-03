@@ -68,3 +68,13 @@ Product and engineering choices made without explicit instruction. Simplest opti
 20. **Taxonomy v1 frozen (owner-approved 2026-11-03):** 98 topics (the proposal said 82, which was a miscount of the same list),
     each with a parent field, plus 4 new regions (Germany, France, Spain, Asia). The classifier cache moves to v3. Prompt changes:
     people are humans only, empty facets are allowed, and slugs must not cross facets.
+21. **The refresh runs every 6 hours (not daily)** while the archive backfill is in progress. Per-run caps: 3,000 YouTube units
+    (4 runs stay under the 10,000/day quota), 6,000 OpenAI calls, and 40 archive pages per blog. Once the archives are finished
+    the same schedule costs almost nothing. Change the cron in `.github/workflows/daily.yml` to daily if you prefer.
+22. **Raw curator posts moved from `data/raw` to `.cache/raw`** (the Actions cache), so they persist between runs without being committed.
+23. **Blog archives come through the paged feed only for the 15 WordPress sources where `?paged=N` returns older posts**
+    (`backfill: paged_feed`). Noahpinion, VoxEU and prywatyzacja ignore the parameter, so only their current feeds are read.
+    A blog's backfill stops for good at the first page that brings nothing new.
+24. **Book links are Amazon *search* links** (title + author + tag) rather than product IDs, so they never point at a dead
+    edition. They are off until `amazon_tag` is set in `site.yaml`.
+25. **Tag pages need 5+ items and person pages 2+**, so the site doesn't fill up with thin pages.

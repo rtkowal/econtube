@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -26,7 +27,7 @@ from econtube.http import Blocked, Client  # noqa: E402
 from probe import count_sitemap  # noqa: E402,F401
 
 ROOT = Path(__file__).resolve().parents[1]
-RAW = ROOT / "data/raw"
+RAW = Path(os.environ.get("ECONTUBE_CACHE", ROOT / ".cache")) / "raw"   # persisted via the Actions cache
 CTX = 300  # chars of text either side of a link, given to the classifier
 
 
@@ -115,20 +116,30 @@ def ingest_paged_feed(c: Client, s: dict, max_pages: int, delay: float) -> dict:
     store, cursor = d / "posts.jsonl", d / "feed_page.txt"
     done = {json.loads(l)["url"] for l in store.open()} if store.exists() else set()
     page = int(cursor.read_text()) if cursor.exists() else 1
-    feed = s["feeds"][0]
+    feed = next(f for f in s["feeds"] if "sitemap" not in f)
+    sep = "&" if "?" in feed else "?"
     stats = {"pages": 0, "new": 0, "refs": 0, "stopped": None}
+    if (d / "done").exists():
+        max_pages, page = 0, 1   # archive finished: only refresh the head below
+    head = [1, 2]                # always re-read the newest pages for incremental updates
     with store.open("a") as fh:
-        for _ in range(max_pages):
+        for i in range(max_pages + len(head)):
+            is_head = i < len(head)
+            pg = head[i] if is_head else page
             time.sleep(delay)
             try:
-                r = c.get(f"{feed}?paged={page}", conditional=False)
+                r = c.get(f"{feed}{sep}paged={pg}", conditional=False)
             except Blocked as e:
                 stats["stopped"] = str(e)  # bot protection: stop, never retry around it
                 break
             ents = feedparser.parse(r.content).entries if r is not None and r.ok else []
             if not ents:
-                stats["stopped"] = f"end of archive at page {page}"
-                break
+                if not is_head:
+                    stats["stopped"] = f"end of archive at page {page}"
+                    (d / "done").write_text(str(page))
+                    break
+                continue
+            before = stats["new"]
             for e in ents:
                 u = re.sub(r"^http://", "https://", e.get("link", ""))
                 if not u or u in done:
@@ -144,9 +155,15 @@ def ingest_paged_feed(c: Client, s: dict, max_pages: int, delay: float) -> dict:
                 stats["new"] += 1
                 stats["refs"] += len(refs)
             fh.flush()
+            stats["pages"] += 1
+            if is_head:
+                continue
             page += 1
             cursor.write_text(str(page))
-            stats["pages"] += 1
+            if stats["new"] == before and page > 3:
+                stats["stopped"] = f"no new posts at page {page - 1} (feed ignores paging or archive end)"
+                (d / "done").write_text(str(page))
+                break
     return stats
 
 
@@ -189,7 +206,8 @@ def ingest(c: Client, s: dict, limit: int) -> dict:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("sources", nargs="+")
+    ap.add_argument("sources", nargs="*")
+    ap.add_argument("--all-paged", action="store_true", help="every source with backfill: paged_feed")
     ap.add_argument("--limit", type=int, default=200)
     ap.add_argument("--paged-feed", action="store_true", help="WordPress archive via feed?paged=N")
     ap.add_argument("--pages", type=int, default=100)
@@ -197,6 +215,9 @@ def main() -> None:
     a = ap.parse_args()
     cfg = {s["id"]: s for s in yaml.safe_load((ROOT / "sources.yaml").read_text())["sources"]}
     c = Client()
+    if a.all_paged:
+        a.sources = [k for k, v in cfg.items() if v.get("backfill") == "paged_feed" and v.get("status") != "disabled"]
+        a.paged_feed = True
     for sid in a.sources:
         s = cfg[sid]
         if s.get("status") == "disabled":
