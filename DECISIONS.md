@@ -34,3 +34,11 @@ Product and engineering choices made without explicit instruction. Simplest opti
     unreachable and it has almost no videos). They stay in the file with `status: disabled` so the decision is visible.
 12. **Rejected matches:** the Lyn Alden iTunes hits (shows she guests on; confirmed by owner),
     @drmatthewgoodwin on Niall Ferguson's page, and the iTunes "Unchained" show (Laura Shin's, not the company's).
+13. **Marginal Revolution's archive is read through its own feed (`/feed?paged=N`), not post pages.** After about 1,500
+    post fetches at 1 req/s, Cloudflare began challenging post pages and the sitemap, and the WordPress REST
+    API requires login. Per the no-bypass rule we stopped. The public paged feed returns full post content 15 posts
+    at a time back to at least 2010, so the backfill needs about 2,700 requests instead of about 40,000. It runs with
+    an extra 4s delay between pages and stops for good on any 403 or 429. The same route applies to every
+    WordPress source (Cafe Hayek, Ritholtz, Conversable Economist, IEA, etc.).
+14. **The Nobel `/summary/` pages contain no YouTube embeds** (0 in 57 prize years). Nobel lectures come from the
+    official @thenobelprize channel, filtered to "Economic Sciences", which needs the YouTube API key.
