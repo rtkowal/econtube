@@ -21,3 +21,16 @@ Product and engineering choices made without explicit instruction. Simplest opti
 8. **Site generator: plain HTML + a Python build script (decision pending step 3).** It can use
    the pipeline's language, so we don't need a Node toolchain to keep the client JS under 50KB.
    If Astro turns out simpler for the per-topic pages, this entry gets revised.
+9. **Apify discovery report (2026-11-03) merged into `sources.yaml`.** Every feed it named was re-tested from
+   our own client. Working: prywatyzacja.com/feed.xml (107 items, one shared feed for all three Polish
+   sections, with items routed by URL path), weusecoins feed.xml, the DoubleLine feed, and the
+   LSE Business Review /home/feed/ path. Not working: cato.org/rss (403), cepr.org/rss (403),
+   hoover.org/rss (404), unchained /blog/rss.xml (404). The channels it found are recorded as
+   `verified: false` until they are resolved through the YouTube API.
+10. **Extractor reads only the post body.** It skips `header`, `footer`, `aside`, `nav`, sidebars and widgets,
+    because a channel in a blogroll is not an editorial pick (the example is Naked Capitalism's sidebar). It also
+    unwraps embed proxies (iframe.ly and Drupal `/media/oembed?url=`) and ignores music.youtube.com.
+11. **Disabled sources:** Naked Capitalism (returns 403 to our User-Agent) and Calculated Risk (its feed host is
+    unreachable and it has almost no videos). They stay in the file with `status: disabled` so the decision is visible.
+12. **Rejected matches:** the Lyn Alden iTunes hits (shows she guests on; confirmed by owner),
+    @drmatthewgoodwin on Niall Ferguson's page, and the iTunes "Unchained" show (Laura Shin's, not the company's).

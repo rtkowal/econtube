@@ -9,7 +9,6 @@ V = "dQw4w9WgXcQ"
     f"https://www.youtube.com/watch?v={V}",
     f"http://youtube.com/watch?v={V}&feature=share",
     f"https://m.youtube.com/watch?app=desktop&v={V}",
-    f"https://music.youtube.com/watch?v={V}",
     f"https://youtu.be/{V}",
     f"https://youtu.be/{V}?si=abc123",
     f"https://www.youtube.com/embed/{V}",
@@ -90,3 +89,25 @@ def test_trailing_punctuation():
 def test_podcast_non_episode_links_ignored():
     assert parse_podcast("https://open.spotify.com/track/abc") is None
     assert parse_podcast("https://podcasts.apple.com/us/browse") is None
+
+
+def test_embed_proxies_unwrapped():
+    from urllib.parse import quote
+    yt = f"https://www.youtube.com/watch?v={V}"
+    for wrapped in [f"https://cdn.iframe.ly/api/iframe?url={quote(yt, safe='')}&key=x",
+                    f"https://siepr.stanford.edu/media/oembed?url={quote(yt, safe='')}&max_width=0"]:
+        assert [r.id for r in extract_refs(f'<iframe src="{wrapped}"></iframe>')] == [V]
+
+
+def test_music_youtube_ignored():
+    assert parse_youtube(f"https://music.youtube.com/watch?v={V}") == []
+
+
+def test_post_body_skips_sidebar_blogroll():
+    from econtube.extract import post_body
+    page = f"""<html><body><header><a href="https://youtu.be/AAAAAAAAAAA">h</a></header>
+      <aside><a href="https://www.youtube.com/watch?v=BBBBBBBBBBB">blogroll</a></aside>
+      <div class="sidebar"><a href="https://youtu.be/CCCCCCCCCCC">w</a></div>
+      <article><div class="entry-content"><a href="https://youtu.be/{V}">pick</a></div></article>
+      <footer><a href="https://youtu.be/DDDDDDDDDDD">f</a></footer></body></html>"""
+    assert [r.id for r in extract_refs(post_body(page))] == [V]

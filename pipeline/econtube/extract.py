@@ -14,7 +14,7 @@ _VIDEO_ID_RE = re.compile(rf"^{YT_ID}$")
 _PLAYLIST_ID_RE = re.compile(r"^(PL|UU|LL|FL|OL|RD|UL|PU)[A-Za-z0-9_-]{10,}$")
 
 YT_HOSTS = {
-    "youtube.com", "www.youtube.com", "m.youtube.com", "music.youtube.com",
+    "youtube.com", "www.youtube.com", "m.youtube.com",
     "youtube-nocookie.com", "www.youtube-nocookie.com",
 }
 YT_SHORT_HOSTS = {"youtu.be", "www.youtu.be"}
@@ -134,12 +134,51 @@ def parse_vimeo(url: str) -> Ref | None:
     return None
 
 
+# Embed proxies wrap the real URL, percent-encoded, in a query param:
+# cdn.iframe.ly/api/iframe?url=..., Drupal /media/oembed?url=..., embedly ?src=...
+_WRAP_PARAMS = ("url", "src", "u")
+
+
+def unwrap(url: str) -> str:
+    p = urlparse(_norm(url))
+    host = (p.hostname or "").lower()
+    if host in YT_HOSTS or host in YT_SHORT_HOSTS:
+        return url
+    q = parse_qs(p.query)
+    for k in _WRAP_PARAMS:
+        v = (q.get(k) or [""])[0]
+        if v.startswith(("http://", "https://", "//")):
+            return unwrap(v)
+    return url
+
+
+# Never extract from page chrome: a blogroll in a sidebar is not an editorial pick.
+CHROME_TAGS = ("header", "footer", "aside", "nav")
+BODY_SELECTORS = ("article .entry-content", ".entry-content", ".post-body", ".post-content",
+                  ".body.markup", "article", "main")
+
+
+def post_body(page_html: str) -> str:
+    """Return the HTML of the post body only (chrome removed). Falls back to whole page minus chrome."""
+    from bs4 import BeautifulSoup
+    soup = BeautifulSoup(page_html, "html.parser")
+    for t in soup.find_all(CHROME_TAGS):
+        t.decompose()
+    for el in soup.select('[class*="sidebar"], [id*="sidebar"], [class*="widget"], [class*="blogroll"]'):
+        el.decompose()
+    for sel in BODY_SELECTORS:
+        hits = soup.select(sel)
+        if hits:
+            return "".join(str(h) for h in hits)
+    return str(soup)
+
+
 def extract_refs(text: str) -> list[Ref]:
     """All distinct refs in an HTML/text blob, in order of first appearance."""
     seen: set[tuple[str, str]] = set()
     out: list[Ref] = []
     for m in _URL_RE.finditer(html.unescape(text or "")):
-        raw = m.group(0)
+        raw = unwrap(m.group(0))
         refs = parse_youtube(raw)
         if not refs:
             r = parse_podcast(raw) or parse_vimeo(raw)
