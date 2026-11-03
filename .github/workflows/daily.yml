@@ -18,7 +18,7 @@ jobs:
         with: {path: .cache, key: econtube-cache-${{ github.run_id }}, restore-keys: econtube-cache-}
       - name: ingest newest curator posts (feeds only, polite)
         run: python pipeline/ingest.py marginal-revolution --paged-feed --pages 3 || true
-      - run: python pipeline/build_data.py
+      - run: python pipeline/export_config.py && python pipeline/build_data.py
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -26,6 +26,6 @@ jobs:
         run: |
           git config user.name "econtube-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/videos.json
+          git add data/videos.json data/sources.json data/site.json
           git diff --cached --quiet || git commit -m "data: daily refresh"
           git push

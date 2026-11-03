@@ -7,13 +7,13 @@ import shutil
 from datetime import date
 from pathlib import Path
 
-import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE, DIST = ROOT / "site", ROOT / "dist"
 BASE = "https://www.econtube.org"
-cfg_p = ROOT / "site.yaml"
-CFG = yaml.safe_load(cfg_p.read_text()) if cfg_p.exists() else {}
+# stdlib only (Vercel's build image has no pip packages): config is pre-exported to JSON by pipeline/export_config.py
+cfg_p = ROOT / "data/site.json"
+CFG = json.loads(cfg_p.read_text()) if cfg_p.exists() else {}
 e = lambda s: html.escape(str(s or ""), quote=True)  # noqa: E731
 
 
@@ -78,7 +78,7 @@ def item_page(it: dict, related: list[dict]) -> str:
 def main() -> None:
     data = json.loads((ROOT / "data/videos.json").read_text())
     items = data["items"]
-    sources = [s for s in yaml.safe_load((ROOT / "sources.yaml").read_text())["sources"] if s.get("status") != "disabled"]
+    sources = [s for s in json.loads((ROOT / "data/sources.json").read_text()) if s.get("status") != "disabled"]
     if DIST.exists():
         shutil.rmtree(DIST)
     (DIST / "data").mkdir(parents=True)

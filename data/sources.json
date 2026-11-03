@@ -1,0 +1,366 @@
+[
+ {
+  "id": "marginal-revolution",
+  "name": "Marginal Revolution",
+  "url": "https://marginalrevolution.com/",
+  "type": "rss",
+  "weight": 3.0,
+  "notes": "Highest weight. Cowen & Tabarrok link videos constantly. Full archive backfill via sitemap."
+ },
+ {
+  "id": "cafe-hayek",
+  "name": "Cafe Hayek",
+  "url": "https://cafehayek.com/",
+  "type": "rss",
+  "weight": 1.5
+ },
+ {
+  "id": "noahpinion",
+  "name": "Noahpinion",
+  "url": "https://www.noahpinion.blog/",
+  "type": "rss",
+  "weight": 1.5,
+  "notes": "Substack."
+ },
+ {
+  "id": "mankiw",
+  "name": "Greg Mankiw's Blog",
+  "url": "https://gregmankiw.blogspot.com/",
+  "type": "rss",
+  "weight": 1.5,
+  "notes": "Blogger feed supports start-index paging for full backfill."
+ },
+ {
+  "id": "conversable-economist",
+  "name": "Conversable Economist",
+  "url": "https://conversableeconomist.com/",
+  "type": "rss"
+ },
+ {
+  "id": "econlog",
+  "name": "EconLog",
+  "url": "https://www.econlib.org/econlog/",
+  "type": "rss",
+  "weight": 1.5,
+  "notes": "Also check EconTalk (econtalk.org) for video versions."
+ },
+ {
+  "id": "econtalk",
+  "name": "EconTalk",
+  "url": "https://www.econtalk.org/",
+  "type": "rss",
+  "weight": 1.5,
+  "notes": "Podcast; video versions on YouTube. First feed is a candidate from memory - probe must confirm."
+ },
+ {
+  "id": "naked-capitalism",
+  "name": "Naked Capitalism",
+  "url": "https://www.nakedcapitalism.com/",
+  "type": "rss",
+  "status": "disabled"
+ },
+ {
+  "id": "calculated-risk",
+  "name": "Calculated Risk",
+  "url": "https://www.calculatedriskblog.com/",
+  "type": "rss",
+  "weight": 0.5,
+  "status": "disabled",
+  "notes": "Few videos expected; do not over-invest."
+ },
+ {
+  "id": "ritholtz",
+  "name": "The Big Picture (Ritholtz)",
+  "url": "https://ritholtz.com/",
+  "type": "rss",
+  "notes": "Daily link roundups dense with videos."
+ },
+ {
+  "id": "undercover-economist",
+  "name": "Tim Harford - Undercover Economist",
+  "url": "https://timharford.com/articles/undercovereconomist/",
+  "type": "rss"
+ },
+ {
+  "id": "freakonomics",
+  "name": "Freakonomics",
+  "url": "https://freakonomics.com/",
+  "type": "rss"
+ },
+ {
+  "id": "alt-goes-mainstream",
+  "name": "Alt Goes Mainstream",
+  "url": "https://altgoesmainstream.substack.com/",
+  "type": "rss"
+ },
+ {
+  "id": "lyn-alden",
+  "name": "Lyn Alden",
+  "url": "https://www.lynalden.com/",
+  "type": "rss"
+ },
+ {
+  "id": "delong",
+  "name": "Brad DeLong - Grasping Reality",
+  "url": "https://braddelong.substack.com/",
+  "type": "rss",
+  "notes": "Old Typepad archive at delong.typepad.com if reachable."
+ },
+ {
+  "id": "chartbook",
+  "name": "Adam Tooze - Chartbook",
+  "url": "https://adamtooze.substack.com/",
+  "type": "rss",
+  "notes": "Also the Ones and Tooze podcast (Foreign Policy) - resolve via iTunes Search."
+ },
+ {
+  "id": "mercatus",
+  "name": "Mercatus Center",
+  "url": "https://www.mercatus.org/",
+  "type": "sitemap",
+  "notes": "Plus Mercatus YouTube channels and Conversations with Tyler podcast."
+ },
+ {
+  "id": "conversations-with-tyler",
+  "name": "Conversations with Tyler",
+  "url": "https://conversationswithtyler.com/",
+  "type": "rss",
+  "weight": 2.0
+ },
+ {
+  "id": "cato",
+  "name": "Cato Institute",
+  "url": "https://www.cato.org/",
+  "type": "sitemap",
+  "notes": "Video pages at cato.org/multimedia; Cato podcasts."
+ },
+ {
+  "id": "hoover",
+  "name": "Hoover Institution",
+  "url": "https://www.hoover.org/",
+  "type": "youtube_channel",
+  "weight": 1.5,
+  "notes": "Uncommon Knowledge, GoodFellows, Free to Choose Network - ingest channels directly."
+ },
+ {
+  "id": "free-to-choose-network",
+  "name": "Free To Choose Network",
+  "url": "https://www.freetochoosenetwork.org/",
+  "type": "youtube_channel",
+  "weight": 1.5
+ },
+ {
+  "id": "iea",
+  "name": "Institute of Economic Affairs",
+  "url": "https://iea.org.uk/",
+  "type": "rss"
+ },
+ {
+  "id": "bfi",
+  "name": "Becker Friedman Institute (UChicago)",
+  "url": "https://bfi.uchicago.edu/",
+  "type": "sitemap"
+ },
+ {
+  "id": "voxeu",
+  "name": "CEPR / VoxEU",
+  "url": "https://cepr.org/voxeu",
+  "type": "rss",
+  "notes": "VoxTalks podcast, CEPR webinars."
+ },
+ {
+  "id": "lse-economic-history",
+  "name": "LSE Economic History Blog",
+  "url": "https://blogs.lse.ac.uk/economichistory/",
+  "type": "rss"
+ },
+ {
+  "id": "lse-business-review",
+  "name": "LSE Business Review",
+  "url": "https://blogs.lse.ac.uk/businessreview/",
+  "type": "rss"
+ },
+ {
+  "id": "nobel-economics",
+  "name": "Nobel Prize - Economic Sciences",
+  "url": "https://www.nobelprize.org/prizes/economic-sciences/",
+  "type": "html",
+  "weight": 2.0,
+  "notes": "Flagship - prize lecture for every laureate since 1969; also Nobel Prize YouTube channel."
+ },
+ {
+  "id": "commanding-heights",
+  "name": "PBS - Commanding Heights",
+  "url": "https://www.pbs.org/wgbh/commandingheights/",
+  "type": "html",
+  "weight": 1.5,
+  "notes": "3-part documentary. PBS pages are canonical metadata; embed only from official/rights-holder channels, else link out."
+ },
+ {
+  "id": "siepr",
+  "name": "Stanford SIEPR",
+  "url": "https://siepr.stanford.edu/",
+  "type": "sitemap"
+ },
+ {
+  "id": "eh-net",
+  "name": "Economic History Association (EH.net)",
+  "url": "https://eh.net/eh-net/",
+  "type": "rss",
+  "notes": "Book reviews and resources; extract video/audio links."
+ },
+ {
+  "id": "capitalisnt",
+  "name": "Capitalisn't (Chicago Booth)",
+  "url": "https://www.capitalisnt.com/",
+  "type": "rss",
+  "notes": "Podcast - feed resolved via iTunes Search."
+ },
+ {
+  "id": "tim-leunig",
+  "name": "Tim Leunig",
+  "url": "https://timleunig.substack.com/",
+  "type": "rss"
+ },
+ {
+  "id": "niall-ferguson",
+  "name": "Niall Ferguson",
+  "url": "https://substack.com/@niallferguson",
+  "type": "rss",
+  "notes": "Resolve profile -> publication subdomain -> /feed (probe does this)."
+ },
+ {
+  "id": "yt-UCjB5Zb0i5q37j3yHDUECyxw",
+  "name": "TBD (resolve via channels.list)",
+  "url": "https://www.youtube.com/channel/UCjB5Zb0i5q37j3yHDUECyxw",
+  "type": "youtube_channel",
+  "notes": "Given by owner. Filtered - money, economics, political economy only."
+ },
+ {
+  "id": "yt-playlist-PL01nDImtijMBKaj8K3QaCKX81OtTosVL4",
+  "name": "TBD (resolve via playlists.list)",
+  "url": "https://www.youtube.com/playlist?list=PL01nDImtijMBKaj8K3QaCKX81OtTosVL4",
+  "type": "youtube_channel",
+  "notes": "Whole playlist via playlistItems.list."
+ },
+ {
+  "id": "unherd",
+  "name": "UnHerd",
+  "url": "https://www.youtube.com/@UnHerd",
+  "type": "youtube_channel",
+  "notes": "Mostly culture/politics; relevance gate must reject culture-war items."
+ },
+ {
+  "id": "spotify-7xzAHy5zOSFztWy0R0cmCx",
+  "name": "The Economic History Podcast (Seán Kenny)",
+  "url": "https://open.spotify.com/show/7xzAHy5zOSFztWy0R0cmCx",
+  "type": "curated_list"
+ },
+ {
+  "id": "spotify-3mmVPg0hr1znKgha9LIwNP",
+  "name": "Money & Macro Talks",
+  "url": "https://open.spotify.com/show/3mmVPg0hr1znKgha9LIwNP",
+  "type": "curated_list"
+ },
+ {
+  "id": "economics-explained",
+  "name": "Economics Explained",
+  "url": "https://www.youtube.com/@EconomicsExplained",
+  "type": "youtube_channel",
+  "weight": 1.0,
+  "notes": "Owner-added. Explainer channel; ingest all uploads."
+ },
+ {
+  "id": "apollo-daily-spark",
+  "name": "Apollo - The Daily Spark",
+  "url": "https://www.apollo.com/wealth/insights-news/insights/daily-spark",
+  "type": "html",
+  "weight": 0.5,
+  "notes": "Mostly charts; extract any video links."
+ },
+ {
+  "id": "oaktree",
+  "name": "Oaktree Capital - Insights",
+  "url": "https://www.oaktreecapital.com/insights",
+  "type": "html",
+  "weight": 1.5,
+  "notes": "Howard Marks memos plus video/podcast versions."
+ },
+ {
+  "id": "brookfield",
+  "name": "Brookfield Private Wealth - Insights",
+  "url": "https://privatewealth.brookfield.com/insights",
+  "type": "html",
+  "weight": 0.5
+ },
+ {
+  "id": "bond-vigilantes",
+  "name": "Bond Vigilantes (M&G)",
+  "url": "https://bondvigilantes.com/",
+  "type": "rss"
+ },
+ {
+  "id": "doubleline",
+  "name": "DoubleLine - Market Insights",
+  "url": "https://doubleline.com/markets-insights/",
+  "type": "html",
+  "weight": 0.75
+ },
+ {
+  "id": "grants",
+  "name": "Grant's Interest Rate Observer",
+  "url": "https://www.grantspub.com/",
+  "type": "youtube_channel",
+  "notes": "Paywalled. Only public pages plus Grant's own YouTube/podcast."
+ },
+ {
+  "id": "weusecoins",
+  "name": "WeUseCoins",
+  "url": "https://www.weusecoins.com/",
+  "type": "html",
+  "weight": 0.75
+ },
+ {
+  "id": "unchained",
+  "name": "Unchained - Blog",
+  "url": "https://www.unchained.com/blog",
+  "type": "html"
+ },
+ {
+  "id": "prywatyzacja-analizy",
+  "name": "Prywatyzacja.com - Analizy prywatyzacji",
+  "url": "https://www.prywatyzacja.com/analizy-prywatyzacji/",
+  "type": "rss",
+  "language": "pl"
+ },
+ {
+  "id": "prywatyzacja-rozmowy",
+  "name": "Prywatyzacja.com - Rozmowy z wybitnymi ekonomistami",
+  "url": "https://www.prywatyzacja.com/rozmowy-z-wybitnymi-ekonomistami/",
+  "type": "rss",
+  "language": "pl",
+  "weight": 1.5
+ },
+ {
+  "id": "prywatyzacja-case-studies",
+  "name": "Prywatyzacja.com - Case studies prywatyzacji",
+  "url": "https://www.prywatyzacja.com/case-studies-prywatyzacji/",
+  "type": "rss",
+  "language": "pl"
+ },
+ {
+  "id": "economist",
+  "name": "The Economist (YouTube only)",
+  "url": "https://www.youtube.com/@TheEconomist",
+  "type": "youtube_channel",
+  "notes": "Never scrape economist.com. Official channel only."
+ },
+ {
+  "id": "seeds",
+  "name": "Topic seeds (YouTube search)",
+  "url": "seeds.yaml",
+  "type": "curated_list",
+  "weight": 0.25,
+  "notes": "search.list costs 100 units/call; capped by seeds.yaml budget."
+ }
+]

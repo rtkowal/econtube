@@ -27,5 +27,5 @@
       ]
     }
   ],
-  "installCommand": "pip install pyyaml==6.0.2"
+  "installCommand": ""
 }
