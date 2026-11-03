@@ -44,3 +44,22 @@ def test_overrides_win(tmp_path, monkeypatch):
     (tmp_path / "overrides.yaml").write_text("x3:\n  schools: [austrian]\n  level: expert\n")
     out = C.apply_overrides("x3", C._clean(good(), TAX, "x3"))
     assert out["schools"] == [{"v": "austrian", "c": 1.0}] and out["level"] == {"v": "expert", "c": 1.0}
+
+
+def test_single_facets_wrapped_in_list_are_accepted(tmp_path, monkeypatch):
+    monkeypatch.setattr(C, "ROOT", tmp_path)
+    o = good()
+    o["format"] = [{"v": "podcast-episode", "c": 0.9}]
+    o["level"] = [{"v": "intermediate", "c": 0.6}, {"v": "expert", "c": 0.3}]
+    assert C._validate(o, TAX) == []
+    cl = C._clean(o, TAX, "x4")
+    assert cl["format"]["v"] == "podcast-episode" and cl["level"]["v"] == "intermediate"
+    assert not (tmp_path / "taxonomy_suggestions.jsonl").exists()
+
+
+def test_source_name_tags_dropped(tmp_path, monkeypatch):
+    monkeypatch.setattr(C, "ROOT", tmp_path)
+    o = good()
+    o["tags"] = ["marginal-revolution", "Hoover Institution", "economic-growth"]
+    cl = C._clean(o, TAX, "x5", {"Marginal Revolution", "Hoover Institution"})
+    assert cl["tags"] == ["economic growth"]

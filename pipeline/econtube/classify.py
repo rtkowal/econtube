@@ -22,6 +22,7 @@ from . import llm
 ROOT = Path(__file__).resolve().parents[2]
 CACHE = Path(os.environ.get("ECONTUBE_CACHE", ROOT / ".cache"))
 GATE_MIN = 0.7
+CLASSIFY_CACHE = "classify_v2"   # bump to force re-classification after prompt/schema changes
 SHOW_MIN = 0.6
 MULTI = ("fields", "topics", "schools", "eras", "regions")   # 1-3 values each
 SINGLE = ("format", "level")
@@ -75,13 +76,28 @@ def _sys(tax: dict[str, set[str]]) -> str:
 Return JSON with exactly these keys:
   "is_recommendation": true if the curator post links the item approvingly or as a resource; false for ads, sidebars, footers, "subscribe" boilerplate (true when there is no curator post),
   "fields", "topics", "schools", "eras", "regions": lists of 1-3 objects {{"v": slug, "c": confidence 0..1}} (empty list if none apply; schools ONLY when the content clearly argues from that school; eras = periods DISCUSSED, not publication date),
-  "format", "level": one object {{"v": slug, "c": confidence}},
-  "people": {{"speakers": [names], "discussed": [names]}} (full canonical names, e.g. "Milton Friedman"),
-  "tags": 3-10 lowercase specific concepts, institutions, events, books or policies (e.g. "phillips curve", "bretton woods", "balcerowicz plan"),
+  "format", "level": ONE object (not a list) {{"v": slug, "c": confidence}},
+  "people": {{"speakers": [names], "discussed": [names]}} (full canonical names, e.g. "Milton Friedman"; "discussed" = people talked ABOUT who are not speaking; never repeat a speaker there),
+  "tags": 3-10 lowercase specific concepts (never the channel, show or source name), institutions, events, books or policies (e.g. "phillips curve", "bretton woods", "balcerowicz plan"),
   "one_line_why": at most 20 words, your own words, no quotes from the source, saying why it is worth watching."""
 
 
+def _normalise(out: dict) -> dict:
+    """Models often wrap single-value facets in a one-item list; unwrap. Accept bare slugs too."""
+    for k in SINGLE:
+        x = out.get(k)
+        if isinstance(x, list):
+            x = max(x, key=lambda y: y.get("c", 0) if isinstance(y, dict) else 0) if x else None
+        if isinstance(x, str):
+            x = {"v": x, "c": 0.7}
+        out[k] = x
+    for k in MULTI:
+        out[k] = [({"v": x, "c": 0.7} if isinstance(x, str) else x) for x in (out.get(k) or [])]
+    return out
+
+
 def _validate(out: dict, tax: dict[str, set[str]]) -> list[str]:
+    out = _normalise(out)
     errs = []
     for k in MULTI:
         for x in out.get(k) or []:
@@ -96,7 +112,8 @@ def _validate(out: dict, tax: dict[str, set[str]]) -> list[str]:
     return errs
 
 
-def _clean(out: dict, tax: dict[str, set[str]], item_id: str) -> dict:
+def _clean(out: dict, tax: dict[str, set[str]], item_id: str, drop_tags: set[str] = frozenset()) -> dict:
+    out = _normalise(out)
     sugg = []
     for k in MULTI:
         keep = []
@@ -111,7 +128,8 @@ def _clean(out: dict, tax: dict[str, set[str]], item_id: str) -> dict:
         if not (isinstance(x, dict) and x.get("v") in tax[k]):
             sugg.append({"id": item_id, "facet": k, "value": x})
             out[k] = None
-    out["tags"] = sorted({re.sub(r"\s+", " ", str(t).strip().lower()) for t in out.get("tags") or [] if str(t).strip()})[:10]
+    norm = lambda t: re.sub(r"[\s_-]+", " ", str(t).strip().lower())  # noqa: E731
+    out["tags"] = sorted({norm(t) for t in out.get("tags") or [] if str(t).strip()} - {norm(d) for d in drop_tags})[:10]
     out["one_line_why"] = " ".join((out.get("one_line_why") or "").split()[:20])
     if sugg:
         with (ROOT / "taxonomy_suggestions.jsonl").open("a") as f:
@@ -122,7 +140,7 @@ def _clean(out: dict, tax: dict[str, set[str]], item_id: str) -> dict:
 
 def classify(item: dict, tax: dict[str, set[str]] | None = None, *, strong: bool = False) -> dict:
     tax = tax or load_taxonomy()
-    p, c = _cache("classify")
+    p, c = _cache(CLASSIFY_CACHE)
     if item["id"] not in c:
         sys_p, user = _sys(tax), _text(item)
         out = llm.chat_json(sys_p, user, strong=strong, tag="classify")
@@ -130,7 +148,8 @@ def classify(item: dict, tax: dict[str, set[str]] | None = None, *, strong: bool
         if errs:  # one retry with the errors fed back
             out = llm.chat_json(sys_p, user + "\n\nYour previous answer had invalid values:\n- " + "\n- ".join(errs)
                                 + "\nAnswer again using only allowed slugs.", strong=strong, tag="classify-retry")
-        c[item["id"]] = _clean(out, tax, item["id"])
+        drop = {item.get("channel", "")} | {s.get("name", "") for s in item.get("posts", [])}
+        c[item["id"]] = _clean(out, tax, item["id"], drop)
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(json.dumps(c, ensure_ascii=False))
     return apply_overrides(item["id"], c[item["id"]])
