@@ -56,7 +56,7 @@ def book_link(it: dict) -> str:
         return ""
     from urllib.parse import quote_plus
     ppl = it.get("people") or {}
-    b = next((BOOKS.get("people", {})[n] for n in [*(ppl.get("speakers") or []), *(ppl.get("discussed") or [])] if n in BOOKS.get("people", {})), None)
+    b = next((BOOKS.get("people", {})[n] for n in [*facets.names(ppl.get("speakers")), *facets.names(ppl.get("discussed"))] if n in BOOKS.get("people", {})), None)
     b = b or next((BOOKS.get("topics", {})[t] for t in (it.get("facets") or {}).get("topics") or [] if t in BOOKS.get("topics", {})), None)
     if not b:
         return ""

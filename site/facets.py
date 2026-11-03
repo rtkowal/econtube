@@ -29,6 +29,21 @@ def fmt_dur(s) -> str:
     return f"{h}:{m:02d} h" if h else f"{m} min"
 
 
+def names(v) -> list[str]:
+    """People come back from the model as strings, dicts ({"name": ...}) or junk; keep clean strings only."""
+    out = []
+    for x in v or []:
+        if isinstance(x, dict):
+            x = x.get("name") or x.get("full_name") or ""
+        if isinstance(x, str) and 2 < len(x.strip()) < 80:
+            out.append(x.strip())
+    return out
+
+
+def strs(v) -> list[str]:
+    return [x for x in (v or []) if isinstance(x, str) and x]
+
+
 def card(it: dict) -> str:
     thumb = it.get("art") if it["kind"] == "audio" else f"https://i.ytimg.com/vi/{it['id']}/hq2.jpg"
     names = sorted({s["name"] for s in it["sources"]})
@@ -50,15 +65,15 @@ class Index:
         for it in items:
             f = it.get("facets") or {}
             for k, key in (("topics", "topic"), ("fields", "field"), ("schools", "school")):
-                for v in f.get(k) or []:
+                for v in strs(f.get(k)):
                     self.groups[key][v].append(it)
             ppl = it.get("people") or {}
-            for n in {*(ppl.get("speakers") or []), *(ppl.get("discussed") or [])}:
+            for n in {*names(ppl.get("speakers")), *names(ppl.get("discussed"))}:
                 s = slug(n)
                 if s:
                     self.person_name.setdefault(s, n)
                     self.groups["person"][s].append(it)
-            for t in it.get("tags") or []:
+            for t in strs(it.get("tags")):
                 self.groups["tag"][slug(t)].append(it)
                 self.person_name.setdefault("tag:" + slug(t), t)
         self.groups["person"] = {k: v for k, v in self.groups["person"].items() if len(v) >= PERSON_MIN}
@@ -90,7 +105,7 @@ def chips(ix: Index, it: dict) -> str:
         parts.append(f'<span>{e(f["level"])}</span>')
     parts += [ix.link("tag", slug(t), t) for t in (it.get("tags") or [])[:6]]
     ppl = it.get("people") or {}
-    parts += [ix.link("person", slug(n), n) for n in (ppl.get("speakers") or [])[:4] if ix.has_page("person", slug(n))]
+    parts += [ix.link("person", slug(n), n) for n in names(ppl.get("speakers"))[:4] if ix.has_page("person", slug(n))]
     return '<p class="chips">' + "".join(parts) + "</p>" if parts else ""
 
 
@@ -175,7 +190,7 @@ def slim(it: dict) -> dict:
             "sources": [{"name": s["name"]} for s in it["sources"]],
             "t": f.get("topics") or [], "s": f.get("schools") or [], "f": f.get("fields") or [], "fm": f.get("format"),
             "l": f.get("level"), "e": f.get("eras") or [], "r": f.get("regions") or [],
-            "p": [*(ppl.get("speakers") or []), *(ppl.get("discussed") or [])][:6], "g": (it.get("tags") or [])[:8]}
+            "p": [*names(ppl.get("speakers")), *names(ppl.get("discussed"))][:6], "g": strs(it.get("tags"))[:8]}
 
 
 FAMILIES = [  # (slug, label, top-level fields or sub-fields that map here; first match walking up the tree wins)

@@ -215,6 +215,7 @@ def main() -> None:
     a = ap.parse_args()
     cfg = {s["id"]: s for s in yaml.safe_load((ROOT / "sources.yaml").read_text())["sources"]}
     c = Client()
+    status = {}
     if a.all_paged:
         a.sources = [k for k, v in cfg.items() if v.get("backfill") == "paged_feed" and v.get("status") != "disabled"]
         a.paged_feed = True
@@ -225,11 +226,18 @@ def main() -> None:
             continue
         try:
             if a.paged_feed:
-                print(sid, ingest_paged_feed(c, s, a.pages, a.delay), flush=True)
+                st = ingest_paged_feed(c, s, a.pages, a.delay)
             else:
-                print(sid, ingest(c, s, a.limit), flush=True)
+                st = ingest(c, s, a.limit)
+            store = RAW / sid / "posts.jsonl"
+            st["total_posts"] = sum(1 for _ in store.open()) if store.exists() else 0
+            status[sid] = st
+            print(sid, st, flush=True)
         except Exception as e:  # noqa: BLE001
+            status[sid] = {"failed": str(e)[:300]}
             print(f"{sid}: FAILED {e}", flush=True)
+    (ROOT / "reports").mkdir(exist_ok=True)
+    (ROOT / "reports/ingest-status.json").write_text(json.dumps(status, indent=1, default=str))
 
 
 if __name__ == "__main__":

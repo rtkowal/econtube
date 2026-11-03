@@ -255,7 +255,8 @@ def enrich_stage(cat: Catalogue) -> None:
         m = meta.get(k)
         if m is None:
             continue                      # not enriched yet (quota) - keep, enrich next run
-        if m.get("gone") or not m.get("embeddable") or (m.get("duration", 0) and m["duration"] < MIN_SECONDS):
+        short = m.get("duration", 0) and (m["duration"] < MIN_SECONDS or (m["duration"] < 180 and "#" in m.get("title", "")))
+        if m.get("gone") or not m.get("embeddable") or short:
             cat.drop(k)
             bad += 1
             continue

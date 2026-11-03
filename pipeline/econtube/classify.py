@@ -186,6 +186,16 @@ def _clean(out: dict, tax: dict[str, set[str]], item_id: str, drop_tags: set[str
         if not (isinstance(x, dict) and x.get("v") in tax[k]):
             sugg.append({"id": item_id, "facet": k, "value": x})
             out[k] = None
+    ppl = out.get("people") if isinstance(out.get("people"), dict) else {}
+    def _names(v):
+        r = []
+        for x in v or []:
+            x = (x.get("name") or "") if isinstance(x, dict) else x
+            if isinstance(x, str) and 2 < len(x.strip()) < 80:
+                r.append(x.strip())
+        return list(dict.fromkeys(r))
+    sp = _names(ppl.get("speakers"))
+    out["people"] = {"speakers": sp, "discussed": [n for n in _names(ppl.get("discussed")) if n not in sp]}
     norm = lambda t: re.sub(r"[\s_-]+", " ", str(t).strip().lower())  # noqa: E731
     out["tags"] = sorted({norm(t) for t in out.get("tags") or [] if str(t).strip()} - {norm(d) for d in drop_tags})[:10]
     out["one_line_why"] = " ".join((out.get("one_line_why") or "").split()[:20])
