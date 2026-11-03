@@ -16,6 +16,11 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: "3.12", cache: pip}
       - run: pip install -r requirements.txt
+      - uses: actions/cache@v4
+        with:
+          path: .cache
+          key: econtube-cache-${{ github.run_id }}
+          restore-keys: econtube-cache-
       - name: check secrets present (never printed)
         run: |
           test -n "$OPENAI_API_KEY" && echo "OPENAI_API_KEY: set" || echo "OPENAI_API_KEY: MISSING"
@@ -41,4 +46,4 @@ jobs:
           cp .cache/llm_cost.jsonl reports/llm_cost.jsonl 2>/dev/null || true
           git add -f reports/sample.md reports/llm_cost.jsonl taxonomy_suggestions.jsonl 2>/dev/null || true
           git diff --cached --quiet || git commit -m "reports: classification sample"
-          git pull --rebase -q && git push
+          git pull --rebase --autostash -q && git push
