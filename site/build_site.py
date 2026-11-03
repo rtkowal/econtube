@@ -21,12 +21,12 @@ def page(title: str, body: str, *, desc: str = "", path: str = "/", extra_head: 
     sponsor = CFG.get("sponsor")
     support = CFG.get("support_url")
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark"><meta name="theme-color" content="#141413">
 <title>{e(title)}</title><meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{BASE}{path}"><link rel="stylesheet" href="/style.css">
 <meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{BASE}{path}"><meta property="og:site_name" content="EconTube">{f'<meta property="og:image" content="{e(og_image)}">' if og_image else ''}
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='4' y='26' font-size='26' font-family='Georgia' fill='%237a2e1f'%3Ee%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='4' y='26' font-size='26' font-family='Georgia' fill='%23d98c6f'%3Ee%3C/text%3E%3C/svg%3E">
 {extra_head}</head><body{attrs}><div class="wrap">
 <header class="top"><a class="logo" href="/">Econ<i>Tube</i></a>
 <nav class="tabs"><a href="/#foryou">For You</a><a href="/#top">Top</a><a href="/#new">New</a><a href="/sources/">Sources</a><a href="/about/">About</a></nav>

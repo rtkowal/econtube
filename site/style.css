@@ -1,9 +1,9 @@
 :root{
-  --bg:#fbfaf7;--ink:#1c1b19;--mute:#6d6a63;--line:#e6e2d9;--card:#fff;--accent:#7a2e1f;
+  color-scheme:dark;
+  --bg:#141413;--ink:#ecebe6;--mute:#9b978e;--line:#2b2a27;--card:#1b1a18;--accent:#d98c6f;
   --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Charter,"Bitstream Charter",Georgia,serif;
   --r:6px
 }
-@media (prefers-color-scheme:dark){:root{--bg:#141413;--ink:#ecebe6;--mute:#9b978e;--line:#2b2a27;--card:#1b1a18;--accent:#d98c6f}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 var(--serif);font-feature-settings:"onum","kern"}
