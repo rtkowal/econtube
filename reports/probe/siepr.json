@@ -1,0 +1,1 @@
+{"id": "siepr", "name": "Stanford SIEPR", "route": "sitemap", "feed_ok": ["https://siepr.stanford.edu/sitemap.xml (3691 urls)"], "feed_failed": [], "posts_reachable": 3691, "sample_pages": 5, "yt_links": 10, "pod_links": 0, "vimeo": 0, "est_yt_total": 7382, "channels": [{"token": "SIEPRatStanford", "verified": false, "found_on": "homepage"}], "podcasts": [], "errors": []}

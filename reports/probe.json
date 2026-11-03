@@ -1,0 +1,1121 @@
+[
+ {
+  "id": "marginal-revolution",
+  "name": "Marginal Revolution",
+  "route": "rss",
+  "feed_ok": [
+   "https://marginalrevolution.com/feed (15 items)",
+   "https://marginalrevolution.com/sitemap.xml (17829 urls)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 17829,
+  "sample_pages": 15,
+  "yt_links": 3,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 3566,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Marginal+Revolution&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "cafe-hayek",
+  "name": "Cafe Hayek",
+  "route": "rss",
+  "feed_ok": [
+   "https://cafehayek.com/feed (5 items)",
+   "https://cafehayek.com/sitemap.xml (29360 urls)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 29360,
+  "sample_pages": 5,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 0,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Cafe+Hayek&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "noahpinion",
+  "name": "Noahpinion",
+  "route": "rss",
+  "feed_ok": [
+   "https://www.noahpinion.blog/feed (20 items)",
+   "https://www.noahpinion.blog/sitemap.xml (1379 urls)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 1379,
+  "sample_pages": 20,
+  "yt_links": 5,
+  "pod_links": 1,
+  "vimeo": 0,
+  "est_yt_total": 345,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Noahpinion&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "mankiw",
+  "name": "Greg Mankiw's Blog",
+  "route": "rss",
+  "feed_ok": [
+   "https://gregmankiw.blogspot.com/feeds/posts/default?max-results=500 (150 items)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 150,
+  "sample_pages": 150,
+  "yt_links": 4,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 4,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Greg+Mankiw%27s+Blog&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "conversable-economist",
+  "name": "Conversable Economist",
+  "route": "rss",
+  "feed_ok": [
+   "https://conversableeconomist.com/feed/ (10 items)",
+   "https://conversableeconomist.com/sitemap.xml (7932 urls)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 7932,
+  "sample_pages": 10,
+  "yt_links": 1,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 793,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Conversable+Economist&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "econlog",
+  "name": "EconLog",
+  "route": "rss",
+  "feed_ok": [
+   "https://www.econlib.org/feed/ (10 items)",
+   "https://www.econlib.org/sitemap_index.xml (36674 urls)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 36674,
+  "sample_pages": 10,
+  "yt_links": 0,
+  "pod_links": 10,
+  "vimeo": 0,
+  "est_yt_total": 0,
+  "channels": [
+   {
+    "token": "@econtalkwithruss",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=EconLog&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "econtalk",
+  "name": "EconTalk",
+  "route": "rss",
+  "feed_ok": [
+   "https://feeds.simplecast.com/wgl4xEgL (1074 items)",
+   "https://www.econtalk.org/feed/ (10 items)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 1074,
+  "sample_pages": 1084,
+  "yt_links": 0,
+  "pod_links": 1074,
+  "vimeo": 0,
+  "est_yt_total": 0,
+  "channels": [
+   {
+    "token": "@econtalkwithruss",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [
+   {
+    "name": "EconTalk",
+    "feed": "https://feeds.simplecast.com/wgl4xEgL",
+    "episodes": 1074,
+    "artist": "Russ Roberts",
+    "verified": false
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "naked-capitalism",
+  "name": "Naked Capitalism",
+  "route": null,
+  "feed_ok": [],
+  "feed_failed": [
+   "https://www.nakedcapitalism.com/feed"
+  ],
+  "posts_reachable": 0,
+  "sample_pages": 0,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "HTTP 403 for https://www.nakedcapitalism.com/feed",
+   "home: Blocked: HTTP 403 for https://www.nakedcapitalism.com/",
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Naked+Capitalism&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "calculated-risk",
+  "name": "Calculated Risk",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [
+   "https://www.calculatedriskblog.com/feeds/posts/default"
+  ],
+  "posts_reachable": 17,
+  "sample_pages": 1,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "https://www.calculatedriskblog.com/feeds/posts/default: ConnectionError: HTTPConnectionPool(host='feeds.feedburner.com', port=80): Max retries exceeded with url: /CalculatedRisk (Caused by NameResolut",
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Calculated+Risk&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "ritholtz",
+  "name": "The Big Picture (Ritholtz)",
+  "route": "rss",
+  "feed_ok": [
+   "https://ritholtz.com/feed/ (10 items)",
+   "https://ritholtz.com/sitemap.xml (37642 urls)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 37642,
+  "sample_pages": 10,
+  "yt_links": 7,
+  "pod_links": 4,
+  "vimeo": 0,
+  "est_yt_total": 26349,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=The+Big+Picture+%28Ritholtz%29&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "undercover-economist",
+  "name": "Tim Harford - Undercover Economist",
+  "route": "rss",
+  "feed_ok": [
+   "https://timharford.com/feed/ (10 items)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 10,
+  "sample_pages": 10,
+  "yt_links": 0,
+  "pod_links": 10,
+  "vimeo": 0,
+  "est_yt_total": 0,
+  "channels": [
+   {
+    "token": "@RandomEconomist",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Tim+Harford&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "freakonomics",
+  "name": "Freakonomics",
+  "route": "rss",
+  "feed_ok": [
+   "https://freakonomics.com/feed/ (20 items)",
+   "https://freakonomics.com/sitemap_index.xml (20084 urls)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 20084,
+  "sample_pages": 20,
+  "yt_links": 1,
+  "pod_links": 2,
+  "vimeo": 0,
+  "est_yt_total": 1004,
+  "channels": [
+   {
+    "token": "@freakonomics",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Freakonomics&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "alt-goes-mainstream",
+  "name": "Alt Goes Mainstream",
+  "route": "rss",
+  "feed_ok": [
+   "https://altgoesmainstream.substack.com/feed (20 items)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 20,
+  "sample_pages": 20,
+  "yt_links": 9,
+  "pod_links": 21,
+  "vimeo": 0,
+  "est_yt_total": 9,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Alt+Goes+Mainstream&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "lyn-alden",
+  "name": "Lyn Alden",
+  "route": "rss",
+  "feed_ok": [
+   "https://www.lynalden.com/feed/ (10 items)",
+   "https://www.lynalden.com/sitemap.xml (7701 urls)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 7701,
+  "sample_pages": 10,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 0,
+  "channels": [
+   {
+    "token": "@LynAldenMedia",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Lyn+Alden&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "delong",
+  "name": "Brad DeLong - Grasping Reality",
+  "route": "rss",
+  "feed_ok": [
+   "https://braddelong.substack.com/feed (20 items)"
+  ],
+  "feed_failed": [
+   "https://delong.typepad.com/sdj/atom.xml"
+  ],
+  "posts_reachable": 20,
+  "sample_pages": 20,
+  "yt_links": 3,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 3,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "HTTP 403 for https://delong.typepad.com/sdj/atom.xml",
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Brad+DeLong&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "chartbook",
+  "name": "Adam Tooze - Chartbook",
+  "route": "rss",
+  "feed_ok": [
+   "https://adamtooze.substack.com/feed (20 items)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 20,
+  "sample_pages": 20,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 0,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Adam+Tooze&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "mercatus",
+  "name": "Mercatus Center",
+  "route": "sitemap",
+  "feed_ok": [
+   "https://www.mercatus.org/sitemap.xml (15200 urls)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 15200,
+  "sample_pages": 0,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "https://www.mercatus.org/economic-insights/expert-commentary/why-we-should-demand-regulatory-reform: HTTP 403 for https://www.mercatus.org/economic-insights/expert-commentary/why-we-should-demand-regu",
+   "https://www.mercatus.org/economic-insights/expert-commentary/economic-impact-broadband-wheres-research: HTTP 403 for https://www.mercatus.org/economic-insights/expert-commentary/economic-impact-broadb",
+   "https://www.mercatus.org/economic-insights/expert-commentary/ohios-energy-efficiency-fiasco: HTTP 403 for https://www.mercatus.org/economic-insights/expert-commentary/ohios-energy-efficiency-fiasco",
+   "https://www.mercatus.org/economic-insights/expert-commentary/rising-prices-lower-rents-rising-rents-rising-prices: HTTP 403 for https://www.mercatus.org/economic-insights/expert-commentary/rising-pric",
+   "https://www.mercatus.org/economic-insights/expert-commentary/new-research-alaska-regulation-and-over-air-reception-device: HTTP 403 for https://www.mercatus.org/economic-insights/expert-commentary/new",
+   "https://www.mercatus.org/economic-insights/expert-commentary/bank-size-and-bank-asset-holdings: HTTP 403 for https://www.mercatus.org/economic-insights/expert-commentary/bank-size-and-bank-asset-holdi",
+   "https://www.mercatus.org/macro-musings/matthew-raskin-treasury-market-stability-interest-rates-and-feds-balance-sheet: HTTP 403 for https://www.mercatus.org/macro-musings/matthew-raskin-treasury-marke",
+   "https://www.mercatus.org/ideasofindia/vani-swarupa-murali-lack-decentralization-india-and-its-impact-water-depletion: HTTP 403 for https://www.mercatus.org/ideasofindia/vani-swarupa-murali-lack-decent",
+   "home: Blocked: HTTP 403 for https://www.mercatus.org/"
+  ]
+ },
+ {
+  "id": "conversations-with-tyler",
+  "name": "Conversations with Tyler",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [
+   "https://conversationswithtyler.com/feed/"
+  ],
+  "posts_reachable": 33,
+  "sample_pages": 1,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Conversations+with+Tyler&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "cato",
+  "name": "Cato Institute",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [
+   "https://www.cato.org/sitemap.xml",
+   "https://www.cato.org/rss/blog"
+  ],
+  "posts_reachable": 0,
+  "sample_pages": 1,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [],
+  "podcasts": [],
+  "errors": []
+ },
+ {
+  "id": "hoover",
+  "name": "Hoover Institution",
+  "route": "sitemap",
+  "feed_ok": [
+   "https://www.hoover.org/sitemap.xml (2036 urls)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 2036,
+  "sample_pages": 5,
+  "yt_links": 5,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 2036,
+  "channels": [
+   {
+    "token": "HooverInstitution",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Hoover+Institution&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "free-to-choose-network",
+  "name": "Free To Choose Network",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 22,
+  "sample_pages": 1,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Free+To+Choose+Network&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "iea",
+  "name": "Institute of Economic Affairs",
+  "route": "rss",
+  "feed_ok": [
+   "https://iea.org.uk/feed/ (10 items)",
+   "https://iea.org.uk/sitemap_index.xml (23484 urls)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 23484,
+  "sample_pages": 10,
+  "yt_links": 1,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 2348,
+  "channels": [
+   {
+    "token": "iealondon",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [
+   {
+    "name": "IEA Podcast",
+    "feed": "https://api.substack.com/feed/podcast/2659703/s/128254.rss",
+    "episodes": 409,
+    "artist": "Institute of Economic Affairs",
+    "verified": false
+   },
+   {
+    "name": "IEA Publications",
+    "feed": "https://api.substack.com/feed/podcast/2659703/s/128456.rss",
+    "episodes": 12,
+    "artist": "Institute of Economic Affairs",
+    "verified": false
+   }
+  ],
+  "errors": []
+ },
+ {
+  "id": "bfi",
+  "name": "Becker Friedman Institute (UChicago)",
+  "route": "rss",
+  "feed_ok": [
+   "https://bfi.uchicago.edu/feed/ (7 items)",
+   "https://bfi.uchicago.edu/sitemap_index.xml (14220 urls)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 14220,
+  "sample_pages": 7,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 0,
+  "channels": [
+   {
+    "token": "BFIVideos",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [],
+  "errors": []
+ },
+ {
+  "id": "voxeu",
+  "name": "CEPR / VoxEU",
+  "route": "rss",
+  "feed_ok": [
+   "https://cepr.org/rss/vox-content (50 items)"
+  ],
+  "feed_failed": [
+   "https://cepr.org/sitemap.xml"
+  ],
+  "posts_reachable": 50,
+  "sample_pages": 50,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 0,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "HTTP 403 for https://cepr.org/sitemap.xml",
+   "home: Blocked: HTTP 403 for https://cepr.org/voxeu",
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=CEPR+%2F+VoxEU&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "lse-economic-history",
+  "name": "LSE Economic History Blog",
+  "route": "rss",
+  "feed_ok": [
+   "https://blogs.lse.ac.uk/economichistory/feed/ (10 items)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 10,
+  "sample_pages": 10,
+  "yt_links": 1,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 1,
+  "channels": [
+   {
+    "token": "channel/UCK08_B5SZwoEUk2hDPMOijQ",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=LSE+Economic+History+Blog&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "lse-business-review",
+  "name": "LSE Business Review",
+  "route": "rss",
+  "feed_ok": [
+   "https://blogs.lse.ac.uk/businessreview/feed/ (10 items)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 10,
+  "sample_pages": 10,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 0,
+  "channels": [
+   {
+    "token": "channel/UCK08_B5SZwoEUk2hDPMOijQ",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=LSE+Business+Review&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "nobel-economics",
+  "name": "Nobel Prize - Economic Sciences",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [
+   "https://www.nobelprize.org/sitemap.xml"
+  ],
+  "posts_reachable": 64,
+  "sample_pages": 1,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [
+   {
+    "token": "thenobelprize",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [],
+  "errors": [
+   "https://www.nobelprize.org/sitemap.xml: ReadTimeout: HTTPSConnectionPool(host='www.nobelprize.org', port=443): Read timed out. (read timeout=30)"
+  ]
+ },
+ {
+  "id": "commanding-heights",
+  "name": "PBS - Commanding Heights",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 20,
+  "sample_pages": 1,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [],
+  "podcasts": [],
+  "errors": []
+ },
+ {
+  "id": "siepr",
+  "name": "Stanford SIEPR",
+  "route": "sitemap",
+  "feed_ok": [
+   "https://siepr.stanford.edu/sitemap.xml (3691 urls)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 3691,
+  "sample_pages": 5,
+  "yt_links": 10,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 7382,
+  "channels": [
+   {
+    "token": "SIEPRatStanford",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [],
+  "errors": []
+ },
+ {
+  "id": "eh-net",
+  "name": "Economic History Association (EH.net)",
+  "route": "rss",
+  "feed_ok": [
+   "https://eh.net/feed/ (10 items)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 10,
+  "sample_pages": 10,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 0,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Economic+History+Association+%28EH.net%29&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "capitalisnt",
+  "name": "Capitalisn't (Chicago Booth)",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 0,
+  "sample_pages": 1,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Capitalisn%27t+%28Chicago+Booth%29&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "tim-leunig",
+  "name": "Tim Leunig",
+  "route": "rss",
+  "feed_ok": [
+   "https://timleunig.substack.com/feed (20 items)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 20,
+  "sample_pages": 20,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 0,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Tim+Leunig&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "niall-ferguson",
+  "name": "Niall Ferguson",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 5,
+  "sample_pages": 1,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [
+   {
+    "token": "@drmatthewgoodwin",
+    "verified": false,
+    "found_on": "homepage"
+   },
+   {
+    "token": "@niallferguson5684",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Niall+Ferguson&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "yt-UCjB5Zb0i5q37j3yHDUECyxw",
+  "name": "TBD (resolve via channels.list)",
+  "route": "youtube_channel",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 0,
+  "sample_pages": 0,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [
+   {
+    "token": "channel/UCjB5Zb0i5q37j3yHDUECyxw",
+    "verified": true,
+    "found_on": "config"
+   }
+  ],
+  "podcasts": [],
+  "errors": []
+ },
+ {
+  "id": "yt-playlist-PL01nDImtijMBKaj8K3QaCKX81OtTosVL4",
+  "name": "TBD (resolve via playlists.list)",
+  "route": "youtube_channel",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 0,
+  "sample_pages": 0,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [
+   {
+    "token": "playlist/PL01nDImtijMBKaj8K3QaCKX81OtTosVL4",
+    "verified": true,
+    "found_on": "config"
+   }
+  ],
+  "podcasts": [],
+  "errors": []
+ },
+ {
+  "id": "unherd",
+  "name": "UnHerd",
+  "route": "youtube_channel",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 0,
+  "sample_pages": 0,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [
+   {
+    "token": "@UnHerd",
+    "verified": true,
+    "found_on": "config"
+   }
+  ],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=UnHerd&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "spotify-7xzAHy5zOSFztWy0R0cmCx",
+  "name": "TBD (resolve via Spotify API or show page)",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 0,
+  "sample_pages": 1,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [],
+  "podcasts": [],
+  "errors": []
+ },
+ {
+  "id": "spotify-3mmVPg0hr1znKgha9LIwNP",
+  "name": "TBD (resolve via Spotify API or show page)",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 0,
+  "sample_pages": 1,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [],
+  "podcasts": [],
+  "errors": []
+ },
+ {
+  "id": "apollo-daily-spark",
+  "name": "Apollo - The Daily Spark",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 44,
+  "sample_pages": 1,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [
+   {
+    "token": "ApolloGlobalManagement",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [],
+  "errors": []
+ },
+ {
+  "id": "oaktree",
+  "name": "Oaktree Capital - Insights",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 21,
+  "sample_pages": 1,
+  "yt_links": 19,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [],
+  "podcasts": [],
+  "errors": []
+ },
+ {
+  "id": "brookfield",
+  "name": "Brookfield Private Wealth - Insights",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 40,
+  "sample_pages": 1,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [
+   {
+    "token": "@BrookfieldOaktree",
+    "verified": false,
+    "found_on": "homepage"
+   },
+   {
+    "token": "@BrookfieldOaktreeAsia",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [],
+  "errors": []
+ },
+ {
+  "id": "bond-vigilantes",
+  "name": "Bond Vigilantes (M&G)",
+  "route": "rss",
+  "feed_ok": [
+   "https://bondvigilantes.com/feed/ (10 items)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 10,
+  "sample_pages": 10,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 0,
+  "channels": [
+   {
+    "token": "bondvigilantes",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Bond+Vigilantes+%28M%26G%29&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "doubleline",
+  "name": "DoubleLine - Market Insights",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 107,
+  "sample_pages": 1,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [
+   {
+    "token": "doublelinecapital",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [],
+  "errors": []
+ },
+ {
+  "id": "grants",
+  "name": "Grant's Interest Rate Observer",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 22,
+  "sample_pages": 1,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=Grant%27s+Interest+Rate+Observer&media=podcast&limit=5"
+  ]
+ },
+ {
+  "id": "weusecoins",
+  "name": "WeUseCoins",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 41,
+  "sample_pages": 1,
+  "yt_links": 1,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [],
+  "podcasts": [],
+  "errors": []
+ },
+ {
+  "id": "unchained",
+  "name": "Unchained - Blog",
+  "route": "sitemap",
+  "feed_ok": [
+   "https://www.unchained.com/sitemap.xml (726 urls)"
+  ],
+  "feed_failed": [],
+  "posts_reachable": 726,
+  "sample_pages": 5,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": 0,
+  "channels": [
+   {
+    "token": "channel/UCTkCLH1VSjWakXyF6z-mjtA",
+    "verified": false,
+    "found_on": "homepage"
+   }
+  ],
+  "podcasts": [],
+  "errors": []
+ },
+ {
+  "id": "prywatyzacja-analizy",
+  "name": "Prywatyzacja.com - Analizy prywatyzacji",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 12,
+  "sample_pages": 1,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [],
+  "podcasts": [],
+  "errors": []
+ },
+ {
+  "id": "prywatyzacja-rozmowy",
+  "name": "Prywatyzacja.com - Rozmowy z wybitnymi ekonomistami",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 28,
+  "sample_pages": 1,
+  "yt_links": 1,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [],
+  "podcasts": [],
+  "errors": []
+ },
+ {
+  "id": "prywatyzacja-case-studies",
+  "name": "Prywatyzacja.com - Case studies prywatyzacji",
+  "route": "html",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 22,
+  "sample_pages": 1,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [],
+  "podcasts": [],
+  "errors": []
+ },
+ {
+  "id": "economist",
+  "name": "The Economist (YouTube only)",
+  "route": "youtube_channel",
+  "feed_ok": [],
+  "feed_failed": [],
+  "posts_reachable": 0,
+  "sample_pages": 0,
+  "yt_links": 0,
+  "pod_links": 0,
+  "vimeo": 0,
+  "est_yt_total": null,
+  "channels": [
+   {
+    "token": "@TheEconomist",
+    "verified": true,
+    "found_on": "config"
+   }
+  ],
+  "podcasts": [],
+  "errors": [
+   "itunes: 403 Client Error: Forbidden for url: https://itunes.apple.com/search?term=The+Economist+%28YouTube+only%29&media=podcast&limit=5"
+  ]
+ }
+]

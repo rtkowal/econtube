@@ -30,7 +30,7 @@ from econtube.http import Blocked, Client  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 YT_KEY = os.environ.get("YOUTUBE_API_KEY")
-SAMPLE_PAGES = 15  # sitemap/html pages fetched per source to estimate link density
+SAMPLE_PAGES = 8  # sitemap/html pages fetched per source to estimate link density
 
 CHANNEL_RE = re.compile(
     r"youtube\.com/(?:(channel/UC[\w-]{22})|(@[\w.-]+)|(?:c|user)/([\w.-]+))", re.I)
@@ -85,7 +85,7 @@ def itunes_search(c: Client, term: str) -> list[dict]:
             for x in r.json().get("results", []) if x.get("feedUrl")]
 
 
-def count_sitemap(c: Client, url: str, depth: int = 0, cap: int = 60) -> tuple[int, list[str]]:
+def count_sitemap(c: Client, url: str, depth: int = 0, cap: int = 25) -> tuple[int, list[str]]:
     """Return (#page URLs, sample page URLs). Follows sitemap indexes up to `cap` children."""
     r = c.get(url)
     if r is None or not r.ok or b"<" not in r.content[:200]:
@@ -235,6 +235,7 @@ def render(rows: list[dict]) -> str:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--only")
+    ap.add_argument("--fresh", action="store_true", help="ignore per-source results from earlier runs")
     a = ap.parse_args()
     cfg = yaml.safe_load((ROOT / "sources.yaml").read_text())
     sources = [s for s in cfg["sources"] if s["id"] != "seeds"]
@@ -243,10 +244,17 @@ def main() -> None:
         sources = [s for s in sources if s["id"] in keep]
     c = Client()
     rows = []
+    done_dir = ROOT / "reports/probe"
+    done_dir.mkdir(parents=True, exist_ok=True)
     for s in sources:
+        cached = done_dir / f"{s['id']}.json"
+        if cached.exists() and not a.fresh:
+            rows.append(json.loads(cached.read_text()))
+            continue
         print(f"probing {s['id']} ...", flush=True)
         try:
             rows.append(probe_source(c, s))
+            cached.write_text(json.dumps(rows[-1], default=str))
         except Exception:  # noqa: BLE001
             rows.append({"id": s["id"], "name": s["name"], "route": None, "posts_reachable": 0,
                          "sample_pages": 0, "yt_links": 0, "pod_links": 0, "est_yt_total": None,
