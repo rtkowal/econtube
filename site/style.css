@@ -59,3 +59,4 @@ kbd{font:inherit;font-size:13px;border:1px solid var(--line);border-radius:3px;p
 #help{position:fixed;inset:auto 20px 20px auto;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 18px;font-size:14px;display:none}
 #help.on{display:block}
 @media (max-width:640px){header.top{gap:14px;padding-top:22px}.search{flex-basis:100%;margin-left:0}.grid{gap:26px}.item h1{font-size:24px}}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 0}.chips span{font-size:13px;color:var(--mute);border:1px solid var(--line);border-radius:12px;padding:1px 10px}

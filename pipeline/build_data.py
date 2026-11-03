@@ -2,8 +2,9 @@
 
 Inputs:  channel/playlist RSS (newest 15 each), ingested curator posts (data/raw), podcast RSS.
 Titles for post-linked videos come from YouTube oEmbed (no key).
-Relevance: until the Haiku gate runs (needs ANTHROPIC_API_KEY), gated sources use a keyword
-heuristic (econ_guess). Each item carries "classified": false so the site can be rebuilt later.
+Relevance: with OPENAI_API_KEY set, gated items go through the LLM relevance gate and every item is
+classified (facets, tags, one-line why). Without a key, a keyword heuristic (econ_guess) stands in
+and items carry "classified": false.
 """
 from __future__ import annotations
 
@@ -21,6 +22,18 @@ import yaml
 sys.path.insert(0, str(Path(__file__).parent))
 from econtube.http import UA  # noqa: E402
 from econtube.score import Rec, score  # noqa: E402
+from econtube import classify, llm  # noqa: E402
+
+USE_LLM = llm.available()
+
+
+def relevant(vid: str, title: str, desc: str, channel: str = "") -> bool:
+    if USE_LLM:
+        try:
+            return classify.gate({"id": vid, "title": title, "desc": desc, "channel": channel})
+        except Exception as e:  # noqa: BLE001  - never let one failure kill the run
+            print("gate error", vid, e)
+    return econ_guess(title + " " + desc[:400])
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data"
@@ -103,7 +116,7 @@ def main() -> None:
                     continue
                 if tflt and not re.search(tflt, title, re.I):
                     continue
-                if flt == "economics_only" and not econ_guess(title + " " + desc[:400]):
+                if flt == "economics_only" and not relevant(vid, title, desc, e.get("author", "")):
                     continue
                 pub = parse_dt(e.get("published"))
                 add(vid, {"id": vid, "kind": "video", "title": title, "channel": e.get("author", ""),
@@ -128,7 +141,7 @@ def main() -> None:
                     continue
                 text = f"{meta.get('title','')} {p.get('title','')} {r.get('context','')}"
                 # title only: "Assorted links" contexts mix unrelated links, so context is too noisy for a keyword gate
-                if not econ_guess(meta.get("title", "")):
+                if not relevant(r["id"], meta.get("title", ""), r.get("context", "")[:600], meta.get("author_name", "")):
                     continue
                 add(r["id"], {"id": r["id"], "kind": "video", "title": meta.get("title", ""), "channel": meta.get("author_name", ""),
                               "published": None, "desc": ""}, src, p["url"], parse_dt(p.get("date")), editorial=True)
@@ -170,6 +183,16 @@ def main() -> None:
                     items[vk]["sources"].append(src)
             recs[vk] += recs.pop(k)
             del items[k]
+
+    if USE_LLM:
+        tax = classify.load_taxonomy()
+        for k, it in items.items():
+            try:
+                v = classify.visible(classify.classify({**it, "posts": [s for s in it["sources"]]}, tax))
+                it.update(facets={f: v[f] for f in ("fields", "topics", "schools", "eras", "regions", "format", "level")},
+                          tags=v["tags"], why=v["why"], people=v["people"], classified=True)
+            except Exception as e:  # noqa: BLE001
+                print("classify error", k, e)
 
     today = date.today()
     out = []

@@ -3,4 +3,4 @@ repo: "rtkowal/econtube"                  # e.g. yourname/econtube  (footer "Cod
 contact_email: ""
 support_url: ""           # Buy Me a Coffee / GitHub Sponsors
 sponsor: ""               # one text line; empty = hidden
-costs_line: "Vercel ~$20/mo, Claude API ~$3/mo; revenue $0 so far."
+costs_line: "Vercel ~$20/mo, OpenAI API ~$3/mo; revenue $0 so far."

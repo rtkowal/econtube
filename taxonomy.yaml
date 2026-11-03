@@ -1,0 +1,132 @@
+# EconTube taxonomy. Edit freely: the classifier only accepts slugs listed here.
+# Each entry: slug, label, (description), (aliases), (parent), (jel).
+# STATUS: draft. `topics` is a seed list; per the build plan it is regenerated from a
+# 500-item classified sample, deduplicated, and frozen only after owner approval.
+
+fields:   # two-level, built on AEA JEL codes, plain-English labels
+  - {slug: general, label: "Economics in general & methodology", jel: A}
+  - {slug: history-of-thought, label: "History of economic thought", jel: B, aliases: [methodology, heterodox]}
+  - {slug: quantitative, label: "Quantitative methods & data", jel: C}
+  - {slug: micro, label: "Microeconomics", jel: D}
+  - {slug: behavioral, label: "Behavioral economics", jel: D9, parent: micro}
+  - {slug: macro, label: "Macroeconomics & monetary", jel: E}
+  - {slug: monetary-policy, label: "Monetary policy & central banking", jel: E5, parent: macro}
+  - {slug: business-cycles, label: "Business cycles, inflation & growth", jel: E3, parent: macro}
+  - {slug: fiscal-macro, label: "Fiscal policy & public debt", jel: E6, parent: macro}
+  - {slug: international, label: "International economics", jel: F}
+  - {slug: trade, label: "Trade & tariffs", jel: F1, parent: international}
+  - {slug: intl-finance, label: "Exchange rates & international finance", jel: F3, parent: international}
+  - {slug: finance, label: "Financial economics", jel: G}
+  - {slug: banking, label: "Banking & financial crises", jel: G2, parent: finance}
+  - {slug: corporate-finance, label: "Corporate finance & governance", jel: G3, parent: finance}
+  - {slug: public, label: "Public economics & taxation", jel: H}
+  - {slug: health-education-welfare, label: "Health, education & welfare", jel: I}
+  - {slug: labor, label: "Labor & demographics", jel: J}
+  - {slug: law-econ, label: "Law & economics", jel: K}
+  - {slug: industrial-org, label: "Industries, competition & regulation", jel: L}
+  - {slug: business, label: "Business, management & entrepreneurship", jel: M}
+  - {slug: economic-history, label: "Economic history", jel: N}
+  - {slug: development, label: "Development, innovation & growth", jel: O}
+  - {slug: innovation, label: "Technology & innovation", jel: O3, parent: development}
+  - {slug: systems, label: "Economic systems: capitalism, socialism, transition", jel: P}
+  - {slug: transition, label: "Post-communist transition", jel: P2, parent: systems}
+  - {slug: environment-energy, label: "Agriculture, energy & environment", jel: Q}
+  - {slug: urban-housing, label: "Urban, housing & regional", jel: R}
+  # non-JEL branches (JEL covers these badly)
+  - {slug: markets-investing, label: "Markets & investing"}
+  - {slug: credit, label: "Credit", parent: markets-investing}
+  - {slug: rates, label: "Rates & bonds", parent: markets-investing}
+  - {slug: equities, label: "Equities", parent: markets-investing}
+  - {slug: private-markets, label: "Private markets", parent: markets-investing}
+  - {slug: alternatives, label: "Alternatives", parent: markets-investing}
+  - {slug: macro-investing, label: "Macro investing", parent: markets-investing}
+  - {slug: money-bitcoin, label: "Money & Bitcoin"}
+  - {slug: sound-money, label: "Gold & sound money", parent: money-bitcoin}
+  - {slug: bitcoin, label: "Bitcoin & crypto", parent: money-bitcoin}
+
+schools:
+  - {slug: chicago-monetarist, label: "Chicago / monetarist"}
+  - {slug: austrian, label: "Austrian"}
+  - {slug: public-choice, label: "Public choice"}
+  - {slug: classical-liberal, label: "Classical liberal"}
+  - {slug: new-institutional, label: "New institutional"}
+  - {slug: supply-side, label: "Supply-side"}
+  - {slug: keynesian, label: "Keynesian / New Keynesian"}
+  - {slug: mmt, label: "MMT"}
+  - {slug: marxist, label: "Marxist"}
+  - {slug: behavioral, label: "Behavioral"}
+  - {slug: empirical, label: "None / empirical"}
+
+formats:
+  - {slug: lecture, label: Lecture}
+  - {slug: interview, label: Interview}
+  - {slug: debate, label: Debate}
+  - {slug: documentary, label: Documentary}
+  - {slug: panel, label: Panel}
+  - {slug: explainer, label: Explainer}
+  - {slug: speech, label: Speech}
+  - {slug: podcast-episode, label: "Podcast episode"}
+  - {slug: market-commentary, label: "Market commentary"}
+  - {slug: nobel-lecture, label: "Nobel lecture"}
+
+levels:
+  - {slug: introductory, label: Introductory}
+  - {slug: intermediate, label: Intermediate}
+  - {slug: expert, label: Expert}
+
+eras:
+  - {slug: pre-1900, label: "Before 1900"}
+  - {slug: 1900s-1920s, label: "1900s–1920s"}
+  - {slug: 1930s, label: "1930s & the Depression"}
+  - {slug: 1940s-1950s, label: "1940s–1950s"}
+  - {slug: 1960s, label: "1960s"}
+  - {slug: 1970s, label: "1970s stagflation"}
+  - {slug: 1980s, label: "1980s"}
+  - {slug: 1990s, label: "1990s / post-1989"}
+  - {slug: 2000s, label: "2000s"}
+  - {slug: 2008-crisis, label: "2008 crisis & aftermath"}
+  - {slug: 2010s, label: "2010s"}
+  - {slug: 2020s, label: "2020s"}
+  - {slug: timeless, label: "Timeless / theory"}
+
+regions:
+  - {slug: us, label: "United States"}
+  - {slug: uk, label: "United Kingdom"}
+  - {slug: poland, label: Poland}
+  - {slug: cee, label: "Central & Eastern Europe"}
+  - {slug: eurozone, label: Eurozone}
+  - {slug: china, label: China}
+  - {slug: japan, label: Japan}
+  - {slug: india, label: India}
+  - {slug: latin-america, label: "Latin America"}
+  - {slug: africa, label: Africa}
+  - {slug: middle-east, label: "Middle East"}
+  - {slug: russia, label: Russia}
+  - {slug: global, label: Global}
+
+topics:   # SEED (draft). Regenerated from the 500-item sample before freezing.
+  - {slug: inflation, label: Inflation, parent: business-cycles}
+  - {slug: great-depression, label: "The Great Depression", parent: economic-history}
+  - {slug: 2008-crisis, label: "The 2008 financial crisis", parent: banking}
+  - {slug: minimum-wage, label: "Minimum wage", parent: labor}
+  - {slug: tariffs, label: "Tariffs & trade wars", parent: trade, aliases: [protectionism, trade war]}
+  - {slug: privatization, label: Privatization, parent: transition, aliases: [prywatyzacja]}
+  - {slug: shock-therapy, label: "Shock therapy & post-communist transition", parent: transition}
+  - {slug: housing, label: Housing, parent: urban-housing}
+  - {slug: national-debt, label: "The national debt", parent: fiscal-macro}
+  - {slug: the-fed, label: "The Federal Reserve", parent: monetary-policy, aliases: [fed, fomc]}
+  - {slug: ecb, label: "The ECB", parent: monetary-policy}
+  - {slug: gold-standard, label: "Gold standard", parent: sound-money}
+  - {slug: price-system, label: "The price system", parent: micro}
+  - {slug: regulation, label: Regulation, parent: industrial-org}
+  - {slug: entrepreneurship, label: Entrepreneurship, parent: business}
+  - {slug: healthcare, label: "Healthcare economics", parent: health-education-welfare}
+  - {slug: taxation, label: Taxation, parent: public}
+  - {slug: inequality, label: Inequality, parent: labor}
+  - {slug: economic-growth, label: "Economic growth", parent: development}
+  - {slug: ai-economy, label: "AI & the economy", parent: innovation}
+  - {slug: socialism-vs-capitalism, label: "Socialism vs capitalism", parent: systems}
+  - {slug: china-economy, label: "China's economy", parent: development}
+  - {slug: interest-rates, label: "Interest rates", parent: rates}
+  - {slug: bitcoin, label: Bitcoin, parent: bitcoin}
+  - {slug: central-bank-independence, label: "Central bank independence", parent: monetary-policy}

@@ -54,3 +54,14 @@ Product and engineering choices made without explicit instruction. Simplest opti
     through the economics_only gate. The Sowell playlist skips the gate.
 16. **YouTube channel RSS (`/feeds/videos.xml?channel_id=` or `playlist_id=`) works without a key** but returns only the
     newest 15 videos. It is good for the daily incremental run. A full backfill still needs the Data API (`playlistItems.list`).
+17. **LLM provider: OpenAI (owner decision, 2026-11-03), replacing the brief's Claude Haiku/Sonnet.** The secret is `OPENAI_API_KEY`.
+    `pipeline/econtube/llm.py` calls Chat Completions in JSON mode through plain `requests`, with no SDK. The model name is **not
+    hard-coded**: `OPENAI_MODEL` (and `OPENAI_MODEL_STRONG` for ambiguous cases) can be set as GitHub Actions *variables*.
+    Otherwise the code lists the models the key can use and takes the first match from a cheapest-first preference list,
+    so a retired model can't break the cron. Token usage is logged to `.cache/llm_cost.jsonl`.
+18. **Classifier contract** (`pipeline/econtube/classify.py`): the relevance gate keeps an item only if relevant=true and
+    confidence >= 0.7. Classification returns every facet plus tags plus a why line of at most 20 words, validated against `taxonomy.yaml`. Invalid values
+    get one retry with the errors fed back, and anything still invalid is dropped and logged to `taxonomy_suggestions.jsonl`. Facet values
+    below 0.6 confidence are stored but not shown. `overrides.yaml` always wins. Both caches are keyed by item ID.
+19. **`taxonomy.yaml` is a draft.** The fields, schools, formats, levels, eras and regions follow the brief. `topics` is a 25-item
+    seed, to be regenerated from a 500-item classified sample and frozen only after owner approval.

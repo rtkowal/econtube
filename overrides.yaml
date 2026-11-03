@@ -1,0 +1,5 @@
+# Hand-curated facet overrides: item id -> facet values. Always wins over the model.
+# Example:
+# dQw4w9WgXcQ:
+#   schools: [austrian]
+#   format: lecture

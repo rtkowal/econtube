@@ -1,5 +1,5 @@
 {
-"generated": "2026-11-03T09:43:35+00:00",
+"generated": "2026-11-03T10:34:01+00:00",
 "preview": true,
 "items": [
 {
@@ -37,6 +37,24 @@
 ],
 "classified": false,
 "score": 4.4787
+},
+{
+"id": "Z7HL5tnU1gs",
+"kind": "video",
+"title": "Sasquehanna Hat Company",
+"channel": "fsp123",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "marginal-revolution",
+"name": "Marginal Revolution",
+"url": "https://marginalrevolution.com/marginalrevolution/2026/10/wednesday-assorted-links-577.html?utm_source=rss&utm_medium=rss&utm_campaign=wednesday-assorted-links-577",
+"date": "2026-10-28"
+}
+],
+"classified": false,
+"score": 4.4744
 },
 {
 "id": "TZdoYBGUBYI",
@@ -767,6 +785,132 @@
 "score": 1.125
 },
 {
+"id": "kPRA0W1kECg",
+"kind": "video",
+"title": "15 Sorting Algorithms in 6 Minutes",
+"channel": "Timo Bingmann",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "marginal-revolution",
+"name": "Marginal Revolution",
+"url": "https://marginalrevolution.com/marginalrevolution/2013/08/assorted-links-871.html",
+"date": "2013-08-04"
+}
+],
+"classified": false,
+"score": 1.125
+},
+{
+"id": "My9VUKzssp0",
+"kind": "video",
+"title": "S Balachander veena",
+"channel": "Baradwaj Raman",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "marginal-revolution",
+"name": "Marginal Revolution",
+"url": "https://marginalrevolution.com/marginalrevolution/2013/08/assorted-links-879.html",
+"date": "2013-08-11"
+}
+],
+"classified": false,
+"score": 1.125
+},
+{
+"id": "edZjdgU0asM",
+"kind": "video",
+"title": "Holly Willoughby loses her cool with Katie Hopkins in ANOTHER class row on 'This Morning'",
+"channel": "Phil Townsend",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "marginal-revolution",
+"name": "Marginal Revolution",
+"url": "https://marginalrevolution.com/marginalrevolution/2013/07/assorted-links-843.html",
+"date": "2013-07-05"
+}
+],
+"classified": false,
+"score": 1.125
+},
+{
+"id": "_GXjPEkDfek",
+"kind": "video",
+"title": "Savant learns how to speak Icelandic in a week",
+"channel": "Summer House",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "marginal-revolution",
+"name": "Marginal Revolution",
+"url": "https://marginalrevolution.com/marginalrevolution/2013/07/my-favorite-things-iceland.html",
+"date": "2013-07-13"
+}
+],
+"classified": false,
+"score": 1.125
+},
+{
+"id": "wuGb-WlepvA",
+"kind": "video",
+"title": "A Creative Laughter Club in Pune, India",
+"channel": "John Lejderman",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "marginal-revolution",
+"name": "Marginal Revolution",
+"url": "https://marginalrevolution.com/marginalrevolution/2013/07/assorted-india-links.html",
+"date": "2013-07-25"
+}
+],
+"classified": false,
+"score": 1.125
+},
+{
+"id": "xkWPGwfuQcM",
+"kind": "video",
+"title": "End Software Patents w/ Alex Tabarrok",
+"channel": "Startup Bytes",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "marginal-revolution",
+"name": "Marginal Revolution",
+"url": "https://marginalrevolution.com/marginalrevolution/2013/06/no-patents-on-genes.html",
+"date": "2013-06-14"
+}
+],
+"classified": false,
+"score": 1.125
+},
+{
+"id": "9qcIsjrHENU",
+"kind": "video",
+"title": "The Next Great Era: Envisioning A Robot Society: Robin Hanson at TEDxTallinn",
+"channel": "TEDx Talks",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "marginal-revolution",
+"name": "Marginal Revolution",
+"url": "https://marginalrevolution.com/marginalrevolution/2013/06/assorted-links-825.html",
+"date": "2013-06-16"
+}
+],
+"classified": false,
+"score": 1.125
+},
+{
 "id": "yoIZdEBf9Wk",
 "kind": "video",
 "title": "Margaret Thatcher - Capitalism and a Free Society",
@@ -797,6 +941,150 @@
 "name": "Marginal Revolution",
 "url": "https://marginalrevolution.com/marginalrevolution/2013/04/ted-talks-on-innovation-and-automation.html",
 "date": "2013-04-23"
+}
+],
+"classified": false,
+"score": 1.125
+},
+{
+"id": "ipMkm1_5jf8",
+"kind": "video",
+"title": "Baby Einstein on the Beach",
+"channel": "BAMorg",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "marginal-revolution",
+"name": "Marginal Revolution",
+"url": "https://marginalrevolution.com/marginalrevolution/2013/04/assorted-links-774.html",
+"date": "2013-04-26"
+}
+],
+"classified": false,
+"score": 1.125
+},
+{
+"id": "i89bSa88dOE",
+"kind": "video",
+"title": "Kenya Presidential Debate 2013 [Full Video]",
+"channel": "KTN News Kenya",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "marginal-revolution",
+"name": "Marginal Revolution",
+"url": "https://marginalrevolution.com/marginalrevolution/2013/03/assorted-links-722.html",
+"date": "2013-03-04"
+}
+],
+"classified": false,
+"score": 1.125
+},
+{
+"id": "Vb1pdvvoVoQ",
+"kind": "video",
+"title": "Concrete Tent | I Didn't Know That",
+"channel": "National Geographic",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "marginal-revolution",
+"name": "Marginal Revolution",
+"url": "https://marginalrevolution.com/marginalrevolution/2013/03/assorted-links-728.html",
+"date": "2013-03-11"
+}
+],
+"classified": false,
+"score": 1.125
+},
+{
+"id": "8_4G_8gEjng",
+"kind": "video",
+"title": "Japan Presents the Incredible Shrinking Building",
+"channel": "MrNewsFunny",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "marginal-revolution",
+"name": "Marginal Revolution",
+"url": "https://marginalrevolution.com/marginalrevolution/2013/03/assorted-links-728.html",
+"date": "2013-03-11"
+}
+],
+"classified": false,
+"score": 1.125
+},
+{
+"id": "h2OfQdYrHRs",
+"kind": "video",
+"title": "Introducing Word Lens",
+"channel": "QuestVisual",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "marginal-revolution",
+"name": "Marginal Revolution",
+"url": "https://marginalrevolution.com/marginalrevolution/2013/03/assorted-links-732.html",
+"date": "2013-03-15"
+}
+],
+"classified": false,
+"score": 1.125
+},
+{
+"id": "lZunEARBb6I",
+"kind": "video",
+"title": "Les Miserables ROK Air Force Parody Les Militaribles / 공군 레미제라블 '레밀리터리블'",
+"channel": "대한민국공군",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "marginal-revolution",
+"name": "Marginal Revolution",
+"url": "https://marginalrevolution.com/marginalrevolution/2013/02/assorted-links-700.html",
+"date": "2013-02-09"
+}
+],
+"classified": false,
+"score": 1.125
+},
+{
+"id": "U0bk3gsv1gA",
+"kind": "video",
+"title": "Sexuality Of The Antichrist In Gangnam Style",
+"channel": "thirdeaglebooks",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "marginal-revolution",
+"name": "Marginal Revolution",
+"url": "https://marginalrevolution.com/marginalrevolution/2013/02/assorted-links-707.html",
+"date": "2013-02-17"
+}
+],
+"classified": false,
+"score": 1.125
+},
+{
+"id": "Gofxcp2ta6A",
+"kind": "video",
+"title": "Junior Murvin - Police and Thieves",
+"channel": "Marcelo Vie",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "marginal-revolution",
+"name": "Marginal Revolution",
+"url": "https://marginalrevolution.com/marginalrevolution/2013/02/the-20-greatest-songs-about-work.html",
+"date": "2013-02-17"
 }
 ],
 "classified": false,
@@ -3222,6 +3510,42 @@
 ],
 "classified": false,
 "score": 0.5662
+},
+{
+"id": "wVQPY4LlbJ4",
+"kind": "video",
+"title": "Glengarry Glen Ross speech Alec Baldwin",
+"channel": "VineStreetMusic",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "hoover",
+"name": "Hoover Institution",
+"url": "https://www.hoover.org/research/deep-heart-california-taxes",
+"date": null
+}
+],
+"classified": false,
+"score": 0.5625
+},
+{
+"id": "YWxtevzvk5g",
+"kind": "video",
+"title": "Should the Coronavirus Lockdowns End Immediately? A Soho Forum Debate",
+"channel": "ReasonTV",
+"published": null,
+"desc": "",
+"sources": [
+{
+"id": "hoover",
+"name": "Hoover Institution",
+"url": "https://www.hoover.org/research/end-lockdowns-now",
+"date": null
+}
+],
+"classified": false,
+"score": 0.5625
 },
 {
 "id": "Pw9M12X6Ums",

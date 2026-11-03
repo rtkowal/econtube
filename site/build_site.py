@@ -41,6 +41,12 @@ def page(title: str, body: str, *, desc: str = "", path: str = "/", extra_head: 
 <script src="/app.js" defer></script></body></html>"""
 
 
+def chips(it: dict) -> str:
+    f = it.get("facets") or {}
+    vals = [*(f.get("topics") or []), *(f.get("schools") or []), *([f["format"]] if f.get("format") else []), *(it.get("tags") or [])[:6]]
+    return ('<p class="chips">' + "".join(f'<span>{e(v.replace("-", " "))}</span>' for v in vals) + "</p>") if vals else ""
+
+
 def item_page(it: dict, related: list[dict]) -> str:
     vid = it["id"]
     if it["kind"] == "video":
@@ -65,6 +71,7 @@ def item_page(it: dict, related: list[dict]) -> str:
     body = f"""<article class="item">{media}
 <h1>{e(it["title"])}</h1><div class="meta">{e(it["channel"])}{" · " + e(it["published"]) if it.get("published") else ""}</div>
 {f'<p class="why">{e(why)}</p>' if why else ''}
+{chips(it)}
 <div class="thumbs"><button data-v="1">👍 More like this</button><button data-v="-1">👎 Less</button></div>
 <h2>Recommended by</h2><ul class="src">{srcs}</ul>
 {f'<h2>Related</h2><ul class="src">{rel}</ul>' if rel else ''}
