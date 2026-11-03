@@ -106,6 +106,50 @@ def urlish_post(u: str, s: dict) -> bool:
     return True
 
 
+def ingest_paged_feed(c: Client, s: dict, max_pages: int, delay: float) -> dict:
+    """WordPress archive via the public feed: <feed>?paged=N (full post content, 10-15 posts/request).
+    Far gentler than fetching every post page. Resumes from data/raw/<id>/feed_page.txt."""
+    import time
+    d = RAW / s["id"]
+    d.mkdir(parents=True, exist_ok=True)
+    store, cursor = d / "posts.jsonl", d / "feed_page.txt"
+    done = {json.loads(l)["url"] for l in store.open()} if store.exists() else set()
+    page = int(cursor.read_text()) if cursor.exists() else 1
+    feed = s["feeds"][0]
+    stats = {"pages": 0, "new": 0, "refs": 0, "stopped": None}
+    with store.open("a") as fh:
+        for _ in range(max_pages):
+            time.sleep(delay)
+            try:
+                r = c.get(f"{feed}?paged={page}", conditional=False)
+            except Blocked as e:
+                stats["stopped"] = str(e)  # bot protection: stop, never retry around it
+                break
+            ents = feedparser.parse(r.content).entries if r is not None and r.ok else []
+            if not ents:
+                stats["stopped"] = f"end of archive at page {page}"
+                break
+            for e in ents:
+                u = re.sub(r"^http://", "https://", e.get("link", ""))
+                if not u or u in done:
+                    continue
+                body = " ".join(x.get("value", "") for x in e.get("content", [])) or e.get("summary", "")
+                refs, ctx = extract_refs(body), contexts(body)
+                fh.write(json.dumps({"url": u, "source": s["id"], "title": e.get("title", ""),
+                                     "date": e.get("published"),
+                                     "refs": [{"kind": x.kind, "id": x.id, "url": x.url, "platform": x.platform,
+                                               "context": ctx.get(x.id, "")} for x in refs]},
+                                    ensure_ascii=False) + "\n")
+                done.add(u)
+                stats["new"] += 1
+                stats["refs"] += len(refs)
+            fh.flush()
+            page += 1
+            cursor.write_text(str(page))
+            stats["pages"] += 1
+    return stats
+
+
 def ingest(c: Client, s: dict, limit: int) -> dict:
     d = RAW / s["id"]
     d.mkdir(parents=True, exist_ok=True)
@@ -147,6 +191,9 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("sources", nargs="+")
     ap.add_argument("--limit", type=int, default=200)
+    ap.add_argument("--paged-feed", action="store_true", help="WordPress archive via feed?paged=N")
+    ap.add_argument("--pages", type=int, default=100)
+    ap.add_argument("--delay", type=float, default=4.0, help="extra seconds between feed pages")
     a = ap.parse_args()
     cfg = {s["id"]: s for s in yaml.safe_load((ROOT / "sources.yaml").read_text())["sources"]}
     c = Client()
@@ -156,7 +203,10 @@ def main() -> None:
             print(f"{sid}: disabled, skipping")
             continue
         try:
-            print(sid, ingest(c, s, a.limit), flush=True)
+            if a.paged_feed:
+                print(sid, ingest_paged_feed(c, s, a.pages, a.delay), flush=True)
+            else:
+                print(sid, ingest(c, s, a.limit), flush=True)
         except Exception as e:  # noqa: BLE001
             print(f"{sid}: FAILED {e}", flush=True)
 
