@@ -1,0 +1,26 @@
+# Canonical YouTube search seeds (type: curated_list, low weight).
+# search.list = 100 quota units/call; default quota 10,000/day.
+# Budget: max_calls_per_run x 100 units. Seeds rotate round-robin across runs.
+budget:
+  max_calls_per_run: 20        # 2,000 units/day, leaves 8,000 for videos.list etc.
+  results_per_query: 50
+  order: relevance
+queries:
+  - Milton Friedman
+  - Free to Choose
+  - Thomas Sowell
+  - Friedrich Hayek
+  - Ludwig von Mises
+  - James Buchanan public choice
+  - Ronald Coase
+  - Gary Becker
+  - Paul Volcker
+  - Leszek Balcerowicz
+  - shock therapy Poland 1990
+  - Great Depression economics lecture
+  - 2008 financial crisis documentary
+  - stagflation 1970s
+  - gold standard history
+  - Bretton Woods
+  - Howard Marks memo
+  - Nobel prize lecture economics

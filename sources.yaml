@@ -1,0 +1,322 @@
+# EconTube source registry.
+# `url` is the human homepage. `feeds` are CANDIDATE ingestion endpoints, tried in order
+# (rss -> sitemap -> youtube_channel -> html). `pipeline/probe.py` verifies every candidate
+# and writes reports/probe.md; nothing here is assumed to work until the probe confirms it.
+# youtube_channels / podcast_feeds are filled by discovery (probe.py --discover);
+# entries carry verified: true|false. Weight: 1.0 = normal curator, 3.0 = top curator.
+
+defaults:
+  language: en
+  weight: 1.0
+
+sources:
+  # ---------------- Blogs & commentary ----------------
+  - id: marginal-revolution
+    name: Marginal Revolution
+    url: https://marginalrevolution.com/
+    type: rss
+    weight: 3.0
+    backfill: full
+    feeds: [https://marginalrevolution.com/feed, https://marginalrevolution.com/sitemap.xml]
+    notes: Highest weight. Cowen & Tabarrok link videos constantly. Full archive backfill via sitemap.
+  - id: cafe-hayek
+    name: Cafe Hayek
+    url: https://cafehayek.com/
+    type: rss
+    weight: 1.5
+    feeds: [https://cafehayek.com/feed, https://cafehayek.com/sitemap.xml]
+  - id: noahpinion
+    name: Noahpinion
+    url: https://www.noahpinion.blog/
+    type: rss
+    weight: 1.5
+    feeds: [https://www.noahpinion.blog/feed, https://www.noahpinion.blog/sitemap.xml]
+    notes: Substack.
+  - id: mankiw
+    name: Greg Mankiw's Blog
+    url: https://gregmankiw.blogspot.com/
+    type: rss
+    weight: 1.5
+    feeds: ["https://gregmankiw.blogspot.com/feeds/posts/default?max-results=500"]
+    notes: Blogger feed supports start-index paging for full backfill.
+  - id: conversable-economist
+    name: Conversable Economist
+    url: https://conversableeconomist.com/
+    type: rss
+    feeds: [https://conversableeconomist.com/feed/, https://conversableeconomist.com/sitemap.xml]
+  - id: econlog
+    name: EconLog
+    url: https://www.econlib.org/econlog/
+    type: rss
+    weight: 1.5
+    feeds: [https://www.econlib.org/feed/, https://www.econlib.org/sitemap_index.xml]
+    notes: Also check EconTalk (econtalk.org) for video versions.
+  - id: econtalk
+    name: EconTalk
+    url: https://www.econtalk.org/
+    type: rss
+    weight: 1.5
+    feeds: [https://feeds.simplecast.com/wgl4xEgL, https://www.econtalk.org/feed/]
+    notes: Podcast; video versions on YouTube. First feed is a candidate from memory - probe must confirm.
+  - id: naked-capitalism
+    name: Naked Capitalism
+    url: https://www.nakedcapitalism.com/
+    type: rss
+    feeds: [https://www.nakedcapitalism.com/feed]
+  - id: calculated-risk
+    name: Calculated Risk
+    url: https://www.calculatedriskblog.com/
+    type: rss
+    weight: 0.5
+    feeds: [https://www.calculatedriskblog.com/feeds/posts/default]
+    notes: Few videos expected; do not over-invest.
+  - id: ritholtz
+    name: The Big Picture (Ritholtz)
+    url: https://ritholtz.com/
+    type: rss
+    feeds: [https://ritholtz.com/feed/, https://ritholtz.com/sitemap.xml]
+    notes: Daily link roundups dense with videos.
+  - id: undercover-economist
+    name: Tim Harford - Undercover Economist
+    url: https://timharford.com/articles/undercovereconomist/
+    type: rss
+    feeds: [https://timharford.com/feed/]
+  - id: freakonomics
+    name: Freakonomics
+    url: https://freakonomics.com/
+    type: rss
+    feeds: [https://freakonomics.com/feed/, https://freakonomics.com/sitemap_index.xml]
+  - id: alt-goes-mainstream
+    name: Alt Goes Mainstream
+    url: https://altgoesmainstream.substack.com/
+    type: rss
+    feeds: [https://altgoesmainstream.substack.com/feed]
+  - id: lyn-alden
+    name: Lyn Alden
+    url: https://www.lynalden.com/
+    type: rss
+    feeds: [https://www.lynalden.com/feed/, https://www.lynalden.com/sitemap.xml]
+  - id: delong
+    name: Brad DeLong - Grasping Reality
+    url: https://braddelong.substack.com/
+    type: rss
+    feeds: [https://braddelong.substack.com/feed, https://delong.typepad.com/sdj/atom.xml]
+    notes: Old Typepad archive at delong.typepad.com if reachable.
+  - id: chartbook
+    name: Adam Tooze - Chartbook
+    url: https://adamtooze.substack.com/
+    type: rss
+    feeds: [https://adamtooze.substack.com/feed]
+    notes: Also the Ones and Tooze podcast (Foreign Policy) - resolve via iTunes Search.
+
+  # ---------------- Institutions & research ----------------
+  - id: mercatus
+    name: Mercatus Center
+    url: https://www.mercatus.org/
+    type: sitemap
+    feeds: [https://www.mercatus.org/sitemap.xml]
+    notes: Plus Mercatus YouTube channels and Conversations with Tyler podcast.
+  - id: conversations-with-tyler
+    name: Conversations with Tyler
+    url: https://conversationswithtyler.com/
+    type: rss
+    weight: 2.0
+    feeds: [https://conversationswithtyler.com/feed/]
+  - id: cato
+    name: Cato Institute
+    url: https://www.cato.org/
+    type: sitemap
+    feeds: [https://www.cato.org/sitemap.xml, https://www.cato.org/rss/blog]
+    notes: Video pages at cato.org/multimedia; Cato podcasts.
+  - id: hoover
+    name: Hoover Institution
+    url: https://www.hoover.org/
+    type: youtube_channel
+    weight: 1.5
+    feeds: [https://www.hoover.org/sitemap.xml]
+    notes: Uncommon Knowledge, GoodFellows, Free to Choose Network - ingest channels directly.
+  - id: free-to-choose-network
+    name: Free To Choose Network
+    url: https://www.freetochoosenetwork.org/
+    type: youtube_channel
+    weight: 1.5
+  - id: iea
+    name: Institute of Economic Affairs
+    url: https://iea.org.uk/
+    type: rss
+    feeds: [https://iea.org.uk/feed/, https://iea.org.uk/sitemap_index.xml]
+  - id: bfi
+    name: Becker Friedman Institute (UChicago)
+    url: https://bfi.uchicago.edu/
+    type: sitemap
+    feeds: [https://bfi.uchicago.edu/feed/, https://bfi.uchicago.edu/sitemap_index.xml]
+  - id: voxeu
+    name: CEPR / VoxEU
+    url: https://cepr.org/voxeu
+    type: rss
+    feeds: [https://cepr.org/rss/vox-content, https://cepr.org/sitemap.xml]
+    notes: VoxTalks podcast, CEPR webinars.
+  - id: lse-economic-history
+    name: LSE Economic History Blog
+    url: https://blogs.lse.ac.uk/economichistory/
+    type: rss
+    feeds: [https://blogs.lse.ac.uk/economichistory/feed/]
+  - id: lse-business-review
+    name: LSE Business Review
+    url: https://blogs.lse.ac.uk/businessreview/
+    type: rss
+    feeds: [https://blogs.lse.ac.uk/businessreview/feed/]
+  - id: nobel-economics
+    name: Nobel Prize - Economic Sciences
+    url: https://www.nobelprize.org/prizes/economic-sciences/
+    type: html
+    weight: 2.0
+    feeds: [https://www.nobelprize.org/sitemap.xml]
+    notes: Flagship - prize lecture for every laureate since 1969; also Nobel Prize YouTube channel.
+  - id: commanding-heights
+    name: PBS - Commanding Heights
+    url: https://www.pbs.org/wgbh/commandingheights/
+    type: html
+    weight: 1.5
+    notes: 3-part documentary. PBS pages are canonical metadata; embed only from official/rights-holder channels, else link out.
+  - id: siepr
+    name: Stanford SIEPR
+    url: https://siepr.stanford.edu/
+    type: sitemap
+    feeds: [https://siepr.stanford.edu/sitemap.xml]
+    podcast_pages: [https://siepr.stanford.edu/news/podcast-econ-to-go]
+  - id: eh-net
+    name: Economic History Association (EH.net)
+    url: https://eh.net/eh-net/
+    type: rss
+    feeds: [https://eh.net/feed/]
+    notes: Book reviews and resources; extract video/audio links.
+  - id: capitalisnt
+    name: Capitalisn't (Chicago Booth)
+    url: https://www.capitalisnt.com/
+    type: rss
+    notes: Podcast - feed resolved via iTunes Search.
+
+  # ---------------- Historians & writers on Substack ----------------
+  - id: tim-leunig
+    name: Tim Leunig
+    url: https://timleunig.substack.com/
+    type: rss
+    feeds: [https://timleunig.substack.com/feed]
+  - id: niall-ferguson
+    name: Niall Ferguson
+    url: https://substack.com/@niallferguson
+    type: rss
+    notes: Resolve profile -> publication subdomain -> /feed (probe does this).
+
+  # ---------------- Direct YouTube / Spotify ----------------
+  - id: yt-UCjB5Zb0i5q37j3yHDUECyxw
+    name: TBD (resolve via channels.list)
+    url: https://www.youtube.com/channel/UCjB5Zb0i5q37j3yHDUECyxw
+    type: youtube_channel
+    filter: economics_only
+    youtube_channels: [{id: UCjB5Zb0i5q37j3yHDUECyxw, verified: true}]
+    notes: Given by owner. Filtered - money, economics, political economy only.
+  - id: yt-playlist-PL01nDImtijMBKaj8K3QaCKX81OtTosVL4
+    name: TBD (resolve via playlists.list)
+    url: https://www.youtube.com/playlist?list=PL01nDImtijMBKaj8K3QaCKX81OtTosVL4
+    type: youtube_channel
+    youtube_playlists: [PL01nDImtijMBKaj8K3QaCKX81OtTosVL4]
+    notes: Whole playlist via playlistItems.list.
+  - id: unherd
+    name: UnHerd
+    url: https://www.youtube.com/@UnHerd
+    type: youtube_channel
+    filter: economics_only
+    youtube_handles: ["@UnHerd"]
+    notes: Mostly culture/politics; relevance gate must reject culture-war items.
+  - id: spotify-7xzAHy5zOSFztWy0R0cmCx
+    name: TBD (resolve via Spotify API or show page)
+    url: https://open.spotify.com/show/7xzAHy5zOSFztWy0R0cmCx
+    type: curated_list
+    spotify_show: 7xzAHy5zOSFztWy0R0cmCx
+  - id: spotify-3mmVPg0hr1znKgha9LIwNP
+    name: TBD (resolve via Spotify API or show page)
+    url: https://open.spotify.com/show/3mmVPg0hr1znKgha9LIwNP
+    type: curated_list
+    spotify_show: 3mmVPg0hr1znKgha9LIwNP
+
+  # ---------------- Investors & markets ----------------
+  - id: apollo-daily-spark
+    name: Apollo - The Daily Spark
+    url: https://www.apollo.com/wealth/insights-news/insights/daily-spark
+    type: html
+    weight: 0.5
+    notes: Mostly charts; extract any video links.
+  - id: oaktree
+    name: Oaktree Capital - Insights
+    url: https://www.oaktreecapital.com/insights
+    type: html
+    weight: 1.5
+    notes: Howard Marks memos plus video/podcast versions.
+  - id: brookfield
+    name: Brookfield Private Wealth - Insights
+    url: https://privatewealth.brookfield.com/insights
+    type: html
+    weight: 0.75
+  - id: bond-vigilantes
+    name: Bond Vigilantes (M&G)
+    url: https://bondvigilantes.com/
+    type: rss
+    feeds: [https://bondvigilantes.com/feed/]
+  - id: doubleline
+    name: DoubleLine - Market Insights
+    url: https://doubleline.com/markets-insights/
+    type: html
+    weight: 0.75
+  - id: grants
+    name: Grant's Interest Rate Observer
+    url: https://www.grantspub.com/
+    type: youtube_channel
+    notes: Paywalled. Only public pages plus Grant's own YouTube/podcast.
+
+  # ---------------- Bitcoin ----------------
+  - id: weusecoins
+    name: WeUseCoins
+    url: https://www.weusecoins.com/
+    type: html
+    weight: 0.75
+  - id: unchained
+    name: Unchained - Blog
+    url: https://www.unchained.com/blog
+    type: html
+    feeds: [https://www.unchained.com/sitemap.xml]
+
+  # ---------------- Polish ----------------
+  - id: prywatyzacja-analizy
+    name: Prywatyzacja.com - Analizy prywatyzacji
+    url: https://www.prywatyzacja.com/analizy-prywatyzacji/
+    type: html
+    language: pl
+  - id: prywatyzacja-rozmowy
+    name: Prywatyzacja.com - Rozmowy z wybitnymi ekonomistami
+    url: https://www.prywatyzacja.com/rozmowy-z-wybitnymi-ekonomistami/
+    type: html
+    language: pl
+    weight: 1.5
+  - id: prywatyzacja-case-studies
+    name: Prywatyzacja.com - Case studies prywatyzacji
+    url: https://www.prywatyzacja.com/case-studies-prywatyzacji/
+    type: html
+    language: pl
+
+  # ---------------- Paywalled mainstream ----------------
+  - id: economist
+    name: The Economist (YouTube only)
+    url: https://www.youtube.com/@TheEconomist
+    type: youtube_channel
+    youtube_handles: ["@TheEconomist"]
+    notes: Never scrape economist.com. Official channel only.
+
+  # ---------------- Topic seeds ----------------
+  - id: seeds
+    name: Topic seeds (YouTube search)
+    url: seeds.yaml
+    type: curated_list
+    weight: 0.25
+    notes: search.list costs 100 units/call; capped by seeds.yaml budget.

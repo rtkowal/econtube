@@ -1,0 +1,24 @@
+name: probe-sources
+# Step 1 of the build: verify every source's feeds, count posts and links,
+# discover YouTube channels / podcast feeds. Manual only; commits reports/probe.md.
+on: workflow_dispatch
+permissions: {contents: write}
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12", cache: pip}
+      - run: pip install -r requirements.txt
+      - run: python pipeline/probe.py
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+      - name: commit report
+        run: |
+          git config user.name "econtube-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add reports/
+          git diff --cached --quiet || git commit -m "probe: update source report"
+          git push
