@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE, DIST = ROOT / "site", ROOT / "dist"
-BASE = "https://www.econtube.org"
+BASE = "https://econtube.org"
 # stdlib only (Vercel's build image has no pip packages): config is pre-exported to JSON by pipeline/export_config.py
 cfg_p = ROOT / "data/site.json"
 CFG = json.loads(cfg_p.read_text()) if cfg_p.exists() else {}
