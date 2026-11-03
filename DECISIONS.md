@@ -65,3 +65,6 @@ Product and engineering choices made without explicit instruction. Simplest opti
     below 0.6 confidence are stored but not shown. `overrides.yaml` always wins. Both caches are keyed by item ID.
 19. **`taxonomy.yaml` is a draft.** The fields, schools, formats, levels, eras and regions follow the brief. `topics` is a 25-item
     seed, to be regenerated from a 500-item classified sample and frozen only after owner approval.
+20. **Taxonomy v1 frozen (owner-approved 2026-11-03):** 98 topics (the proposal said 82, which was a miscount of the same list),
+    each with a parent field, plus 4 new regions (Germany, France, Spain, Asia). The classifier cache moves to v3. Prompt changes:
+    people are humans only, empty facets are allowed, and slugs must not cross facets.

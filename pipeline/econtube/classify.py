@@ -22,7 +22,7 @@ from . import llm
 ROOT = Path(__file__).resolve().parents[2]
 CACHE = Path(os.environ.get("ECONTUBE_CACHE", ROOT / ".cache"))
 GATE_MIN = 0.7
-CLASSIFY_CACHE = "classify_v2"   # bump to force re-classification after prompt/schema changes
+CLASSIFY_CACHE = "classify_v3"   # bump to force re-classification after prompt/schema changes
 SHOW_MIN = 0.6
 MULTI = ("fields", "topics", "schools", "eras", "regions")   # 1-3 values each
 SINGLE = ("format", "level")
@@ -75,9 +75,9 @@ def _sys(tax: dict[str, set[str]]) -> str:
 
 Return JSON with exactly these keys:
   "is_recommendation": true if the curator post links the item approvingly or as a resource; false for ads, sidebars, footers, "subscribe" boilerplate (true when there is no curator post),
-  "fields", "topics", "schools", "eras", "regions": lists of 1-3 objects {{"v": slug, "c": confidence 0..1}} (empty list if none apply; schools ONLY when the content clearly argues from that school; eras = periods DISCUSSED, not publication date),
+  "fields", "topics", "schools", "eras", "regions": lists of 0-3 objects {{"v": slug, "c": confidence 0..1}} (an EMPTY list is correct when nothing fits; never put a slug from one facet into another, e.g. a field slug into topics; schools ONLY when the content clearly argues from that school; eras = periods DISCUSSED, not publication date),
   "format", "level": ONE object (not a list) {{"v": slug, "c": confidence}},
-  "people": {{"speakers": [names], "discussed": [names]}} (full canonical names, e.g. "Milton Friedman"; "discussed" = people talked ABOUT who are not speaking; never repeat a speaker there),
+  "people": {{"speakers": [names], "discussed": [names]}} (HUMANS ONLY: never institutions like "Federal Reserve"; full canonical names, e.g. "Milton Friedman"; "discussed" = people talked ABOUT who are not speaking; never repeat a speaker there),
   "tags": 3-10 lowercase specific concepts (never the channel, show or source name), institutions, events, books or policies (e.g. "phillips curve", "bretton woods", "balcerowicz plan"),
   "one_line_why": at most 20 words, your own words, no quotes from the source, saying why it is worth watching."""
 

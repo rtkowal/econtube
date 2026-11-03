@@ -1,7 +1,6 @@
 # EconTube taxonomy. Edit freely: the classifier only accepts slugs listed here.
 # Each entry: slug, label, (description), (aliases), (parent), (jel).
-# STATUS: draft. `topics` is a seed list; per the build plan it is regenerated from a
-# 500-item classified sample, deduplicated, and frozen only after owner approval.
+# STATUS: v1, frozen 2026-11-03 after owner review of the classified sample.
 
 fields:   # two-level, built on AEA JEL codes, plain-English labels
   - {slug: general, label: "Economics in general & methodology", jel: A}
@@ -95,7 +94,11 @@ regions:
   - {slug: poland, label: Poland}
   - {slug: cee, label: "Central & Eastern Europe"}
   - {slug: eurozone, label: Eurozone}
+  - {slug: germany, label: Germany}
+  - {slug: france, label: France}
+  - {slug: spain, label: Spain}
   - {slug: china, label: China}
+  - {slug: asia, label: "Asia (other)"}
   - {slug: japan, label: Japan}
   - {slug: india, label: India}
   - {slug: latin-america, label: "Latin America"}
@@ -104,29 +107,102 @@ regions:
   - {slug: russia, label: Russia}
   - {slug: global, label: Global}
 
-topics:   # SEED (draft). Regenerated from the 500-item sample before freezing.
-  - {slug: inflation, label: Inflation, parent: business-cycles}
-  - {slug: great-depression, label: "The Great Depression", parent: economic-history}
-  - {slug: 2008-crisis, label: "The 2008 financial crisis", parent: banking}
-  - {slug: minimum-wage, label: "Minimum wage", parent: labor}
-  - {slug: tariffs, label: "Tariffs & trade wars", parent: trade, aliases: [protectionism, trade war]}
-  - {slug: privatization, label: Privatization, parent: transition, aliases: [prywatyzacja]}
-  - {slug: shock-therapy, label: "Shock therapy & post-communist transition", parent: transition}
-  - {slug: housing, label: Housing, parent: urban-housing}
-  - {slug: national-debt, label: "The national debt", parent: fiscal-macro}
-  - {slug: the-fed, label: "The Federal Reserve", parent: monetary-policy, aliases: [fed, fomc]}
+topics:   # v1 FROZEN 2026-11-03 (owner-approved, 98 topics). Changes after this cost reclassification.
+  - {slug: inflation, label: "Inflation", parent: business-cycles}
+  - {slug: deflation, label: "Deflation", parent: business-cycles}
+  - {slug: stagflation, label: "Stagflation", parent: business-cycles}
+  - {slug: recessions, label: "Recessions", parent: business-cycles}
+  - {slug: business-cycle, label: "Business cycle", parent: business-cycles}
+  - {slug: unemployment, label: "Unemployment", parent: business-cycles}
+  - {slug: the-fed, label: "The Federal Reserve", parent: monetary-policy, aliases: [fed, fomc, federal reserve]}
   - {slug: ecb, label: "The ECB", parent: monetary-policy}
-  - {slug: gold-standard, label: "Gold standard", parent: sound-money}
-  - {slug: price-system, label: "The price system", parent: micro}
-  - {slug: regulation, label: Regulation, parent: industrial-org}
-  - {slug: entrepreneurship, label: Entrepreneurship, parent: business}
-  - {slug: healthcare, label: "Healthcare economics", parent: health-education-welfare}
-  - {slug: taxation, label: Taxation, parent: public}
-  - {slug: inequality, label: Inequality, parent: labor}
-  - {slug: economic-growth, label: "Economic growth", parent: development}
-  - {slug: ai-economy, label: "AI & the economy", parent: innovation}
-  - {slug: socialism-vs-capitalism, label: "Socialism vs capitalism", parent: systems}
-  - {slug: china-economy, label: "China's economy", parent: development}
-  - {slug: interest-rates, label: "Interest rates", parent: rates}
-  - {slug: bitcoin, label: Bitcoin, parent: bitcoin}
+  - {slug: bank-of-england, label: "Bank of england", parent: monetary-policy}
   - {slug: central-bank-independence, label: "Central bank independence", parent: monetary-policy}
+  - {slug: interest-rates, label: "Interest rates", parent: monetary-policy}
+  - {slug: quantitative-easing, label: "Quantitative easing", parent: monetary-policy, aliases: [qe]}
+  - {slug: money-supply, label: "Money supply", parent: monetary-policy}
+  - {slug: gold-standard, label: "Gold standard", parent: sound-money}
+  - {slug: bretton-woods, label: "Bretton woods", parent: sound-money}
+  - {slug: sound-money, label: "Sound money", parent: sound-money}
+  - {slug: hyperinflation, label: "Hyperinflation", parent: sound-money}
+  - {slug: great-depression, label: "The Great Depression", parent: economic-history}
+  - {slug: industrial-revolution, label: "Industrial revolution", parent: economic-history}
+  - {slug: economic-history-of-europe, label: "Economic history of Europe", parent: economic-history}
+  - {slug: soviet-economy, label: "Soviet economy", parent: economic-history}
+  - {slug: polish-economy, label: "Polish economy", parent: economic-history, aliases: [poland economy, gospodarka polska]}
+  - {slug: 2008-crisis, label: "The 2008 financial crisis", parent: banking}
+  - {slug: banking-crises, label: "Banking crises", parent: banking}
+  - {slug: bank-runs, label: "Bank runs", parent: banking}
+  - {slug: national-debt, label: "The national debt", parent: fiscal-macro}
+  - {slug: government-spending, label: "Government spending", parent: fiscal-macro}
+  - {slug: fiscal-stimulus, label: "Fiscal stimulus", parent: fiscal-macro}
+  - {slug: austerity, label: "Austerity", parent: fiscal-macro}
+  - {slug: sovereign-debt-crises, label: "Sovereign debt crises", parent: intl-finance}
+  - {slug: euro-crisis, label: "Euro crisis", parent: intl-finance}
+  - {slug: exchange-rates, label: "Exchange rates", parent: intl-finance}
+  - {slug: dollar-dominance, label: "Dollar dominance", parent: intl-finance}
+  - {slug: emerging-markets, label: "Emerging markets", parent: intl-finance}
+  - {slug: stock-market, label: "Stock market", parent: equities}
+  - {slug: ipos-and-capital-markets, label: "IPOs & capital markets", parent: equities}
+  - {slug: bonds-and-yields, label: "Bonds & yields", parent: rates}
+  - {slug: credit-markets, label: "Credit markets", parent: credit}
+  - {slug: private-equity, label: "Private equity", parent: private-markets}
+  - {slug: venture-capital, label: "Venture capital", parent: private-markets}
+  - {slug: hedge-funds, label: "Hedge funds", parent: alternatives}
+  - {slug: commodities, label: "Commodities", parent: alternatives}
+  - {slug: real-estate-investing, label: "Real estate investing", parent: alternatives}
+  - {slug: asset-bubbles, label: "Asset bubbles", parent: macro-investing}
+  - {slug: market-cycles, label: "Market cycles", parent: macro-investing}
+  - {slug: risk-management, label: "Risk management", parent: macro-investing}
+  - {slug: value-investing, label: "Value investing", parent: macro-investing}
+  - {slug: bitcoin, label: "Bitcoin", parent: bitcoin}
+  - {slug: stablecoins, label: "Stablecoins", parent: bitcoin}
+  - {slug: cbdc, label: "Central bank digital currencies", parent: bitcoin, aliases: [digital euro, digital dollar]}
+  - {slug: tariffs, label: "Tariffs & trade wars", parent: trade, aliases: [protectionism, trade war]}
+  - {slug: free-trade, label: "Free trade", parent: trade}
+  - {slug: china-shock, label: "China shock", parent: trade}
+  - {slug: globalization, label: "Globalization", parent: trade}
+  - {slug: sanctions-and-economic-statecraft, label: "Sanctions & economic statecraft", parent: trade}
+  - {slug: minimum-wage, label: "Minimum wage", parent: labor}
+  - {slug: labor-markets, label: "Labor markets", parent: labor}
+  - {slug: immigration, label: "Immigration", parent: labor}
+  - {slug: inequality, label: "Inequality", parent: labor}
+  - {slug: poverty, label: "Poverty", parent: health-education-welfare}
+  - {slug: welfare-state, label: "Welfare state", parent: health-education-welfare}
+  - {slug: pensions-and-social-security, label: "Pensions & social security", parent: health-education-welfare}
+  - {slug: education, label: "Education", parent: health-education-welfare}
+  - {slug: school-choice, label: "School choice", parent: health-education-welfare}
+  - {slug: universal-basic-income, label: "Universal basic income", parent: health-education-welfare}
+  - {slug: healthcare, label: "Healthcare economics", parent: health-education-welfare}
+  - {slug: taxation, label: "Taxation", parent: public}
+  - {slug: wealth-tax, label: "Wealth tax", parent: public}
+  - {slug: regulation, label: "Regulation", parent: industrial-org}
+  - {slug: antitrust, label: "Antitrust", parent: industrial-org}
+  - {slug: industrial-policy, label: "Industrial policy", parent: industrial-org}
+  - {slug: price-controls, label: "Price controls", parent: industrial-org}
+  - {slug: housing, label: "Housing", parent: urban-housing}
+  - {slug: zoning-and-land-use, label: "Zoning & land use", parent: urban-housing}
+  - {slug: rent-control, label: "Rent control", parent: urban-housing}
+  - {slug: energy-and-climate, label: "Energy & climate", parent: environment-energy}
+  - {slug: price-system, label: "Price system", parent: micro}
+  - {slug: socialism-vs-capitalism, label: "Socialism vs capitalism", parent: systems}
+  - {slug: central-planning, label: "Central planning", parent: systems}
+  - {slug: privatization, label: "Privatization", parent: transition, aliases: [prywatyzacja]}
+  - {slug: shock-therapy, label: "Shock therapy & post-communist transition", parent: transition}
+  - {slug: property-rights, label: "Property rights", parent: law-econ}
+  - {slug: rule-of-law, label: "Rule of law", parent: law-econ}
+  - {slug: public-choice-government-failure, label: "Public choice & government failure", parent: law-econ}
+  - {slug: economic-growth, label: "Economic growth", parent: development}
+  - {slug: productivity, label: "Productivity", parent: development}
+  - {slug: china-economy, label: "China's economy", parent: development}
+  - {slug: development-and-poverty-traps, label: "Development & poverty traps", parent: development}
+  - {slug: state-capacity, label: "State capacity", parent: development}
+  - {slug: ai-economy, label: "AI & the economy", parent: innovation, aliases: [artificial intelligence]}
+  - {slug: innovation, label: "Innovation", parent: innovation}
+  - {slug: economics-of-science, label: "Economics of science", parent: innovation}
+  - {slug: entrepreneurship, label: "Entrepreneurship", parent: business}
+  - {slug: history-of-economic-thought, label: "History of economic thought", parent: history-of-thought}
+  - {slug: keynes-vs-hayek, label: "Keynes vs Hayek", parent: history-of-thought}
+  - {slug: rational-expectations, label: "Rational expectations", parent: history-of-thought}
+  - {slug: behavioral-economics, label: "Behavioral economics", parent: behavioral}
+  - {slug: econometrics-and-causal-inference, label: "Econometrics & causal inference", parent: quantitative}
