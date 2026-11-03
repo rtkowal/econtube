@@ -296,14 +296,14 @@ sources:
 
   # ---------------- Direct YouTube / Spotify ----------------
   - id: yt-UCjB5Zb0i5q37j3yHDUECyxw
-    name: TBD (resolve via channels.list)
+    name: "Niall Ferguson"
     url: https://www.youtube.com/channel/UCjB5Zb0i5q37j3yHDUECyxw
     type: youtube_channel
     filter: economics_only
     youtube_channels: [{id: UCjB5Zb0i5q37j3yHDUECyxw, verified: true}]
     notes: Given by owner. Filtered - money, economics, political economy only.
   - id: yt-playlist-PL01nDImtijMBKaj8K3QaCKX81OtTosVL4
-    name: TBD (resolve via playlists.list)
+    name: "The Econoclasts (UnHerd)"
     url: https://www.youtube.com/playlist?list=PL01nDImtijMBKaj8K3QaCKX81OtTosVL4
     type: youtube_channel
     youtube_playlists: [PL01nDImtijMBKaj8K3QaCKX81OtTosVL4]
