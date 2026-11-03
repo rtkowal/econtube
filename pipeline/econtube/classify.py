@@ -22,7 +22,7 @@ from . import llm
 ROOT = Path(__file__).resolve().parents[2]
 CACHE = Path(os.environ.get("ECONTUBE_CACHE", ROOT / ".cache"))
 GATE_MIN = 0.7
-CLASSIFY_CACHE = "classify_v3"   # bump to force re-classification after prompt/schema changes
+CLASSIFY_CACHE = "classify_v3"   # _reroute is applied at read time too, so no bump needed   # bump to force re-classification after prompt/schema changes
 SHOW_MIN = 0.6
 MULTI = ("fields", "topics", "schools", "eras", "regions")   # 1-3 values each
 SINGLE = ("format", "level")
@@ -96,8 +96,29 @@ def _normalise(out: dict) -> dict:
     return out
 
 
+def _reroute(out: dict, tax: dict[str, set[str]]) -> dict:
+    """Small models put slugs in the wrong facet (a field in topics, a topic in fields). Move them
+    instead of paying for a retry; drop placeholders like 'general' from topics."""
+    moves = {"topics": "fields", "fields": "topics"}
+    for src, dst in moves.items():
+        keep = []
+        for x in out.get(src) or []:
+            v = x.get("v") if isinstance(x, dict) else None
+            if v in tax[src]:
+                keep.append(x)
+            elif v in tax[dst]:
+                if v not in {y.get("v") for y in out.get(dst) or [] if isinstance(y, dict)} and v != "general":
+                    out.setdefault(dst, []).append(x)
+            elif v == "general":
+                continue
+            else:
+                keep.append(x)   # genuinely unknown: let validation see it
+        out[src] = keep
+    return out
+
+
 def _validate(out: dict, tax: dict[str, set[str]]) -> list[str]:
-    out = _normalise(out)
+    out = _reroute(_normalise(out), tax)
     errs = []
     for k in MULTI:
         for x in out.get(k) or []:
@@ -113,7 +134,7 @@ def _validate(out: dict, tax: dict[str, set[str]]) -> list[str]:
 
 
 def _clean(out: dict, tax: dict[str, set[str]], item_id: str, drop_tags: set[str] = frozenset()) -> dict:
-    out = _normalise(out)
+    out = _reroute(_normalise(out), tax)
     sugg = []
     for k in MULTI:
         keep = []

@@ -63,3 +63,14 @@ def test_source_name_tags_dropped(tmp_path, monkeypatch):
     o["tags"] = ["marginal-revolution", "Hoover Institution", "economic-growth"]
     cl = C._clean(o, TAX, "x5", {"Marginal Revolution", "Hoover Institution"})
     assert cl["tags"] == ["economic growth"]
+
+
+def test_cross_facet_slugs_rerouted_not_retried(tmp_path, monkeypatch):
+    monkeypatch.setattr(C, "ROOT", tmp_path)
+    o = good()
+    o["topics"] = [{"v": "inflation", "c": 0.8}, {"v": "general", "c": 0.3}, {"v": "innovation", "c": 0.6}]
+    o["fields"] = [{"v": "monetary-policy", "c": 0.9}, {"v": "school-choice", "c": 0.7}]
+    assert C._validate(o, TAX) == []
+    cl = C._clean(o, TAX, "x6")
+    assert {t["v"] for t in cl["topics"]} == {"inflation", "innovation", "school-choice"}
+    assert {f["v"] for f in cl["fields"]} == {"monetary-policy"}
