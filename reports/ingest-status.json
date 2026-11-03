@@ -1,0 +1,107 @@
+{
+ "marginal-revolution": {
+  "pages": 42,
+  "new": 600,
+  "refs": 45,
+  "stopped": null,
+  "total_posts": 1200
+ },
+ "cafe-hayek": {
+  "pages": 42,
+  "new": 200,
+  "refs": 11,
+  "stopped": null,
+  "total_posts": 400
+ },
+ "conversable-economist": {
+  "pages": 42,
+  "new": 400,
+  "refs": 4,
+  "stopped": null,
+  "total_posts": 800
+ },
+ "econlog": {
+  "pages": 42,
+  "new": 400,
+  "refs": 28,
+  "stopped": null,
+  "total_posts": 800
+ },
+ "ritholtz": {
+  "pages": 4,
+  "new": 11,
+  "refs": 18,
+  "stopped": "HTTP 429 for https://ritholtz.com/feed/?paged=4",
+  "total_posts": 30
+ },
+ "undercover-economist": {
+  "pages": 42,
+  "new": 400,
+  "refs": 163,
+  "stopped": null,
+  "total_posts": 800
+ },
+ "freakonomics": {
+  "pages": 41,
+  "new": 800,
+  "refs": 76,
+  "stopped": null,
+  "total_posts": 1600
+ },
+ "lyn-alden": {
+  "pages": 2,
+  "new": 0,
+  "refs": 0,
+  "stopped": null,
+  "total_posts": 120
+ },
+ "iea": {
+  "pages": 42,
+  "new": 400,
+  "refs": 55,
+  "stopped": null,
+  "total_posts": 800
+ },
+ "lse-economic-history": {
+  "pages": 0,
+  "new": 0,
+  "refs": 0,
+  "stopped": null,
+  "total_posts": 138
+ },
+ "lse-business-review": {
+  "pages": 0,
+  "new": 0,
+  "refs": 0,
+  "stopped": null,
+  "total_posts": 4
+ },
+ "eh-net": {
+  "pages": 2,
+  "new": 0,
+  "refs": 0,
+  "stopped": null,
+  "total_posts": 90
+ },
+ "bond-vigilantes": {
+  "pages": 42,
+  "new": 400,
+  "refs": 12,
+  "stopped": null,
+  "total_posts": 800
+ },
+ "doubleline": {
+  "pages": 2,
+  "new": 0,
+  "refs": 0,
+  "stopped": null,
+  "total_posts": 10
+ },
+ "weusecoins": {
+  "pages": 2,
+  "new": 0,
+  "refs": 0,
+  "stopped": null,
+  "total_posts": 10
+ }
+}
