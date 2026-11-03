@@ -116,13 +116,13 @@ topics:   # v1 FROZEN 2026-11-03 (owner-approved, 98 topics). Changes after this
   - {slug: unemployment, label: "Unemployment", parent: business-cycles}
   - {slug: the-fed, label: "The Federal Reserve", parent: monetary-policy, aliases: [fed, fomc, federal reserve]}
   - {slug: ecb, label: "The ECB", parent: monetary-policy}
-  - {slug: bank-of-england, label: "Bank of england", parent: monetary-policy}
+  - {slug: bank-of-england, label: "Bank of England", parent: monetary-policy}
   - {slug: central-bank-independence, label: "Central bank independence", parent: monetary-policy}
   - {slug: interest-rates, label: "Interest rates", parent: monetary-policy}
   - {slug: quantitative-easing, label: "Quantitative easing", parent: monetary-policy, aliases: [qe]}
   - {slug: money-supply, label: "Money supply", parent: monetary-policy}
   - {slug: gold-standard, label: "Gold standard", parent: sound-money}
-  - {slug: bretton-woods, label: "Bretton woods", parent: sound-money}
+  - {slug: bretton-woods, label: "Bretton Woods", parent: sound-money}
   - {slug: sound-money, label: "Sound money", parent: sound-money}
   - {slug: hyperinflation, label: "Hyperinflation", parent: sound-money}
   - {slug: great-depression, label: "The Great Depression", parent: economic-history}

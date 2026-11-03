@@ -75,3 +75,15 @@ kbd{font:inherit;font-size:13px;border:1px solid var(--line);border-radius:3px;p
 #sug div{padding:6px 10px;border-bottom:1px solid var(--line)}#sug b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:500}
 #sug a{display:block;padding:2px 0}
 @media (max-width:800px){.browse{grid-template-columns:1fr}}
+.bar select{font:inherit;font-size:14px;background:transparent;color:var(--mute);border:0;border-bottom:1px solid var(--line);padding:0 2px;cursor:pointer}
+.bar select option{background:var(--card);color:var(--ink)}
+.fams,.tops{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:10px 0 2px;-webkit-overflow-scrolling:touch}
+.fams::-webkit-scrollbar,.tops::-webkit-scrollbar{display:none}
+.fams button,.tops button{font:inherit;font-size:15px;white-space:nowrap;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:4px 14px;cursor:pointer}
+.tops button{font-size:13.5px;color:var(--mute);padding:2px 12px}
+.fams button:hover,.tops button:hover{border-color:var(--mute)}
+.fams button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tops button[aria-pressed=true]{color:var(--accent);border-color:var(--accent)}
+.fams small,.tops small{opacity:.55;font-size:.8em;margin-left:3px}
+.tops a{font-size:13.5px;color:var(--mute);white-space:nowrap;align-self:center}
+.tops:empty{display:none}

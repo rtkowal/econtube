@@ -125,7 +125,10 @@ def main() -> None:
     preview = ('<p class="note">Preview. Items are ranked by curator endorsements; topic tags, summaries and the full '
                'archive arrive once classification runs.</p>') if data.get("preview") else ""
     home = f"""{preview}<div class="bar"><button data-k="all">All</button><button data-k="video">Video</button><button data-k="audio">Audio</button>
+<select id="sort" aria-label="Sort"><option value="">Sort: Top</option><option value="new">Newest</option><option value="long">Longest</option><option value="short">Shortest</option></select>
+<select id="len" aria-label="Length"><option value="">Any length</option><option value="short">&lt; 20 min</option><option value="mid">20–60 min</option><option value="long">60+ min</option></select>
 <a id="reset" href="#" style="margin-left:auto">reset For You</a></div>
+<nav id="fams" class="fams" aria-label="Families"></nav><nav id="tops" class="tops" aria-label="Topics"></nav>
 <main id="grid" class="grid" aria-live="polite"><p class="empty">Loading…</p></main>
 <noscript>{"".join(f'<p><a href="/v/{e(i["id"])}/">{e(i["title"])}</a></p>' for i in items[:100])}</noscript>"""
     (DIST / "index.html").write_text(page("EconTube — economics videos, picked by economists", home,

@@ -178,6 +178,32 @@ def slim(it: dict) -> dict:
             "p": [*(ppl.get("speakers") or []), *(ppl.get("discussed") or [])][:6], "g": (it.get("tags") or [])[:8]}
 
 
+FAMILIES = [  # (slug, label, top-level fields or sub-fields that map here; first match walking up the tree wins)
+    ("money-macro", "Money & Macro", {"macro"}),
+    ("markets", "Markets & Investing", {"markets-investing", "finance"}),
+    ("global", "Trade & Global", {"international", "development"}),
+    ("work-welfare", "Work & Welfare", {"labor", "health-education-welfare"}),
+    ("policy", "Policy & Regulation", {"public", "industrial-org", "law-econ", "urban-housing", "environment-energy"}),
+    ("ideas", "History & Ideas", {"economic-history", "history-of-thought", "systems", "general", "quantitative", "micro", "behavioral"}),
+    ("tech-business", "Tech & Business", {"business", "innovation"}),
+    ("bitcoin", "Bitcoin & Sound Money", {"money-bitcoin"}),
+]
+
+
+def topic_families(tax: dict) -> dict[str, str]:
+    parent = {f["slug"]: f.get("parent") for f in tax["fields"]}
+    out = {}
+    for t in tax["topics"]:
+        node = t.get("parent")
+        while node:
+            fam = next((slug for slug, _, keys in FAMILIES if node in keys), None)
+            if fam:
+                out[t["slug"]] = fam
+                break
+            node = parent.get(node)
+    return out
+
+
 def write_all(dist: Path, items: list[dict], tax: dict, page, base: str) -> list[str]:
     ix = Index(items, tax)
     urls = ["/topics/", "/browse/"]
@@ -196,6 +222,7 @@ def write_all(dist: Path, items: list[dict], tax: dict, page, base: str) -> list
     labels = {k: {s: v.get("label", s) for s, v in ix.label[k].items()} for k in ix.label}
     aliases = {s: v.get("aliases", []) for s, v in ix.label["topics"].items() if v.get("aliases")}
     (dist / "data/facets.json").write_text(json.dumps({"labels": labels, "aliases": aliases,
+                                                       "families": [[a, b] for a, b, _ in FAMILIES], "fam": topic_families(tax),
                                                        "people": {k: ix.person_name[k] for k in ix.groups["person"]},
                                                        "tags": {k: ix.name("tag", k) for k in ix.groups["tag"]}},
                                                       ensure_ascii=False, separators=(",", ":")))

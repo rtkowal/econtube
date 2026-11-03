@@ -22,6 +22,8 @@
 
   // ---- home grid ----
   const grid = $("#grid"); if (!grid) return;
+  const P = new URLSearchParams(location.search);
+  let fam = P.get("family") || "", topic = P.get("topic") || "", sort = P.get("sort") || "", len = P.get("len") || "";
   let DATA = [], FX = null, tab = location.hash.slice(1) || "top", kind = store.get("kind", "all"), q = "", sel = -1;
   const fmtDur = s => { if (!s) return ""; if (/:/.test(s)) return s.replace(/^0(?=\d:)/, ""); s = +s; if (!s) return "";
     const h = s / 3600 | 0, m = (s % 3600) / 60 | 0; return h ? `${h}:${String(m).padStart(2, "0")}:00` : `${m} min` };
@@ -30,6 +32,11 @@
 
   function rank() {
     let L = DATA.filter(it => kind === "all" || it.kind === kind);
+    if (topic) L = L.filter(it => (it.t || []).includes(topic));
+    else if (fam && FX) L = L.filter(it => (it.t || []).some(t => FX.fam[t] === fam));
+    if (len) L = L.filter(it => { const d = +it.duration || 0; return d && (len === "short" ? d < 1200 : len === "mid" ? d <= 3600 : d > 3600) });
+    if (sort === "new") L = [...L].sort((a, b) => (b.published || "").localeCompare(a.published || ""));
+    if (sort === "long" || sort === "short") L = [...L].filter(it => +it.duration).sort((a, b) => sort === "long" ? b.duration - a.duration : a.duration - b.duration);
     if (q) { const t = q.toLowerCase().split(/\s+/).filter(Boolean);
       L = L.filter(it => { if (!it._h) { const lb = FX ? (it.t || []).map(x => FX.labels.topics[x] + " " + (FX.aliases[x] || []).join(" ")).join(" ") : "";
         it._h = [it.title, it.channel, ...it.sources.map(s => s.name), ...(it.p || []), ...(it.g || []), lb, (it.s || []).join(" ")].join(" ").toLowerCase() }
@@ -42,6 +49,21 @@
     }
     return L;
   }
+  function bar() {
+    const nav = $("#fams"); if (!nav || !FX) return;
+    const cnt = {}; DATA.forEach(it => new Set((it.t || []).map(t => FX.fam[t])).forEach(f => f && (cnt[f] = (cnt[f] || 0) + 1)));
+    if (!Object.keys(cnt).length) { nav.hidden = true; return }
+    nav.innerHTML = `<button data-f="" aria-pressed="${!fam}">All</button>` + FX.families.filter(([f]) => cnt[f])
+      .map(([f, l]) => `<button data-f="${f}" aria-pressed="${fam === f}">${esc(l)} <small>${cnt[f]}</small></button>`).join("");
+    const tc = {}; if (fam) DATA.forEach(it => (it.t || []).forEach(t => FX.fam[t] === fam && (tc[t] = (tc[t] || 0) + 1)));
+    $("#tops").innerHTML = Object.entries(tc).sort((a, b) => b[1] - a[1]).map(([t, n]) =>
+      `<button data-t="${t}" aria-pressed="${topic === t}">${esc(FX.labels.topics[t] || t)} <small>${n}</small></button>`).join("") +
+      (fam ? ` <a href="/browse/">more filters →</a>` : "");
+  }
+  function sync() {
+    const p = new URLSearchParams(); fam && p.set("family", fam); topic && p.set("topic", topic); sort && p.set("sort", sort); len && p.set("len", len);
+    history.replaceState(null, "", (p.toString() ? "?" + p : location.pathname) + location.hash); bar(); render();
+  }
   function render() {
     $$("nav.tabs a").forEach(a => a.toggleAttribute("aria-current", a.hash === "#" + tab));
     $$(".bar button").forEach(b => b.setAttribute("aria-pressed", b.dataset.k === kind));
@@ -52,8 +74,11 @@
       <div class="via">${esc(via(it))}</div></a>`).join("") : `<p class="empty">${tab === "foryou" ? "Watch or rate a few things and this tab learns what you like." : "Nothing matches."}</p>`;
     sel = -1;
   }
-  fetch("/data/videos.json").then(r => r.json()).then(d => { DATA = d.items; render() });
-  fetch("/data/facets.json").then(r => r.json()).then(f => { FX = f }).catch(() => {});
+  fetch("/data/videos.json").then(r => r.json()).then(d => { DATA = d.items; bar(); render() });
+  fetch("/data/facets.json").then(r => r.json()).then(f => { FX = f; bar(); render() }).catch(() => {});
+  $("#fams")?.addEventListener("click", ev => { const b = ev.target.closest("button"); if (!b) return; fam = fam === b.dataset.f ? "" : b.dataset.f; topic = ""; sync() });
+  $("#tops")?.addEventListener("click", ev => { const b = ev.target.closest("button"); if (!b) return; topic = topic === b.dataset.t ? "" : b.dataset.t; sync() });
+  const so = $("#sort"), le = $("#len"); if (so) { so.value = sort; so.onchange = () => { sort = so.value; sync() } } if (le) { le.value = len; le.onchange = () => { len = le.value; sync() } }
   const sug = document.createElement("div"); sug.id = "sug"; $(".search")?.appendChild(sug);
   function suggest() {
     if (!FX || q.length < 2) { sug.innerHTML = ""; return }
