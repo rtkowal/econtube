@@ -139,7 +139,7 @@
   "name": "Hoover Institution",
   "url": "https://www.hoover.org/",
   "type": "youtube_channel",
-  "weight": 1.5,
+  "weight": 1.0,
   "notes": "Uncommon Knowledge, GoodFellows, Free to Choose Network - ingest channels directly."
  },
  {
@@ -267,7 +267,7 @@
   "name": "Economics Explained",
   "url": "https://www.youtube.com/@EconomicsExplained",
   "type": "youtube_channel",
-  "weight": 1.0,
+  "weight": 0.75,
   "notes": "Owner-added. Explainer channel; ingest all uploads."
  },
  {
