@@ -78,3 +78,6 @@ Product and engineering choices made without explicit instruction. Simplest opti
 24. **Book links are Amazon *search* links** (title + author + tag) rather than product IDs, so they never point at a dead
     edition. They are off until `amazon_tag` is set in `site.yaml`.
 25. **Tag pages need 5+ items and person pages 2+**, so the site doesn't fill up with thin pages.
+26. **Never hand-edit `data/videos.json` while a refresh is running.** Doing so (to fix source names) caused a
+    commit conflict that failed run 13:51, and its cache was lost. The refresh now (a) saves the cache in an `always()` step and
+    (b) rebases with `-X theirs`, so the freshly built data wins. Fix data problems at their source (sources.yaml, overrides.yaml) instead.

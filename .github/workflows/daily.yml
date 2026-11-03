@@ -3,7 +3,7 @@ name: refresh
 # enrich, classify (when vars.CLASSIFY == 'on'), score, commit data/*.json -> Vercel redeploys.
 # Caps per run keep YouTube quota and OpenAI spend bounded; the archive backfill finishes over several runs.
 on:
-  schedule: [{cron: "17 */6 * * *"}]
+  schedule: [{cron: "17 */6 * * *"}]   # GitHub may delay/skip scheduled runs under load; manual dispatch always works
   workflow_dispatch:
   push:
     branches: [main]
@@ -26,7 +26,7 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - uses: actions/cache@v4
+      - uses: actions/cache/restore@v4
         with:
           path: .cache
           key: econtube-cache-${{ github.run_id }}
@@ -50,11 +50,19 @@ jobs:
               for r in rows: c[(r["model"], r["tag"])] += 1; t[(r["model"], "in")] += r.get("in") or 0; t[(r["model"], "out")] += r.get("out") or 0
               print("LLM calls (recent):", dict(c)); print("tokens:", dict(t))
           PY
+      - name: save cache (always, so a failed later step never loses paid-for LLM work)
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .cache
+          key: econtube-cache-${{ github.run_id }}
       - name: commit data
         run: |
           git config user.name "econtube-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/videos.json data/sources.json data/site.json data/taxonomy.json data/books.json reports/ingest-status.json
+          git add data/*.json reports/ingest-status.json 2>/dev/null || git add data/*.json
           git diff --cached --quiet && exit 0
           git commit -m "data: refresh $(date -u +%F' '%H:%M)"
-          git pull --rebase --autostash -q && git push
+          # this run's freshly built data wins any conflict on data files
+          for i in 1 2 3; do git pull --rebase -X theirs -q origin main && git push && exit 0; sleep 5; done
+          exit 1
