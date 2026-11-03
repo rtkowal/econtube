@@ -42,3 +42,15 @@ Product and engineering choices made without explicit instruction. Simplest opti
     WordPress source (Cafe Hayek, Ritholtz, Conversable Economist, IEA, etc.).
 14. **The Nobel `/summary/` pages contain no YouTube embeds** (0 in 57 prize years). Nobel lectures come from the
     official @thenobelprize channel, filtered to "Economic Sciences", which needs the YouTube API key.
+15. **Channels added by owner (2026-11-03), IDs taken from the handle pages and checked against each channel's RSS feed:**
+    @NobelPrize = UC-V6odR7HzLCuqjYeowPjLA (the old @thenobelprize handle now returns 404), @EconomicsExplained =
+    UCZ4AMrDcNrfy3X6nsU8-rPg, @CowenConvos = UC_AnpBvnhXTcipgGEHLWoOg (attached to Conversations with Tyler and
+    related to Marginal Revolution), @HooverInstitution = UCzWwWbbKHg4aodl0S35R6XA, and the GoodFellows playlist
+    PLKruweaZqDNetb7uwJF1vS0mzmaTe8Kzg. **@UncommonKnowledge is not Peter Robinson's show** (an unrelated channel with 1 video),
+    so it is rejected. Uncommon Knowledge episodes are on the Hoover channel in yearly playlists. uncommonknowledge.org
+    fails TLS. On hoover.org/plus only the economics playlists and podcasts are kept (trade, socialism vs capitalism,
+    healthcare, China model; Capitalism and Freedom, Economics Applied, The Grumpy Economist, The Libertarian). The
+    general-policy ones (Iran, Taiwan, AI, free speech, the Classicist, and so on) are skipped. The Hoover channel and GoodFellows go
+    through the economics_only gate. The Sowell playlist skips the gate.
+16. **YouTube channel RSS (`/feeds/videos.xml?channel_id=` or `playlist_id=`) works without a key** but returns only the
+    newest 15 videos. It is good for the daily incremental run. A full backfill still needs the Data API (`playlistItems.list`).

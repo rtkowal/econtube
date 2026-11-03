@@ -140,6 +140,8 @@ sources:
     notes: Plus Mercatus YouTube channels and Conversations with Tyler podcast.
   - id: conversations-with-tyler
     name: Conversations with Tyler
+    youtube_channels: [{id: UC_AnpBvnhXTcipgGEHLWoOg, handle: "@CowenConvos", verified: true}]
+    related_to: marginal-revolution   # owner: "Marginal Revolution - Tyler Cowen: use this channel"
     podcast_feeds:
       - {name: Conversations with Tyler, rss: "https://rss.libsyn.com/shows/137081/destinations/850607.xml", verified: true}
     url: https://conversationswithtyler.com/
@@ -159,10 +161,35 @@ sources:
     notes: Video pages at cato.org/multimedia; Cato podcasts.
   - id: hoover
     name: Hoover Institution
-    youtube_channels: [{user: HooverInstitution, verified: false}]
+    # Owner-specified 2026-11-03. Main channel is general policy -> economics_only filter.
+    youtube_channels:
+      - {id: UCzWwWbbKHg4aodl0S35R6XA, handle: "@HooverInstitution", filter: economics_only, verified: true}
+      # REJECTED: @UncommonKnowledge (UCn-KsRgavaKgyjs9yhOBhFw) is an unrelated 1-video channel.
+    youtube_playlists:
+      - {id: PLKruweaZqDNetb7uwJF1vS0mzmaTe8Kzg, name: "GoodFellows: Conversations on Economics, History & Geopolitics", series: goodfellows, filter: economics_only, verified: true}
+      # Uncommon Knowledge (Peter Robinson) lives on the Hoover channel in yearly playlists; all are Hoover-owned (PLKruweaZqDN prefix).
+      # Episodes are also in the channel uploads; these playlists only tag series membership + the Sowell set skips the gate.
+      - {id: PLKruweaZqDNcTAPb0nBqGx-Ekl9k9ns-V, name: "Uncommon Knowledge: Featuring Thomas Sowell", series: uncommon-knowledge, verified: true}
+      - {id: PLKruweaZqDNdGEOnJLKwK8ghwFatSpypB, name: "Uncommon Knowledge 2026", series: uncommon-knowledge, filter: economics_only, verified: true}
+      - {id: PLKruweaZqDNd413F3oSIAi_Pa8e6RB2Vc, name: "Uncommon Knowledge 2025", series: uncommon-knowledge, filter: economics_only, verified: true}
+      - {id: PLKruweaZqDNftJrMrZcDYKjYnboMVn_8A, name: "Uncommon Knowledge 2024", series: uncommon-knowledge, filter: economics_only, verified: true}
+      - {id: PLKruweaZqDNd6nLsrSJE7G-MxcbUjcvQr, name: "Uncommon Knowledge 2022", series: uncommon-knowledge, filter: economics_only, verified: true}
+      - {id: PLKruweaZqDNdcS5BNQjledFE7EmgT7IAM, name: "Uncommon Knowledge 2015", series: uncommon-knowledge, filter: economics_only, verified: true}
+      # TODO with API key: list all Hoover playlists (playlists.list channelId) to get the remaining UK years.
+    hoover_playlists:   # hoover.org/plus/playlists - economics-relevant only; rest (Iran, Taiwan, AI, free speech...) skipped
+      - https://www.hoover.org/plus/playlists/getting-trade-policy-right
+      - https://www.hoover.org/plus/playlists/socialism-vs-capitalism
+      - https://www.hoover.org/plus/playlists/making-healthcare-more-accessible
+      - https://www.hoover.org/plus/playlists/can-free-world-compete-china-model
+    hoover_podcasts:    # hoover.org/plus/podcasts - economics-relevant only
+      - https://www.hoover.org/plus/podcasts/capitalism-and-freedom
+      - https://www.hoover.org/plus/podcasts/economics-applied
+      - https://www.hoover.org/plus/podcasts/grumpy-economist-podcast
+      - https://www.hoover.org/plus/podcasts/libertarian
     podcast_feeds:
       - {name: Uncommon Knowledge, rss: "https://feed.podbean.com/uncommonknowledgehoover/feed.xml", verified: false}
       - {name: GoodFellows, rss: "https://feed.podbean.com/goodfellows/feed.xml", verified: false}
+    notes_uk: "uncommonknowledge.org has a broken TLS certificate; use the YouTube channel and podcast feed instead."
     url: https://www.hoover.org/
     type: youtube_channel
     weight: 1.5
@@ -208,7 +235,7 @@ sources:
     feeds: [https://blogs.lse.ac.uk/businessreview/home/feed/]
   - id: nobel-economics
     name: Nobel Prize - Economic Sciences
-    youtube_channels: [{user: thenobelprize, verified: false, title_filter: "Economic Sciences"}]
+    youtube_channels: [{id: UC-V6odR7HzLCuqjYeowPjLA, handle: "@NobelPrize", verified: true, title_filter: "Economic Sciences|economic sciences|Prize in Economic|economics laureate"}]
     url: https://www.nobelprize.org/prizes/economic-sciences/
     type: html
     weight: 2.0
@@ -289,6 +316,14 @@ sources:
     url: https://open.spotify.com/show/3mmVPg0hr1znKgha9LIwNP
     type: curated_list
     spotify_show: 3mmVPg0hr1znKgha9LIwNP
+
+  - id: economics-explained
+    name: Economics Explained
+    url: https://www.youtube.com/@EconomicsExplained
+    type: youtube_channel
+    weight: 1.0
+    youtube_channels: [{id: UCZ4AMrDcNrfy3X6nsU8-rPg, handle: "@EconomicsExplained", verified: true}]
+    notes: Owner-added. Explainer channel; ingest all uploads.
 
   # ---------------- Investors & markets ----------------
   - id: apollo-daily-spark
