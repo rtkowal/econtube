@@ -2,51 +2,51 @@
  "marginal-revolution": {
   "pages": 42,
   "new": 600,
-  "refs": 43,
+  "refs": 68,
   "stopped": null,
-  "total_posts": 1800
+  "total_posts": 2400
  },
  "cafe-hayek": {
   "pages": 42,
   "new": 200,
-  "refs": 8,
+  "refs": 14,
   "stopped": null,
-  "total_posts": 600
+  "total_posts": 800
  },
  "conversable-economist": {
   "pages": 42,
   "new": 400,
-  "refs": 3,
+  "refs": 1,
   "stopped": null,
-  "total_posts": 1200
+  "total_posts": 1600
  },
  "econlog": {
   "pages": 42,
   "new": 400,
-  "refs": 22,
+  "refs": 44,
   "stopped": null,
-  "total_posts": 1200
+  "total_posts": 1600
  },
  "ritholtz": {
   "pages": 4,
   "new": 20,
-  "refs": 41,
-  "stopped": "HTTP 429 for https://ritholtz.com/feed/?paged=6",
-  "total_posts": 50
+  "refs": 36,
+  "stopped": "HTTP 429 for https://ritholtz.com/feed/?paged=8",
+  "total_posts": 70
  },
  "undercover-economist": {
   "pages": 42,
   "new": 400,
-  "refs": 7,
+  "refs": 3,
   "stopped": null,
-  "total_posts": 1200
+  "total_posts": 1600
  },
  "freakonomics": {
   "pages": 42,
   "new": 800,
-  "refs": 35,
+  "refs": 38,
   "stopped": null,
-  "total_posts": 2400
+  "total_posts": 3200
  },
  "lyn-alden": {
   "pages": 2,
@@ -58,9 +58,9 @@
  "iea": {
   "pages": 42,
   "new": 400,
-  "refs": 24,
+  "refs": 28,
   "stopped": null,
-  "total_posts": 1200
+  "total_posts": 1600
  },
  "lse-economic-history": {
   "pages": 2,
@@ -86,9 +86,9 @@
  "bond-vigilantes": {
   "pages": 42,
   "new": 400,
-  "refs": 17,
+  "refs": 16,
   "stopped": null,
-  "total_posts": 1200
+  "total_posts": 1600
  },
  "doubleline": {
   "pages": 2,
