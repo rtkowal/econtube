@@ -82,3 +82,4 @@ Product and engineering choices made without explicit instruction. Simplest opti
     commit conflict that failed run 13:51, and its cache was lost. The refresh now (a) saves the cache in an `always()` step and
     (b) rebases with `-X theirs`, so the freshly built data wins. Fix data problems at their source (sources.yaml, overrides.yaml) instead.
 27. **Refresh every 12 hours** (05:17 and 17:17 UTC), owner decision 2026-11-04; supersedes the 6-hourly schedule in #21. Monetization (Amazon tag, sponsor, support link) deferred by owner.
+28. **Back to every 6 hours** (00:17, 06:17, 12:17, 18:17 UTC), owner decision 2026-11-04; supersedes #27.

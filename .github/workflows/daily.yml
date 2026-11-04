@@ -1,9 +1,9 @@
 name: refresh
-# Every 12 h (05:17 and 17:17 UTC): ingest curator posts (head pages + archive backfill), collect channels/podcasts, gate,
+# Every 6 h (00:17, 06:17, 12:17, 18:17 UTC): ingest curator posts (head pages + archive backfill), collect channels/podcasts, gate,
 # enrich, classify (when vars.CLASSIFY == 'on'), score, commit data/*.json -> Vercel redeploys.
 # Caps per run keep YouTube quota and OpenAI spend bounded; the archive backfill finishes over several runs.
 on:
-  schedule: [{cron: "17 5,17 * * *"}]   # GitHub may delay/skip scheduled runs under load; manual dispatch always works
+  schedule: [{cron: "17 */6 * * *"}]   # GitHub may delay/skip scheduled runs under load; manual dispatch always works
   workflow_dispatch:
   push:
     branches: [main]
@@ -16,7 +16,7 @@ jobs:
     timeout-minutes: 300
     env:
       ECONTUBE_CACHE: .cache
-      QUOTA_BUDGET: "3000"        # YouTube units per run (2 runs/day, well under the 10,000 default quota)
+      QUOTA_BUDGET: "3000"        # YouTube units per run (4 runs/day < 10,000 default quota)
       MAX_LLM_CALLS: "6000"       # OpenAI calls per run (gate + classify)
       LLM_WORKERS: "8"
     steps:
