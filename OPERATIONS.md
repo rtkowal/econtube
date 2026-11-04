@@ -5,7 +5,7 @@ How EconTube runs, and the routine changes you'll make. Product decisions and th
 ## How it runs
 
 ```
-GitHub Actions "refresh" (every 6 h, also manual: Actions → refresh → Run workflow)
+GitHub Actions "refresh" (every 12 h, 05:17 and 17:17 UTC; also manual: Actions → refresh → Run workflow)
   ingest.py      curator posts: newest 2 feed pages + 40 archive pages per blog (resumes from a cursor)
   build_data.py  YouTube channels/playlists (full archives, incremental) + post links + podcasts
                  → relevance gate (OpenAI) → videos.list enrichment → classification → score
