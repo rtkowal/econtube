@@ -2,54 +2,54 @@
  "marginal-revolution": {
   "pages": 42,
   "new": 600,
-  "refs": 49,
+  "refs": 66,
   "stopped": null,
-  "total_posts": 3000
+  "total_posts": 3600
  },
  "cafe-hayek": {
   "pages": 42,
   "new": 200,
-  "refs": 14,
+  "refs": 10,
   "stopped": null,
-  "total_posts": 1000
+  "total_posts": 1200
  },
  "conversable-economist": {
   "pages": 42,
   "new": 400,
-  "refs": 18,
+  "refs": 3,
   "stopped": null,
-  "total_posts": 2000
+  "total_posts": 2400
  },
  "econlog": {
   "pages": 42,
   "new": 400,
-  "refs": 28,
+  "refs": 26,
   "stopped": null,
-  "total_posts": 2000
+  "total_posts": 2400
  },
  "ritholtz": {
   "pages": 4,
   "new": 20,
-  "refs": 37,
-  "stopped": "HTTP 429 for https://ritholtz.com/feed/?paged=10",
-  "total_posts": 90
+  "refs": 27,
+  "stopped": "HTTP 429 for https://ritholtz.com/feed/?paged=12",
+  "total_posts": 110
  },
  "undercover-economist": {
-  "pages": 42,
-  "new": 400,
-  "refs": 2,
-  "stopped": null,
+  "pages": 0,
+  "new": 0,
+  "refs": 0,
+  "stopped": "end of archive at page 201",
   "total_posts": 2000
  },
  "freakonomics": {
   "pages": 42,
   "new": 800,
-  "refs": 16,
+  "refs": 39,
   "stopped": null,
-  "total_posts": 4000
+  "total_posts": 4800
  },
  "lyn-alden": {
-  "pages": 2,
+  "pages": 0,
   "new": 0,
   "refs": 0,
   "stopped": null,
@@ -58,36 +58,36 @@
  "iea": {
   "pages": 42,
   "new": 400,
-  "refs": 14,
+  "refs": 2,
   "stopped": null,
-  "total_posts": 2000
+  "total_posts": 2400
  },
  "lse-economic-history": {
-  "pages": 2,
+  "pages": 0,
   "new": 0,
   "refs": 0,
-  "stopped": null,
+  "stopped": "HTTP 403 for https://blogs.lse.ac.uk/economichistory/feed/?paged=1",
   "total_posts": 138
  },
  "lse-business-review": {
-  "pages": 2,
+  "pages": 0,
   "new": 0,
   "refs": 0,
-  "stopped": null,
+  "stopped": "HTTP 403 for https://blogs.lse.ac.uk/businessreview/home/feed/?paged=1",
   "total_posts": 4
  },
  "eh-net": {
-  "pages": 2,
+  "pages": 0,
   "new": 0,
   "refs": 0,
   "stopped": null,
   "total_posts": 90
  },
  "bond-vigilantes": {
-  "pages": 7,
-  "new": 42,
+  "pages": 2,
+  "new": 0,
   "refs": 0,
-  "stopped": "end of archive at page 166",
+  "stopped": null,
   "total_posts": 1642
  },
  "doubleline": {
