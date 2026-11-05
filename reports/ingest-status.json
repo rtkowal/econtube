@@ -2,51 +2,51 @@
  "marginal-revolution": {
   "pages": 42,
   "new": 600,
-  "refs": 66,
+  "refs": 57,
   "stopped": null,
-  "total_posts": 3600
+  "total_posts": 4200
  },
  "cafe-hayek": {
   "pages": 42,
   "new": 200,
-  "refs": 10,
+  "refs": 17,
   "stopped": null,
-  "total_posts": 1200
+  "total_posts": 1400
  },
  "conversable-economist": {
   "pages": 42,
   "new": 400,
-  "refs": 3,
+  "refs": 0,
   "stopped": null,
-  "total_posts": 2400
+  "total_posts": 2800
  },
  "econlog": {
   "pages": 42,
   "new": 400,
-  "refs": 26,
+  "refs": 27,
   "stopped": null,
-  "total_posts": 2400
+  "total_posts": 2800
  },
  "ritholtz": {
   "pages": 4,
   "new": 20,
-  "refs": 27,
-  "stopped": "HTTP 429 for https://ritholtz.com/feed/?paged=12",
-  "total_posts": 110
+  "refs": 24,
+  "stopped": "HTTP 429 for https://ritholtz.com/feed/?paged=14",
+  "total_posts": 130
  },
  "undercover-economist": {
   "pages": 0,
   "new": 0,
   "refs": 0,
-  "stopped": "end of archive at page 201",
+  "stopped": null,
   "total_posts": 2000
  },
  "freakonomics": {
   "pages": 42,
   "new": 800,
-  "refs": 39,
+  "refs": 21,
   "stopped": null,
-  "total_posts": 4800
+  "total_posts": 5600
  },
  "lyn-alden": {
   "pages": 0,
@@ -58,22 +58,22 @@
  "iea": {
   "pages": 42,
   "new": 400,
-  "refs": 2,
+  "refs": 5,
   "stopped": null,
-  "total_posts": 2400
+  "total_posts": 2800
  },
  "lse-economic-history": {
-  "pages": 0,
+  "pages": 2,
   "new": 0,
   "refs": 0,
-  "stopped": "HTTP 403 for https://blogs.lse.ac.uk/economichistory/feed/?paged=1",
+  "stopped": null,
   "total_posts": 138
  },
  "lse-business-review": {
-  "pages": 0,
+  "pages": 2,
   "new": 0,
   "refs": 0,
-  "stopped": "HTTP 403 for https://blogs.lse.ac.uk/businessreview/home/feed/?paged=1",
+  "stopped": null,
   "total_posts": 4
  },
  "eh-net": {
@@ -92,10 +92,10 @@
  },
  "doubleline": {
   "pages": 2,
-  "new": 0,
+  "new": 1,
   "refs": 0,
   "stopped": null,
-  "total_posts": 10
+  "total_posts": 11
  },
  "weusecoins": {
   "pages": 2,
