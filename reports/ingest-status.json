@@ -2,16 +2,16 @@
  "marginal-revolution": {
   "pages": 42,
   "new": 600,
-  "refs": 40,
+  "refs": 32,
   "stopped": null,
-  "total_posts": 7200
+  "total_posts": 7800
  },
  "cafe-hayek": {
   "pages": 42,
   "new": 200,
-  "refs": 13,
+  "refs": 12,
   "stopped": null,
-  "total_posts": 2400
+  "total_posts": 2600
  },
  "conversable-economist": {
   "pages": 2,
@@ -23,16 +23,16 @@
  "econlog": {
   "pages": 42,
   "new": 400,
-  "refs": 24,
+  "refs": 21,
   "stopped": null,
-  "total_posts": 4800
+  "total_posts": 5200
  },
  "ritholtz": {
   "pages": 4,
   "new": 20,
-  "refs": 30,
-  "stopped": "HTTP 429 for https://ritholtz.com/feed/?paged=26",
-  "total_posts": 250
+  "refs": 40,
+  "stopped": "HTTP 429 for https://ritholtz.com/feed/?paged=28",
+  "total_posts": 270
  },
  "undercover-economist": {
   "pages": 2,
@@ -92,7 +92,7 @@
  },
  "doubleline": {
   "pages": 2,
-  "new": 3,
+  "new": 0,
   "refs": 0,
   "stopped": null,
   "total_posts": 15
